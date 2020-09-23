@@ -1,6 +1,6 @@
-import http from "./httpService";
+// import http from "./httpService";
 
-const apiEndpoint = "/zones";
+// const apiEndpoint = "/zones";
 export function getZones() {
   // Get request
   // http.get(apiEndpoint)
