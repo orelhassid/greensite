@@ -31,8 +31,9 @@ nav.site-nav {
   .logo {
     display: flex;
     align-items: center;
+    width: 16px;
+    flex-grow: 1;
     .icon svg {
-      width: 16px;
     }
     .name {
       font-size: 14px;
