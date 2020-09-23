@@ -106,4 +106,30 @@ header.site-header {
 main {
   display: grid;
   padding: 10px 30px;
+
+  .center {
+    display: grid;
+    place-items: center;
+    .image {
+      width: 100%;
+    }
+  }
+}
+
+/* ---------------------------------- Grid ---------------------------------- */
+section.grid {
+  display: grid;
+  grid-row-gap: 10px;
+}
+
+@media only screen and (min-width: 300px) {
+  main {
+    .center {
+      .image {
+        width: 50vh;
+      }
+    }
+    width: 640px;
+    margin: 0 auto;
+  }
 }

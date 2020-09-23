@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import Home from "./pages/home";
 import Help from "./pages/help";
@@ -7,6 +7,7 @@ import HubRegister from "./pages/business/hubRegister";
 import HubRegisterZone from "./pages/business/hubRegisterZone";
 import HubZones from "./pages/business/hubZones";
 import Logout from "./pages/logout";
+import NotFound from "./pages/notfound";
 
 function App() {
   return (
@@ -26,9 +27,13 @@ function App() {
       <Route path="/logout">
         <Logout />
       </Route>
-      <Route path="/">
+      <Route path="/not-found">
+        <NotFound />
+      </Route>
+      <Route path="/" exact>
         <Home />
       </Route>
+      <Redirect to="/not-found" />
     </Switch>
   );
 }

@@ -7,7 +7,6 @@ const Fields = ({ fields, data, onChange, errors }) => {
     <>
       {fields.map((field) => {
         const { name, label, placeholder, options } = field;
-        console.log(errors[name]);
         if (field.options) {
           return (
             <SelectField

@@ -26,5 +26,9 @@ export default {
   post: axios.post,
   put: axios.put,
   delete: axios.delete,
+  api: {
+    hub: process.env.REACT_APP_HUB_API,
+    visitor: process.env.REACT_APP_VISITOR_API,
+  },
   //   setJwt,
 };

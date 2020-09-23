@@ -10,7 +10,6 @@ const InputField = ({
   onChange,
   error,
 }) => {
-  console.log(`Errors on ${label}`, error);
   return (
     <div className="form-field">
       <header>
