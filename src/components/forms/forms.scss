@@ -1,0 +1,34 @@
+@import "../../assets/styles/variables.scss";
+
+form {
+  display: grid;
+  grid-gap: 10px;
+
+  .form-field {
+    header {
+      display: flex;
+      justify-content: space-between;
+      .help svg {
+        color: $text1;
+        width: 12px;
+      }
+      label {
+        padding: 4px 10px;
+      }
+    }
+    input {
+      border: none;
+      background-color: $bg2;
+      padding: 10px;
+      border-radius: 2px;
+      width: 100%;
+      height: 40px;
+      color: $text1;
+      margin-bottom: 0.2rem;
+    }
+
+    input::placeholder {
+      color: $text2;
+    }
+  }
+}

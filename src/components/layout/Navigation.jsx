@@ -15,7 +15,7 @@ export const Navigation = () => {
       <Logo />
       <ul>
         {links.map((item) => (
-          <li>
+          <li key={item.label}>
             <Link to={item.url}>{item.label}</Link>
           </li>
         ))}

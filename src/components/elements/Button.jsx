@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import "./buttons.scss";
 
-export default function Button() {
-    return (
-        <button>
-            BUTTON
-        </button>
-    )
+/**
+ *
+ * @param {string} label
+ */
+export default function Button({ label }) {
+  return <button>{label}</button>;
 }
