@@ -5,6 +5,7 @@ import Home from "./pages/home";
 import Help from "./pages/help";
 import HubRegister from "./pages/business/hubRegister";
 import HubRegisterZone from "./pages/business/hubRegisterZone";
+import HubZones from "./pages/business/hubZones";
 
 function App() {
   return (
@@ -12,8 +13,11 @@ function App() {
       <Route path="/hub/register">
         <HubRegister />
       </Route>
-      <Route path="/hub/zones">
+      <Route path="/hub/register/zones">
         <HubRegisterZone />
+      </Route>
+      <Route path="/hub/zones">
+        <HubZones />
       </Route>
       <Route path="/help">
         <Help />

@@ -6,6 +6,7 @@ import { ReactComponent as LogoIcon } from "../../assets/icons/logo.svg";
 const links = [
   { label: "Home", url: "/" },
   { label: "Register", url: "/hub/register" },
+  { label: "RegisterZones", url: "/hub/register/zones" },
   { label: "Zones", url: "/hub/zones" },
   { label: <HelpIcon />, url: "/help" },
 ];
