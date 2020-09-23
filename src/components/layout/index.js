@@ -1,3 +1,4 @@
-export * from './Header'
-export * from './Content'
-export {default} from './Layout'
+export * from "./Header";
+export * from "./PageTitle";
+export * from "./Content";
+export { default } from "./Layout";
