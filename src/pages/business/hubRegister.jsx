@@ -1,11 +1,11 @@
 import React from "react";
-import Layout, { PageTitle, Content } from "../../components/layout";
+import Layout, { Header, Content } from "../../components/layout";
 
 function HubRegister() {
   return (
     <Layout>
-      <PageTitle />
-      <Content>Register</Content>
+      <Header title="Registration" subtitle="Enter your site information" />
+      <Content></Content>
     </Layout>
   );
 }

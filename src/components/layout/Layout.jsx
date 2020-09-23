@@ -1,11 +1,11 @@
 import React from "react";
-import { Header, Content } from "../layout";
-import "./layout.css";
+import { Navigation, Content } from "../layout";
+import "./layout.scss";
 
 export default function Layout({ children }) {
   return (
     <div className="site">
-      <Header />
+      <Navigation />
       {children}
     </div>
   );
