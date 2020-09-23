@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigation, Content } from "../layout";
+import { Navigation } from "../layout";
 import "./layout.scss";
 
 export default function Layout({ children }) {
