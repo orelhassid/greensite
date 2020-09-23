@@ -6,7 +6,6 @@ function HubRegisterZone() {
     <Layout>
       <Header title="Zones" subtitle="Adding zones to your site" />
       <Content>
-        Zone list
         <Card />
       </Content>
     </Layout>

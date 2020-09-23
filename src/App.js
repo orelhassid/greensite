@@ -6,6 +6,7 @@ import Help from "./pages/help";
 import HubRegister from "./pages/business/hubRegister";
 import HubRegisterZone from "./pages/business/hubRegisterZone";
 import HubZones from "./pages/business/hubZones";
+import Logout from "./pages/logout";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
       </Route>
       <Route path="/help">
         <Help />
+      </Route>
+      <Route path="/logout">
+        <Logout />
       </Route>
       <Route path="/">
         <Home />

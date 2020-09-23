@@ -1,6 +1,7 @@
 @import "../../assets/styles/variables.scss";
 
-button {
+.btn,
+.btn-contained {
   background: $primary;
   display: flex;
   justify-content: center;
@@ -10,4 +11,11 @@ button {
   font-weight: 500;
   font-family: $fontFamily;
   margin: 0 auto;
+  align-items: center;
+  height: 40px;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  cursor: pointer;
 }

@@ -24,9 +24,17 @@
     "placeholder": "050-123-4567"
   },
   {
-    "name": "hubType",
+    "name": "hubtype",
     "label": "Business / Site Type",
     "placeholder": "Options",
-    "options": ["caffe", "train"]
+    "options": [
+      "Cafe",
+      "Restaurant",
+      "Hospital",
+      "Taxi",
+      "Supermarket",
+      "Local Shop",
+      "Saloonn"
+    ]
   }
 ]

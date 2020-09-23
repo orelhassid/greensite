@@ -5,6 +5,7 @@ form {
   grid-gap: 10px;
 
   .form-field {
+    position: relative;
     header {
       display: flex;
       justify-content: space-between;
@@ -29,6 +30,13 @@ form {
 
     input::placeholder {
       color: $text2;
+    }
+
+    .alert {
+      // position: absolute;
+      // bottom: 0;
+      color: $red;
+      font-size: 0.8rem;
     }
   }
 }

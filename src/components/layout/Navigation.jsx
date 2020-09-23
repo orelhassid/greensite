@@ -19,7 +19,7 @@ export const Navigation = () => {
       <Logo />
       <ul>
         {links.map((item) => (
-          <li key={item.label}>
+          <li key={item.url}>
             <Link to={item.url}>{item.label}</Link>
           </li>
         ))}
