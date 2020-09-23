@@ -12,15 +12,36 @@ body {
   display: grid;
   // grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
+}
 
-  nav.site-nav {
-    background-color: $primary;
-    box-shadow: $shadow1;
-    height: 56px;
-    width: 100%;
-    border-radius: 0px;
+/* --------------------------- Top bar navigation (logo and links) --------------------------- */
+nav.site-nav {
+  background-color: $primary;
+  box-shadow: $shadow1;
+  height: 56px;
+  width: 100%;
+  border-radius: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    .icon svg {
+      width: 16px;
+    }
+    .name {
+      font-size: 14px;
+      font-weight: 500;
+      color: $white;
+      margin: 0 10px;
+    }
   }
 }
+
+/* ---------------------- Image Cover and Page Title --------------------- */
 
 header.site-header {
   display: flex;
@@ -28,6 +49,7 @@ header.site-header {
   justify-content: center;
   text-align: center;
 
+  // Image Cover
   .site-cover {
     height: 130px;
     width: 100%;
@@ -35,7 +57,21 @@ header.site-header {
     display: grid;
     place-items: center;
     background-color: $bg2;
+
+    .image {
+      height: 90px;
+      width: 90px;
+      background-color: $bg1;
+      padding: 17px;
+      border-radius: 50%;
+      img,
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
+  // Site Title and subtitles
   .site-title {
     display: flex;
     flex-direction: column;
@@ -53,3 +89,5 @@ header.site-header {
     }
   }
 }
+
+// Main Content

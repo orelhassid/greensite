@@ -1,4 +1,5 @@
 import React from "react";
+import { ReactComponent as CameraIcon } from "../../assets/icons/camera.svg";
 
 // Interface:
 // title, subtitle
@@ -12,7 +13,11 @@ export const Header = ({ title, subtitle }) => {
 };
 
 const CoverImage = ({ title, subtitle }) => (
-  <div className="site-cover">Cover Image</div>
+  <div className="site-cover">
+    <div className="image">
+      <CameraIcon />
+    </div>
+  </div>
 );
 
 const Title = ({ title, subtitle }) => (

@@ -5,7 +5,7 @@ function HubRegister() {
   return (
     <Layout>
       <Header title="Registration" subtitle="Enter your site information" />
-      <Content></Content>
+      <Content>Registration Form Here</Content>
     </Layout>
   );
 }
