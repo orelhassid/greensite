@@ -5,8 +5,8 @@ import Layout, { Header, Content } from "../components/layout";
 function Home() {
   return (
     <Layout>
-      <Header title="Home Page" />
-      <Content></Content>
+      <Header title="Help Page" />
+      <Content>Help</Content>
     </Layout>
   );
 }
