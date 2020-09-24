@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { Grid } from "../layout";
 import Fields from "./Fields";
 
 const Form = ({ fields, onSubmit, data, setData, schema, children }) => {
@@ -39,7 +40,7 @@ const Form = ({ fields, onSubmit, data, setData, schema, children }) => {
         onChange={(e) => handleChange(e)}
         errors={errors}
       />
-      {children}
+      <Grid row={true}>{children}</Grid>
     </form>
   );
 };

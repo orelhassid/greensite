@@ -1,11 +1,13 @@
 import React from "react";
 import { ReactComponent as CameraIcon } from "../../assets/icons/camera.svg";
+import { SEO } from "../layout";
 
 // Interface:
 // title, subtitle
 export const Header = ({ title, subtitle }) => {
   return (
     <header className="site-header">
+      <SEO title={title} description={subtitle} />
       <CoverImage />
       <Title title={title} subtitle={subtitle} />
     </header>

@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Layout, { Header, Content, Grid } from "../../components/layout";
 import Card from "../../components/cards/Card";
+// import HubCard from "../../components/cards/HubCard";
 import { getZones } from "../../services/zonesService";
 
-function HubRegisterZone() {
+function ZonesPage() {
   const [zones, setZones] = useState([]);
+  // const [zoneHub, setZoneHub] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       const result = await getZones();
+      // const zoneHubObject = await getZoneHub();
+      // setZoneHub(zoneHubObject)
       setZones(result);
     }
     fetchData();
@@ -16,9 +20,10 @@ function HubRegisterZone() {
 
   return (
     <Layout>
-      <Header title="Zones" subtitle="Adding zones to your site" />
+      <Header title="QR Codes" subtitle="Track you zones" />
       <Content>
-        <Grid>
+        {/* <HubCard zone={zoneHub} /> */}
+        <Grid spacing="30">
           {zones.map((zone) => (
             <Card key={zone.zoneId} zone={zone} />
           ))}
@@ -28,4 +33,4 @@ function HubRegisterZone() {
   );
 }
 
-export default HubRegisterZone;
+export default ZonesPage;

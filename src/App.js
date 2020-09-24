@@ -4,22 +4,22 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Home from "./pages/home";
 import Help from "./pages/help";
 import HubRegister from "./pages/business/hubRegister";
-import HubRegisterZone from "./pages/business/hubRegisterZone";
-import HubZones from "./pages/business/hubZones";
+import RegisterZonesPage from "./pages/business/RegisterZonesPage";
+import ZonesPage from "./pages/business/zonesPage";
 import Logout from "./pages/logout";
 import NotFound from "./pages/notfound";
 
 function App() {
   return (
     <Switch>
+      <Route path="/hub/register/zones">
+        <RegisterZonesPage />
+      </Route>
       <Route path="/hub/register">
         <HubRegister />
       </Route>
-      <Route path="/hub/register/zones">
-        <HubRegisterZone />
-      </Route>
       <Route path="/hub/zones">
-        <HubZones />
+        <ZonesPage />
       </Route>
       <Route path="/help">
         <Help />

@@ -1,7 +1,8 @@
 import React from "react";
 import "./cards.scss";
 import { ReactComponent as Qrcode } from "../../assets/images/qrcode.svg";
-const Card = ({ zone }) => {
+
+const HubCard = ({ zone }) => {
   const { zoneId, zoneName, siteid, zoneLink, zoneType } = zone;
   return (
     <div className="card">
@@ -33,4 +34,4 @@ const Card = ({ zone }) => {
   );
 };
 
-export default Card;
+export default HubCard;

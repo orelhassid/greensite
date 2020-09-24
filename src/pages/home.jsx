@@ -1,6 +1,6 @@
 import React from "react";
 import Layout, { Header, Content } from "../components/layout";
-import SEO from "../components/layout/SEO";
+import { SEO } from "../components/layout";
 
 function Home() {
   return (

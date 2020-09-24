@@ -1,0 +1,16 @@
+[
+  {
+    "name": "zoneType",
+    "type": "text",
+    "label": "Zone Type",
+    "placeholder": "Options",
+    "options": ["Cafe"],
+    "help": "zone type means: table at a cafe, carrianges in a train etc."
+  },
+  {
+    "name": "zoneCount",
+    "type": "number",
+    "label": "Count",
+    "placeholder": "How many zones you want?"
+  }
+]

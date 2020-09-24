@@ -12,6 +12,7 @@ const RegisterHubForm = () => {
     contactName: "",
     contactPhone: "",
     hubtype: "",
+    multiZone: "",
   });
 
   const handleSubmit = () => {
@@ -26,6 +27,7 @@ const RegisterHubForm = () => {
     contactName: Joi.string().required(),
     contactPhone: Joi.string().required(),
     hubtype: Joi.string().required(),
+    multiZone: Joi.required(),
   });
 
   return (

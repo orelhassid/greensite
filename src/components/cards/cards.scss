@@ -24,12 +24,13 @@
         margin-right: 10px;
       }
       .badge {
-        background: $primary;
+        text-transform: capitalize;
+        background: $secondary;
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 25px;
-        padding: 2px 10px;
+        padding: 2px 15px;
         font-size: 0.8rem;
         font-weight: 400;
         color: $white;

@@ -6,11 +6,12 @@ import { ReactComponent as RegisterIcon } from "../../assets/icons/register.svg"
 import { ReactComponent as HomeIcon } from "../../assets/icons/home.svg";
 import { ReactComponent as QrCode } from "../../assets/icons/qrcode.svg";
 import { ReactComponent as Logout } from "../../assets/icons/logout.svg";
+import { ReactComponent as ZoneIcon } from "../../assets/icons/zone.svg";
 
 const links = [
   { label: <HomeIcon />, url: "/" },
   { label: <RegisterIcon />, url: "/hub/register" },
-  // { label: <QrCode />, url: "/hub/register/zones" },
+  { label: <ZoneIcon />, url: "/hub/register/zones" },
   { label: <QrCode />, url: "/hub/zones" },
   { label: <Logout />, url: "/logout" },
   { label: <HelpIcon />, url: "/help" },
