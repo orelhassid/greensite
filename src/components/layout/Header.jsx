@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigation } from "../layout";
+// import { Navigation } from "../layout";
 
 import { ReactComponent as CameraIcon } from "../../assets/icons/camera.svg";
 import { SEO } from "../layout";
@@ -10,7 +10,7 @@ export const Header = ({ title, subtitle }) => {
   return (
     <header className="site-header">
       <SEO title={title} description={subtitle} />
-      <Navigation />
+      {/* <Navigation /> */}
 
       <CoverImage />
       <Title title={title} subtitle={subtitle} />
