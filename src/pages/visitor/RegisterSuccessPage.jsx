@@ -6,6 +6,7 @@ function RegisterSuccessPage() {
   const visitorId = visitorService.getVisitor();
   const history = useHistory();
 
+  console.log(visitorId);
   // Redirect the user if not logged in
   if (!visitorId) history.push("/");
   return (

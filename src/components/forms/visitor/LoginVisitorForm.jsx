@@ -17,13 +17,14 @@ const LoginVisitorForm = () => {
 
   const history = useHistory();
 
-  const handleSubmit = () => {
-    const result = visitorService.login(data);
+  const handleSubmit = async () => {
+    const result = await visitorService.login(data);
     if (result) {
       history.push("/visitor/login/success");
     } else {
-      toast.error("Password is incorrect");
+      toast.error("Login Failed");
     }
+
     console.log("Submitted");
   };
 

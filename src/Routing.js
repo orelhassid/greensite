@@ -14,6 +14,7 @@ import ZonesPage from "./pages/business/zonesPage";
 import RegisterVisitorPage from "./pages/visitor/RegisterVisitorPage";
 import RegisterSuccessPage from "./pages/visitor/RegisterSuccessPage";
 import LoginVisitorPage from "./pages/visitor/LoginVisitorPage";
+import CheckOutPage from "./pages/visitor/CheckOutPage";
 import CheckInPage from "./pages/visitor/CheckInPage";
 
 const Routing = () => {
@@ -25,6 +26,9 @@ const Routing = () => {
       </Route>
       <Route path="/visitor/login">
         <LoginVisitorPage />
+      </Route>
+      <Route path="/visitor/checkout">
+        <CheckOutPage />
       </Route>
       <Route path="/visitor/checkin">
         <CheckInPage />

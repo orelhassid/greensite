@@ -4,6 +4,7 @@ import "./buttons.scss";
 /**
  *
  * @param {string} label
+ * @param {string} style
  */
 export default function Button({ label, style, type, variant, icon }) {
   return (

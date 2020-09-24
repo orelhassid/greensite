@@ -2,9 +2,8 @@
   {
     "label": "Time",
     "name": "time",
-    "type": "select",
-    "placeholder": "How long your visit will be?",
-    "options": ["30", "40"]
+    "type": "time",
+    "placeholder": "How long your visit will be?"
   },
   {
     "label": "I comply with the health Declation",

@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactComponent as HelpIcon } from "../../../assets/icons/help.svg";
 
-const ListField = ({
+const SelectField = ({
   name,
   label,
   placeholder,
@@ -9,6 +9,7 @@ const ListField = ({
   options,
   onChange,
   error,
+  checked,
 }) => {
   return (
     <div className="form-field">
@@ -20,7 +21,7 @@ const ListField = ({
       </header>
 
       <select name={name} id={name} onChange={onChange} value={value}>
-        <option value="" disabled selected hidden>
+        <option value="" disabled defaultValue={checked} hidden>
           {placeholder}
         </option>
         {options.map((item) => (
@@ -32,4 +33,4 @@ const ListField = ({
   );
 };
 
-export default ListField;
+export default SelectField;

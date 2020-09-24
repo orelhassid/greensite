@@ -1,15 +1,12 @@
 import { toast } from "react-toastify";
 import http from "./httpService";
 const api = http.api.visitor;
-// Register / Check-in
-// Login
-// Get Visitor
+const apiVisitor = api + "/user/";
 
 // localStorage key name
 const visitorKey = "visitor-key";
 
 // Register
-// http://54.72.200.116:9000/user
 export async function register(visitor) {
   const visitorData = {
     name: visitor.name,
@@ -32,22 +29,15 @@ export function logout() {
   localStorage.removeItem(visitorKey);
 }
 
-export function login(visitor) {
-  // Check the data
-
-  if (visitor.password === getVisitor()) {
-    return true;
-  } else {
-    return null;
-  }
+export async function login(visitor) {
+  const { data } = await http.get(apiVisitor + visitor.password);
+  console.log("Visitor", data);
+  localStorage.setItem(visitorKey, data.cid);
+  return data;
 }
 
 export function getVisitor() {
-  try {
-    return localStorage.getItem(visitorKey);
-  } catch (error) {
-    return null;
-  }
+  return localStorage.getItem(visitorKey);
 }
 
 export default {

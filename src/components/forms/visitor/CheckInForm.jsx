@@ -40,7 +40,7 @@ const CheckInForm = () => {
       onSubmit={() => handleSubmit()}
       schema={schema}
     >
-      <Button label="checkin" type="submit" icon={<CheckInIcon />} />
+      <Button label="check-in" type="submit" icon={<CheckInIcon />} />
     </Form>
   );
 };
