@@ -30,7 +30,7 @@ const hubLinks = [
 export const Navigation = () => {
   const [links, setLinks] = useState([]);
   let location = useLocation();
-  const path = location.pathname.replace(/^\/([^\/]*).*$/, "$1");
+  const path = location.pathname.replace(/^\/([^\/]*).*$/, "$1"); // eslint-disable-line
 
   useEffect(() => {
     // Display links depending the logged account
