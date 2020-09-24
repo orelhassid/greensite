@@ -1,18 +1,18 @@
 [
   {
-    "name": "visitorPhone",
+    "name": "phone",
     "type": "tel",
     "label": "Phone Number",
     "placeholder": "050-123-4567"
   },
   {
-    "name": "visitorId",
+    "name": "id",
     "type": "text",
     "label": "ID (last 3)",
     "placeholder": "Last 3 digits of ID"
   },
   {
-    "name": "visitorName",
+    "name": "name",
     "type": "text",
     "label": "Name (optional)",
     "placeholder": "Your name / nickname"
@@ -21,7 +21,8 @@
     "name": "option",
     "type": "radio",
     "label": "Register for myself",
-    "select": "myself"
+    "select": "myself",
+    "checked": "on"
   },
   {
     "name": "option",

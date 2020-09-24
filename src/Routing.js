@@ -9,12 +9,16 @@ import ZonesPage from "./pages/business/zonesPage";
 import Logout from "./pages/logout";
 import NotFound from "./pages/notfound";
 import RegisterVisitorPage from "./pages/visitor/RegisterVisitorPage";
+import RegisterSuccessPage from "./pages/visitor/RegisterSuccessPage";
 import LoginVisitorPage from "./pages/visitor/LoginVisitorPage";
 
 const Routing = () => {
   return (
     <Switch>
       {/* Visitor */}
+      <Route path={["/visitor/register/success", "/visitor/login/success"]}>
+        <RegisterSuccessPage />
+      </Route>
       <Route path="/visitor/login">
         <LoginVisitorPage />
       </Route>

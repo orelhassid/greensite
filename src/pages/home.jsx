@@ -1,6 +1,5 @@
 import React from "react";
 import Layout, { Header, Content, Grid } from "../components/layout";
-import { SEO } from "../components/layout";
 import VisitorImage from "../assets/images/visitor-image.svg";
 import HubImage from "../assets/images/business-image.svg";
 import { Link } from "react-router-dom";
@@ -8,8 +7,10 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <Layout>
-      <SEO title="Home Page" description="GreenSite Press home page" />
-      <Header title="Home Page" />
+      <Header
+        title="Home Page"
+        subtitle="Start by navigation as visitor or Business"
+      />
       <Content>
         <Grid>
           <Link to="/visitor/register">

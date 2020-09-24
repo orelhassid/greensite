@@ -10,6 +10,7 @@ const CheckField = ({
   onChange,
   error,
   select,
+  checked,
 }) => {
   return (
     <div className="form-field form-field-checkbox">
@@ -22,7 +23,7 @@ const CheckField = ({
           onClick={onChange}
           onChange={onChange}
           // checked={value}
-          defaultChecked={value}
+          defaultChecked={checked}
         />
       </div>
       <div className="label">

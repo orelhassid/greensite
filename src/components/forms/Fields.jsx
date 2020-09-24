@@ -8,7 +8,15 @@ const Fields = ({ fields, data, onChange, errors }) => {
   return (
     <>
       {fields.map((field) => {
-        const { name, label, placeholder, options, type, select } = field;
+        const {
+          name,
+          label,
+          placeholder,
+          options,
+          type,
+          select,
+          checked,
+        } = field;
 
         if (field.options) {
           return (
@@ -31,27 +39,28 @@ const Fields = ({ fields, data, onChange, errors }) => {
               select={select}
               name={name}
               label={label}
-              options={options}
+              options={select}
               placeholder={placeholder}
               value={data[name]}
               onChange={onChange}
               error={errors[name]}
               type={type}
+              checked={checked}
             />
           );
         } else if (field.type === "radio") {
           return (
             <RadioField
               key={select}
+              label={label}
               select={select}
               name={name}
-              label={label}
-              options={options}
               placeholder={placeholder}
-              value={data[name]}
+              value={select}
               onChange={onChange}
               error={errors[name]}
               type={type}
+              checked={checked}
             />
           );
         } else {

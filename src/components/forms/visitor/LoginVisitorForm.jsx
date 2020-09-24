@@ -5,16 +5,22 @@ import Button from "../../elements/Button";
 import fields from "../../../config/loginVisitorFields.json";
 // import Visitor from "../../../services/visitorService";
 import "../forms.scss";
+import visitorService from "../../../services/visitorService";
+import { useHistory } from "react-router-dom";
 
 const LoginVisitorForm = () => {
   const [data, setData] = useState({
     visitorId: "",
-    visitorPassword: "",
+    password: "",
   });
 
+  const history = useHistory();
+
   const handleSubmit = () => {
-    // Call the server
     try {
+      visitorService.login(data);
+      console.log("Login");
+      history.push("/visitor/login/success");
     } catch (error) {
       return console.error("Registration Failed", error);
     }
@@ -23,12 +29,7 @@ const LoginVisitorForm = () => {
 
   const schema = Joi.object({
     visitorId: Joi.string().required().label("Your ID"),
-    visitorPassword: Joi.number()
-      .min(3)
-      .max(3)
-      .integer()
-      .required()
-      .label("Password"),
+    password: Joi.string().required().label("Password"),
   });
 
   return (
