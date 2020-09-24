@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactComponent as HelpIcon } from "../../assets/icons/help.svg";
 
-const InputField = ({
+const TextField = ({
   name,
   label,
   placeholder,
@@ -32,4 +32,4 @@ const InputField = ({
   );
 };
 
-export default InputField;
+export default TextField;

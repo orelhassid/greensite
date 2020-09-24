@@ -2,29 +2,29 @@ import React, { useState } from "react";
 import Joi from "joi";
 import Form from "../Form";
 import Button from "../../elements/Button";
-import fields from "../../../config/registerZonesFields.json";
-import Hub from "../../../services/hubService";
+import fields from "../../../config/loginHubFields.json";
+// import Hub from "../../../services/hubService";
 import "../forms.scss";
 
-const RegisterZonesForm = () => {
+const LoginHubForm = () => {
   const [data, setData] = useState({
-    zoneType: "",
-    zoneCount: "",
+    hubId: "",
+    password: "",
   });
 
   const handleSubmit = () => {
     // Call the server
     try {
-      Hub.addZones(data);
+      //   Hub.addZones(data);
     } catch (error) {
-      return console.error("Registration Failed", error);
+      //   return console.error("Registration Failed", error);
     }
     console.log("Submitted");
   };
 
   const schema = Joi.object({
-    zoneType: Joi.string().alphanum().min(3).max(30).required(),
-    zoneCount: Joi.number().max(500).required(),
+    hubId: Joi.number().required(),
+    password: Joi.string().min(3).max(30),
   });
 
   return (
@@ -35,9 +35,9 @@ const RegisterZonesForm = () => {
       onSubmit={() => handleSubmit()}
       schema={schema}
     >
-      <Button label="Add Zones" type="submit" />
+      <Button label="Login" type="submit" />
     </Form>
   );
 };
 
-export default RegisterZonesForm;
+export default LoginHubForm;

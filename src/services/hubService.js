@@ -36,8 +36,15 @@ export function logout() {
   localStorage.removeItem(hubKey);
 }
 
-export function getHub(id) {
+export function addZones(zones) {
+  // Adding zone to hub
+  // const hub = getHub();
+  http.post(http.api.hub, zones);
+}
+
+export function getHub() {
   try {
+    // const hubId = localStorage.getItem(hubKey);
     // const key = localStorage.getItem(hubKey);
     // Get request by id
   } catch (error) {
@@ -50,4 +57,9 @@ export default {
   register,
   logout,
   getHub,
+  addZones,
 };
+
+/**
+Hub/{id}/zone GET id = db.Column(db.Integer, primary_key=True)   name = db.Column(db.String(100))   type = db.Column(db.String(200))
+*/

@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactComponent as HelpIcon } from "../../assets/icons/help.svg";
 
-const CheckField = ({
+const RadioField = ({
   name,
   label,
   placeholder,
@@ -41,4 +41,4 @@ const CheckField = ({
   );
 };
 
-export default CheckField;
+export default RadioField;

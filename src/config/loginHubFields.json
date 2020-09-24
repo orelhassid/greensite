@@ -1,0 +1,14 @@
+[
+  {
+    "name": "hubId",
+    "type": "text",
+    "label": "Hub Id",
+    "placeholder": "Unique number"
+  },
+  {
+    "name": "password",
+    "type": "password",
+    "label": "Password",
+    "placeholder": "Your password"
+  }
+]

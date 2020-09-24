@@ -40,6 +40,7 @@
   {
     "name": "multiZone",
     "type": "checkbox",
+    "select": "multizone",
     "label": "Multi-zone Site",
     "placeholder": "Multi-zone means your site can be divided into more specific sections (e.g. table at a cafe, carrianges in a train etc.)"
   }

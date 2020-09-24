@@ -4,7 +4,7 @@ import Form from "./Form";
 import Button from "../elements/Button";
 import fields from "../../config/registerHubFormFields.json";
 import "./forms.scss";
-import httpService from "../../services/httpService";
+// import httpService from "../../services/httpService";
 import Hub from "../../services/hubService";
 
 const RegisterHubForm = () => {
@@ -47,10 +47,6 @@ const RegisterHubForm = () => {
     >
       <Button label="Register" type="submit" />
     </Form>
-
-    // <form onSubmit={() => handleSubmit} autoComplete="off">
-    //   <Fields fields={fields} data={data} onChange={(e) => handleChange(e)} />
-    // </form>
   );
 };
 

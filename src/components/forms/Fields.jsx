@@ -1,13 +1,14 @@
 import React from "react";
-import InputField from "./InputField";
+import TextField from "./TextField";
 import SelectField from "./SelectField";
 import CheckField from "./CheckField";
+import RadioField from "./RadioField";
 
 const Fields = ({ fields, data, onChange, errors }) => {
   return (
     <>
       {fields.map((field) => {
-        const { name, label, placeholder, options, type } = field;
+        const { name, label, placeholder, options, type, select } = field;
 
         if (field.options) {
           return (
@@ -26,7 +27,23 @@ const Fields = ({ fields, data, onChange, errors }) => {
         } else if (field.type === "checkbox") {
           return (
             <CheckField
-              key={name}
+              key={select}
+              select={select}
+              name={name}
+              label={label}
+              options={options}
+              placeholder={placeholder}
+              value={data[name]}
+              onChange={onChange}
+              error={errors[name]}
+              type={type}
+            />
+          );
+        } else if (field.type === "radio") {
+          return (
+            <RadioField
+              key={select}
+              select={select}
               name={name}
               label={label}
               options={options}
@@ -39,7 +56,7 @@ const Fields = ({ fields, data, onChange, errors }) => {
           );
         } else {
           return (
-            <InputField
+            <TextField
               key={name}
               name={name}
               label={label}

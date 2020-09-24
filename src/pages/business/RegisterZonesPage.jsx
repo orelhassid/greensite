@@ -1,7 +1,6 @@
 import React from "react";
 import RegisterZonesForm from "../../components/forms/business/RegisterZonesForm";
 import Layout, { Header, Content } from "../../components/layout";
-
 function RegisterZonesPage() {
   return (
     <Layout>
