@@ -36,6 +36,8 @@ export function getZones() {
   ];
 }
 
+export function getZonesHub() {}
+
 export default {
   getZones,
 };

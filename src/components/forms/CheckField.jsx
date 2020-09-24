@@ -18,8 +18,10 @@ const InputField = ({
           id={name}
           name={name}
           value={value}
+          onClick={onChange}
           onChange={onChange}
           // checked={value}
+          defaultChecked={value}
         />
       </div>
       <div className="label">

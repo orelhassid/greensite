@@ -9,8 +9,10 @@ const Form = ({ fields, onSubmit, data, setData, schema, children }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const errorsMessages = validate();
-    console.log("Error OBJECT", errorsMessages);
-    setErrors(errorsMessages);
+
+    // Error object cannot be undefined.
+    setErrors(errorsMessages || {});
+
     if (errorsMessages) return toast.error("Validation Failed");
     onSubmit();
   };
@@ -18,6 +20,10 @@ const Form = ({ fields, onSubmit, data, setData, schema, children }) => {
   const handleChange = ({ currentTarget: input }) => {
     const newData = { ...data };
     newData[input.name] = input.value;
+
+    if (input.type === "checkbox") {
+      newData[input.name] = input.checked;
+    }
 
     setData(newData);
   };
@@ -27,13 +33,13 @@ const Form = ({ fields, onSubmit, data, setData, schema, children }) => {
 
     if (!error) return null;
 
-    const errors = {};
-    for (let item of error.details) errors[item.path[0]] = item.message;
-    return errors;
+    const errorsMessages = {};
+    for (let item of error.details) errorsMessages[item.path[0]] = item.message;
+    return errorsMessages;
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)} autoComplete="off">
+    <form onSubmit={(e) => handleSubmit(e)} autoComplete="on">
       <Fields
         fields={fields}
         data={data}

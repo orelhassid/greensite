@@ -1,6 +1,5 @@
 import React from "react";
 import Layout, { Header, Content } from "../../components/layout";
-// import RegisterHubForm from "../../components/forms/RegisterHubForm";
 import RegisterHubForm from "../../components/forms/RegisterHubForm";
 
 function HubRegister() {
@@ -8,7 +7,6 @@ function HubRegister() {
     <Layout>
       <Header title="Registration" subtitle="Enter your site information" />
       <Content>
-        {/* <RegisterHubForm /> */}
         <RegisterHubForm />
       </Content>
     </Layout>

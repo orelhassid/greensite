@@ -4,6 +4,8 @@ import Form from "./Form";
 import Button from "../elements/Button";
 import fields from "../../config/registerHubFormFields.json";
 import "./forms.scss";
+import httpService from "../../services/httpService";
+import Hub from "../../services/hubService";
 
 const RegisterHubForm = () => {
   const [data, setData] = useState({
@@ -18,6 +20,11 @@ const RegisterHubForm = () => {
   const handleSubmit = () => {
     // Axios post
     // Call the server
+    try {
+      Hub.register(data);
+    } catch (error) {
+      return console.error("Registration Failed", error);
+    }
     console.log("Submitted");
   };
 
@@ -27,7 +34,7 @@ const RegisterHubForm = () => {
     contactName: Joi.string().required(),
     contactPhone: Joi.string().required(),
     hubtype: Joi.string().required(),
-    multiZone: Joi.required(),
+    multiZone: Joi.boolean().invalid(false),
   });
 
   return (
