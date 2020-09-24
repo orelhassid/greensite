@@ -1,0 +1,15 @@
+[
+  {
+    "label": "Time",
+    "name": "time",
+    "type": "select",
+    "placeholder": "How long your visit will be?",
+    "options": ["30", "40"]
+  },
+  {
+    "label": "I comply with the health Declation",
+    "name": "health",
+    "type": "checkbox",
+    "id": "health"
+  }
+]

@@ -1,16 +1,15 @@
 import React from "react";
-import { ReactComponent as HelpIcon } from "../../assets/icons/help.svg";
+import { ReactComponent as HelpIcon } from "../../../assets/icons/help.svg";
 
-const SelectField = ({
+const TextField = ({
   name,
   label,
   placeholder,
+  type,
   value,
-  options,
   onChange,
   error,
 }) => {
-  const listId = name + "_list";
   return (
     <div className="form-field">
       <header>
@@ -21,7 +20,7 @@ const SelectField = ({
       </header>
 
       <input
-        list={listId}
+        type={type}
         id={name}
         name={name}
         placeholder={placeholder}
@@ -29,14 +28,8 @@ const SelectField = ({
         onChange={onChange}
       />
       {error && <div className="alert alert-danger">{error}</div>}
-
-      <datalist id={listId}>
-        {options.map((item) => (
-          <option key={item} value={item}></option>
-        ))}
-      </datalist>
     </div>
   );
 };
 
-export default SelectField;
+export default TextField;

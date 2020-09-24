@@ -1,16 +1,20 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+// Common
 import Home from "./pages/home";
 import Help from "./pages/help";
-import HubRegister from "./pages/business/hubRegister";
+import Logout from "./pages/logout";
+import NotFound from "./pages/notfound";
+// Hub / Businness
+import RegisterHubPage from "./pages/business/RegisterHubPage";
 import RegisterZonesPage from "./pages/business/RegisterZonesPage";
 import LoginHubPage from "./pages/business/LoginHubPage";
 import ZonesPage from "./pages/business/zonesPage";
-import Logout from "./pages/logout";
-import NotFound from "./pages/notfound";
+// Visitor
 import RegisterVisitorPage from "./pages/visitor/RegisterVisitorPage";
 import RegisterSuccessPage from "./pages/visitor/RegisterSuccessPage";
 import LoginVisitorPage from "./pages/visitor/LoginVisitorPage";
+import CheckInPage from "./pages/visitor/CheckInPage";
 
 const Routing = () => {
   return (
@@ -21,6 +25,9 @@ const Routing = () => {
       </Route>
       <Route path="/visitor/login">
         <LoginVisitorPage />
+      </Route>
+      <Route path="/visitor/checkin">
+        <CheckInPage />
       </Route>
       <Route path="/visitor/register">
         <RegisterVisitorPage />
@@ -33,7 +40,7 @@ const Routing = () => {
         <LoginHubPage />
       </Route>
       <Route path="/hub/register">
-        <HubRegister />
+        <RegisterHubPage />
       </Route>
       <Route path="/hub/zones">
         <ZonesPage />

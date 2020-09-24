@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { ReactComponent as HelpIcon } from "../../assets/icons/help.svg";
 import { ReactComponent as LogoIcon } from "../../assets/icons/logo.svg";
 import { ReactComponent as RegisterIcon } from "../../assets/icons/register.svg";
+import { ReactComponent as CheckInIcon } from "../../assets/icons/checkin.svg";
 import { ReactComponent as LoginIcon } from "../../assets/icons/login.svg";
 import { ReactComponent as HomeIcon } from "../../assets/icons/home.svg";
 import { ReactComponent as QrCode } from "../../assets/icons/qrcode.svg";
@@ -18,6 +19,7 @@ const commonLinks = [
 const visitorLinks = [
   { label: <LoginIcon />, url: "/visitor/login" },
   { label: <RegisterIcon />, url: "/visitor/register" },
+  { label: <CheckInIcon />, url: "/visitor/checkin" },
 ];
 
 const hubLinks = [

@@ -1,7 +1,7 @@
 import React from "react";
-import { ReactComponent as HelpIcon } from "../../assets/icons/help.svg";
+import { ReactComponent as HelpIcon } from "../../../assets/icons/help.svg";
 
-const RadioField = ({
+const CheckField = ({
   name,
   label,
   placeholder,
@@ -9,7 +9,7 @@ const RadioField = ({
   value,
   onChange,
   error,
-  select,
+  id,
   checked,
 }) => {
   return (
@@ -17,18 +17,17 @@ const RadioField = ({
       <div className="input">
         <input
           type={type}
-          id={select}
+          id={id}
           name={name}
           value={value}
           onClick={onChange}
           onChange={onChange}
-          // checked={value}
           defaultChecked={checked}
         />
       </div>
       <div className="label">
         <header>
-          <label htmlFor={select}>{label}</label>
+          <label htmlFor={id}>{label}</label>
           <div className="help">
             <HelpIcon />
           </div>
@@ -42,4 +41,4 @@ const RadioField = ({
   );
 };
 
-export default RadioField;
+export default CheckField;

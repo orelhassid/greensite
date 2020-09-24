@@ -1,4 +1,3 @@
-import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import http from "./httpService";
 const api = http.api.visitor;
@@ -35,15 +34,11 @@ export function logout() {
 
 export function login(visitor) {
   // Check the data
+
   if (visitor.password === getVisitor()) {
-    return toast.error("Password is incorrect");
+    return true;
   } else {
     return null;
-  }
-  try {
-    return { status: "success" };
-  } catch (error) {
-    return error;
   }
 }
 

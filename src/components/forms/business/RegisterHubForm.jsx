@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Joi from "joi";
-import Form from "./Form";
-import Button from "../elements/Button";
-import fields from "../../config/registerHubFormFields.json";
-import "./forms.scss";
+import Form from "../Form";
+import Button from "../../elements/Button";
+import fields from "../../../config/registerHubFormFields.json";
+import "../forms.scss";
 // import httpService from "../../services/httpService";
-import Hub from "../../services/hubService";
+import Hub from "../../../services/hubService";
 
 const RegisterHubForm = () => {
   const [data, setData] = useState({

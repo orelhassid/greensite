@@ -1,204 +1,12 @@
 {
 	"info": {
-		"_postman_id": "2a46e72d-1f65-4581-9ab7-8b2a7cbd7653",
-		"name": "greenpass",
+		"_postman_id": "7dc04a0c-3e22-454c-ac76-408c140c50a4",
+		"name": "zones",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "checkin with zone in path",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Connection",
-						"value": "keep-alive"
-					},
-					{
-						"key": "User-Agent",
-						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json; charset=utf-8"
-					},
-					{
-						"key": "Accept",
-						"value": "*/*"
-					},
-					{
-						"key": "Origin",
-						"value": "http://hub.greenpass.site"
-					},
-					{
-						"key": "Referer",
-						"value": "http://hub.greenpass.site/check.html"
-					},
-					{
-						"key": "Accept-Language",
-						"value": "en-US,en;q=0.9"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"type\":\"in\",\"duration\":\"30\",\"user\":\"ICA0AH\"}"
-				},
-				"url": {
-					"raw": "http://54.72.200.116:7000/hub/75/zone_id/1",
-					"protocol": "http",
-					"host": [
-						"54",
-						"72",
-						"200",
-						"116"
-					],
-					"port": "7000",
-					"path": [
-						"hub",
-						"75",
-						"zone_id",
-						"1"
-					]
-				},
-				"description": "checkin to a particular zone"
-			},
-			"response": []
-		},
-		{
-			"name": "checkin with zone in body",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"pkey\" : \"CFC0KW\", \"type\" : \"in\", \"expected_stay\": \"24\", \"hub_id\":123, \"zone_id\":2\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://54.72.200.116:7000/hub",
-					"protocol": "http",
-					"host": [
-						"54",
-						"72",
-						"200",
-						"116"
-					],
-					"port": "7000",
-					"path": [
-						"hub"
-					]
-				},
-				"description": "alternative for zone checkin"
-			},
-			"response": []
-		},
-		{
-			"name": "checkin for hub (without zone)",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"pkey\" : \"CFC0KW\", \"type\" : \"in\", \"expected_stay\": \"24\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://54.72.200.116:7000/hub/1",
-					"protocol": "http",
-					"host": [
-						"54",
-						"72",
-						"200",
-						"116"
-					],
-					"port": "7000",
-					"path": [
-						"hub",
-						"1"
-					]
-				},
-				"description": "checkin for hub without zone"
-			},
-			"response": []
-		},
-		{
-			"name": "create user",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"Luna\",\n    \"phone\": \"+972508856661\",\n    \"personal_id\": \"964\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://54.72.200.116:9000/user",
-					"protocol": "http",
-					"host": [
-						"54",
-						"72",
-						"200",
-						"116"
-					],
-					"port": "9000",
-					"path": [
-						"user"
-					]
-				},
-				"description": "user registration"
-			},
-			"response": []
-		},
-		{
-			"name": "get user",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"Luna\",\n    \"phone\": \"+972508856661\",\n    \"personal_id\": \"964\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://54.72.200.116:9000/user/L78MFS",
-					"protocol": "http",
-					"host": [
-						"54",
-						"72",
-						"200",
-						"116"
-					],
-					"port": "9000",
-					"path": [
-						"user",
-						"L78MFS"
-					]
-				},
-				"description": "get user"
-			},
-			"response": []
-		},
-		{
-			"name": "create hub",
+			"name": "create new zone",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -212,7 +20,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://54.72.200.116:5000/hub",
+					"raw": "http://54.72.200.116:5000/hub/3/zone",
 					"protocol": "http",
 					"host": [
 						"54",
@@ -222,29 +30,21 @@
 					],
 					"port": "5000",
 					"path": [
-						"hub"
+						"hub",
+						"3",
+						"zone"
 					]
-				},
-				"description": "register new hub"
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "checkin to hub (without zone)",
+			"name": "Get zones",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"pkey\" : \"test\", \"type\" : \"in\", \"expected_stay\": \"24\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://54.72.200.116:7000/hub/1",
+					"raw": "http://54.72.200.116:5000/hub/3/zone",
 					"protocol": "http",
 					"host": [
 						"54",
@@ -252,13 +52,13 @@
 						"200",
 						"116"
 					],
-					"port": "7000",
+					"port": "5000",
 					"path": [
 						"hub",
-						"1"
+						"3",
+						"zone"
 					]
-				},
-				"description": "get hub"
+				}
 			},
 			"response": []
 		}

@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import Joi from "joi";
 import Form from "../Form";
 import Button from "../../elements/Button";
-import fields from "../../../config/loginVisitorFields.json";
+import fields from "../../../config/checkInFields.json";
 // import Visitor from "../../../services/visitorService";
 import "../forms.scss";
 import visitorService from "../../../services/visitorService";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+import { ReactComponent as CheckInIcon } from "../../../assets/icons/checkin.svg";
 
-const LoginVisitorForm = () => {
+const CheckInForm = () => {
   const [data, setData] = useState({
     visitorId: "",
     password: "",
@@ -28,8 +29,7 @@ const LoginVisitorForm = () => {
   };
 
   const schema = Joi.object({
-    visitorId: Joi.string().required().label("Your ID"),
-    password: Joi.string().required().label("Password"),
+    time: Joi.string().required().label("Time"),
   });
 
   return (
@@ -40,9 +40,9 @@ const LoginVisitorForm = () => {
       onSubmit={() => handleSubmit()}
       schema={schema}
     >
-      <Button label="login" type="submit" />
+      <Button label="checkin" type="submit" icon={<CheckInIcon />} />
     </Form>
   );
 };
 
-export default LoginVisitorForm;
+export default CheckInForm;

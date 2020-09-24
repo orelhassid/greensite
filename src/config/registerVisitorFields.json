@@ -21,13 +21,13 @@
     "name": "option",
     "type": "radio",
     "label": "Register for myself",
-    "select": "myself",
+    "id": "myself",
     "checked": "on"
   },
   {
     "name": "option",
     "type": "radio",
     "label": "Register someone else",
-    "select": "else"
+    "id": "else"
   }
 ]

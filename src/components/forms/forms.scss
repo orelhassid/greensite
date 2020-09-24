@@ -18,7 +18,8 @@ form {
         padding: 4px 10px;
       }
     }
-    input {
+    input,
+    select {
       border: none;
       background-color: $bg2;
       padding: 10px;
@@ -27,6 +28,9 @@ form {
       height: 40px;
       color: $text1;
       margin-bottom: 0.2rem;
+    }
+    select {
+      opacity: 0.5;
     }
 
     input::placeholder {
@@ -44,6 +48,10 @@ form {
     display: flex;
     justify-content: space-around;
     margin: 1rem 1.5rem;
+  }
+  // Buttons Area
+  .grid {
+    margin-top: 20px;
   }
 }
 

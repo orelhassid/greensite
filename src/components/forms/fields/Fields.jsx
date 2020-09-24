@@ -1,26 +1,33 @@
 import React from "react";
 import TextField from "./TextField";
-import SelectField from "./SelectField";
+import ListField from "./ListField";
 import CheckField from "./CheckField";
 import RadioField from "./RadioField";
+import SelectField from "./SelectField";
 
 const Fields = ({ fields, data, onChange, errors }) => {
   return (
     <>
       {fields.map((field) => {
-        const {
-          name,
-          label,
-          placeholder,
-          options,
-          type,
-          select,
-          checked,
-        } = field;
+        const { name, label, placeholder, options, type, id, checked } = field;
 
-        if (field.options) {
+        if (field.type === "select") {
           return (
             <SelectField
+              key={name}
+              name={name}
+              label={label}
+              options={options}
+              placeholder={placeholder}
+              value={data[name]}
+              onChange={onChange}
+              error={errors[name]}
+              type={type}
+            />
+          );
+        } else if (field.options) {
+          return (
+            <ListField
               key={name}
               name={name}
               label={label}
@@ -35,11 +42,11 @@ const Fields = ({ fields, data, onChange, errors }) => {
         } else if (field.type === "checkbox") {
           return (
             <CheckField
-              key={select}
-              select={select}
+              key={id}
+              id={id}
               name={name}
               label={label}
-              options={select}
+              options={id}
               placeholder={placeholder}
               value={data[name]}
               onChange={onChange}
@@ -51,12 +58,12 @@ const Fields = ({ fields, data, onChange, errors }) => {
         } else if (field.type === "radio") {
           return (
             <RadioField
-              key={select}
+              key={id}
               label={label}
-              select={select}
+              id={id}
               name={name}
               placeholder={placeholder}
-              value={select}
+              value={id}
               onChange={onChange}
               error={errors[name]}
               type={type}

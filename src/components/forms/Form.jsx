@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { Grid } from "../layout";
-import Fields from "./Fields";
+import Fields from "./fields";
 
 const Form = ({ fields, onSubmit, data, setData, schema, children }) => {
   const [errors, setErrors] = useState({});
