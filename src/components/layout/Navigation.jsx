@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ReactComponent as HelpIcon } from "../../assets/icons/help.svg";
 import { ReactComponent as LogoIcon } from "../../assets/icons/logo.svg";
 import { ReactComponent as RegisterIcon } from "../../assets/icons/register.svg";
@@ -17,7 +17,10 @@ const commonLinks = [
   { label: <HelpIcon />, url: "/help" },
 ];
 
-const visitorLinks = [{ label: <RegisterIcon />, url: "/visitor/register" }];
+const visitorLinks = [
+  { label: <LoginIcon />, url: "/visitor/login" },
+  { label: <RegisterIcon />, url: "/visitor/register" },
+];
 
 const hubLinks = [
   { label: <RegisterIcon />, url: "/hub/register" },
@@ -28,13 +31,15 @@ const hubLinks = [
 
 export const Navigation = () => {
   const [links, setLinks] = useState([]);
+  let location = useLocation();
+  const path = location.pathname.replace(/^\/([^\/]*).*$/, "$1");
 
   useEffect(() => {
     // Display links depending the logged account
     // Display Visitors Links
-    if (getVisitor()) return setLinks([...visitorLinks, ...commonLinks]);
+    if (path === "visitor") return setLinks([...visitorLinks, ...commonLinks]);
     // Display Hub/Business Links
-    if (!getHub()) return setLinks([...hubLinks, ...commonLinks]);
+    if (path === "hub") return setLinks([...hubLinks, ...commonLinks]);
     setLinks(commonLinks);
   }, []);
   return (
