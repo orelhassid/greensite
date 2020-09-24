@@ -8,8 +8,6 @@ import { ReactComponent as HomeIcon } from "../../assets/icons/home.svg";
 import { ReactComponent as QrCode } from "../../assets/icons/qrcode.svg";
 import { ReactComponent as Logout } from "../../assets/icons/logout.svg";
 import { ReactComponent as ZoneIcon } from "../../assets/icons/zone.svg";
-import { getVisitor } from "../../services/visitorService";
-import { getHub } from "../../services/hubService";
 
 const commonLinks = [
   { label: <Logout />, url: "/logout" },
@@ -41,7 +39,7 @@ export const Navigation = () => {
     // Display Hub/Business Links
     if (path === "hub") return setLinks([...hubLinks, ...commonLinks]);
     setLinks(commonLinks);
-  }, []);
+  }, [path]);
   return (
     <nav className="site-nav">
       <Logo />
