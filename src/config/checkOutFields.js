@@ -9,6 +9,7 @@ export default [
     ),
     name: "location",
     type: "radio",
+    checked: "on",
     id: "hub",
   },
   {

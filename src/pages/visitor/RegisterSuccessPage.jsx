@@ -23,7 +23,7 @@ function RegisterSuccessPage() {
       }
     }
     fetch();
-  }, [history]);
+  }, []);
 
   // Redirect the user if not logged in
   return (
@@ -51,9 +51,7 @@ function RegisterSuccessPage() {
         </div>
         {/* </Grid> */}
       </Content>
-      <Footer>
-        <p>Footer</p>
-      </Footer>
+      <Footer></Footer>
     </Layout>
   );
 }

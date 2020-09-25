@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import Joi from "joi";
 import Form from "../Form";
 import Button from "../../elements/Button";
-// import fields from "../../../config/checkInFields.json";
 import fields from "../../../config/checkOutFields.js";
 import "../forms.scss";
 import visitorService from "../../../services/visitorService";
 import { useHistory } from "react-router-dom";
-// import { toast } from "react-toastify";
+
 import { ReactComponent as CheckOutIcon } from "../../../assets/icons/checkout.svg";
 
 const CheckOutForm = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    location: "",
+  });
 
   const history = useHistory();
 
@@ -29,7 +30,9 @@ const CheckOutForm = () => {
     console.log("Submitted");
   };
 
-  const schema = Joi.object({});
+  const schema = Joi.object({
+    location: Joi.valid(true).required(),
+  });
 
   return (
     <>
