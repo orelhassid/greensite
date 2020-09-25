@@ -8,6 +8,7 @@ import "../forms.scss";
 import visitorService from "../../../services/visitorService";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+import useVisitorKey from "../../../hooks/useVisitorKey";
 
 const LoginVisitorForm = () => {
   const [data, setData] = useState({
@@ -16,6 +17,7 @@ const LoginVisitorForm = () => {
   });
 
   const history = useHistory();
+  useVisitorKey();
 
   const handleSubmit = async () => {
     const result = await visitorService.login(data);

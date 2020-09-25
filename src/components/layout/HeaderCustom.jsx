@@ -1,7 +1,7 @@
 import React from "react";
 // import { Navigation } from "../layout";
 
-import { SEO, PageCover } from "../layout";
+import { SEO } from "../layout";
 
 // Interface:
 // title, subtitle

@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Button from "../../components/elements/Button";
-import Layout, { Header, Content, Footer, Grid } from "../../components/layout";
+import Layout, { Content, Footer } from "../../components/layout";
 import visitorService from "../../services/visitorService";
 import { ReactComponent as Qrcode } from "../../assets/images/qrcode.svg";
 import { ReactComponent as Background1 } from "../../assets/images/background-1.svg";

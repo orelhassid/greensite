@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 // Common
 import Home from "./pages/home";
 import Help from "./pages/help";
+import HealthPage from "./pages/HealthPage";
 import Logout from "./pages/logout";
 import NotFound from "./pages/notfound";
 // Hub / Businness
@@ -56,6 +57,9 @@ const Routing = () => {
       {/* Common */}
       <Route path="/help">
         <Help />
+      </Route>
+      <Route path="/health">
+        <HealthPage />
       </Route>
       <Route path="/logout">
         <Logout />

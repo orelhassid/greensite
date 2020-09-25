@@ -35,7 +35,7 @@ const Fields = ({ fields, data, onChange, errors }) => {
               type={type}
             />
           );
-        } else if (field.options) {
+        } else if (field.type === "list") {
           return (
             <ListField
               key={name}

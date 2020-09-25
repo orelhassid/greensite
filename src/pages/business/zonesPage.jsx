@@ -22,7 +22,7 @@ function ZonesPage() {
       }
     }
     fetchData();
-  }, []);
+  }, [history]);
 
   return (
     <Layout>

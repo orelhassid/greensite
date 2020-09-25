@@ -2,8 +2,9 @@
   {
     "label": "Time",
     "name": "time",
-    "type": "time",
-    "placeholder": "How long your visit will be?"
+    "type": "list",
+    "placeholder": "How long your visit will be?",
+    "options": ["30 Minutes", "50 Minutes"]
   },
   {
     "label": "I comply with the health Declation",

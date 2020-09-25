@@ -3,9 +3,7 @@ import Joi from "joi";
 import Form from "../Form";
 import Button from "../../elements/Button";
 import "../forms.scss";
-import visitorService from "../../../services/visitorService";
 import { useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
 import CardSimple from "../../cards/CardSimple";
 import { ReactComponent as CheckInIcon } from "../../../assets/icons/checkin.svg";
 

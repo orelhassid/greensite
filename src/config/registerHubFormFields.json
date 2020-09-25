@@ -27,6 +27,7 @@
     "name": "hubtype",
     "label": "Business / Site Type",
     "placeholder": "Options",
+    "type": "list",
     "options": [
       "Cafe",
       "Restaurant",

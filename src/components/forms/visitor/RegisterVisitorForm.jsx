@@ -7,6 +7,7 @@ import Visitor from "../../../services/visitorService";
 import "../forms.scss";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
+import useVisitorKey from "../../../hooks/useVisitorKey";
 
 const RegisterVisitorForm = () => {
   const [data, setData] = useState({
@@ -16,6 +17,7 @@ const RegisterVisitorForm = () => {
     option: "myself",
   });
   const history = useHistory();
+  useVisitorKey();
 
   const handleSubmit = () => {
     // Call the server
@@ -24,7 +26,7 @@ const RegisterVisitorForm = () => {
       toast.success(
         `Registration Success! ${data.name && `Welcome ${data.name}`}`
       );
-      history.push("/visitor/register/success");
+      if (data.option === "myself") history.push("/visitor/register/success");
     } catch (error) {
       return console.error("Registration Failed", error);
     }

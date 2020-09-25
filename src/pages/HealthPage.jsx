@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import Layout, { Header, Content } from "../components/layout";
 import marked from "marked";
 
-function HelpPage() {
+function HealthPage() {
   const [markdown, setMarkdown] = useState();
   useEffect(() => {
-    const readmePath = require("../assets/content/helpPage.md");
+    const readmePath = require("../assets/content/healthPage.md");
     fetch(readmePath)
       .then((response) => {
         return response.text();
@@ -16,7 +16,7 @@ function HelpPage() {
   }, []);
   return (
     <Layout>
-      <Header title="Help Page" />
+      <Header title="Health Page" />
       <Content>
         <section>
           <article dangerouslySetInnerHTML={{ __html: markdown }}></article>
@@ -26,4 +26,4 @@ function HelpPage() {
   );
 }
 
-export default HelpPage;
+export default HealthPage;
