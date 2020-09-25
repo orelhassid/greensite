@@ -5,11 +5,11 @@ import { SEO, PageCover } from "../layout";
 
 // Interface:
 // title, subtitle
-export const Header = ({ title, subtitle }) => {
+export const HeaderCustom = ({ title, subtitle, children }) => {
   return (
-    <header className="site-header">
+    <header className="site-header header-custom">
       <SEO title={title} description={subtitle} />
-      <PageCover />
+      {children}
       <Title title={title} subtitle={subtitle} />
     </header>
   );
@@ -17,7 +17,7 @@ export const Header = ({ title, subtitle }) => {
 
 const Title = ({ title, subtitle }) => (
   <div className="site-title">
-    <h1 className="title">{title}</h1>
     <h3 className="subtitle">{subtitle}</h3>
+    <h1 className="title">{title}</h1>
   </div>
 );

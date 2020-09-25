@@ -9,7 +9,17 @@ const Fields = ({ fields, data, onChange, errors }) => {
   return (
     <>
       {fields.map((field) => {
-        const { name, label, placeholder, options, type, id, checked } = field;
+        const {
+          name,
+          label,
+          placeholder,
+          options,
+          type,
+          id,
+          checked,
+          min,
+          max,
+        } = field;
 
         if (field.type === "select") {
           return (
@@ -81,6 +91,8 @@ const Fields = ({ fields, data, onChange, errors }) => {
               onChange={onChange}
               type={type}
               error={errors[name]}
+              max={max}
+              min={min}
             />
           );
         }

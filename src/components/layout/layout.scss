@@ -33,8 +33,6 @@ nav.site-nav {
     align-items: center;
     width: 16px;
     flex-grow: 1;
-    .icon svg {
-    }
     .name {
       font-size: 14px;
       font-weight: 500;
@@ -134,6 +132,29 @@ section.grid {
     flex-flow: wrap;
     justify-content: space-around;
     // grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}
+
+/* ------------------------------ Header Custom ----------------------------- */
+header.header-custom {
+  .site-title {
+    margin-top: 10px;
+    .title {
+      font-size: 1.7rem;
+      margin: 0;
+      color: $primary;
+      font-weight: 600;
+      text-decoration: underline;
+      padding: 0;
+      line-height: 50px;
+    }
+    .subtitle {
+      font-weight: 500;
+      opacity: 1;
+      color: $text1;
+      margin: 0;
+      font-size: 1rem;
+    }
   }
 }
 

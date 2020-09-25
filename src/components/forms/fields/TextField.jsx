@@ -9,6 +9,8 @@ const TextField = ({
   value,
   onChange,
   error,
+  min,
+  max,
 }) => {
   return (
     <div className="form-field">
@@ -26,6 +28,8 @@ const TextField = ({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        min={min}
+        max={max}
       />
       {error && <div className="alert alert-danger">{error}</div>}
     </div>

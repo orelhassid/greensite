@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./buttons.scss";
 
 /**
@@ -6,16 +7,24 @@ import "./buttons.scss";
  * @param {string} label
  * @param {string} style
  */
-export default function Button({ label, style, type, variant, icon }) {
+export default function ButtonLink({
+  label,
+  style,
+  type,
+  variant,
+  icon,
+  link,
+}) {
   return (
-    <button className={`btn btn-${variant} btn-${style}`} type={type}>
+    <Link to={link} className={`btn btn-${variant} btn-${style}`}>
       <span className="label">{label}</span>
       {icon && <span className="icon">{icon}</span>}
-    </button>
+    </Link>
   );
 }
 
-Button.defaultProps = {
+ButtonLink.defaultProps = {
   variant: "primary",
   style: "contained",
+  link: "/",
 };
