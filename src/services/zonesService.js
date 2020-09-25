@@ -1,43 +1,40 @@
-// import http from "./httpService";
+import { toast } from "react-toastify";
+import http from "./httpService";
 
-// const apiEndpoint = "/zones";
-export function getZones() {
-  // Get request
-  // http.get(apiEndpoint)
-  return [
-    {
-      zoneId: 1,
-      zoneName: "Table",
-      siteid: "66664D",
+const apiEndpoint = http.api.hub;
+
+export async function getZones(hubId) {
+  // http://54.72.200.116:5000/hub/${hubId}/zone`
+  try {
+    const { data } = http.get(`apiEndpoint${hubId}/zone`);
+    return {
+      zoneId: data.id,
+      zoneName: data.name,
+      siteid: data.hid,
       zoneLink: "",
       zoneType: "table",
-    },
-    {
-      zoneId: 2,
-      zoneName: "Table",
-      siteid: "66664D",
-      zoneLink: "",
-      zoneType: "table",
-    },
-    {
-      zoneId: 3,
-      zoneName: "Table",
-      siteid: "66664D",
-      zoneLink: "",
-      zoneType: "table",
-    },
-    {
-      zoneId: 4,
-      zoneName: "Table",
-      siteid: "66664D",
-      zoneLink: "",
-      zoneType: "table",
-    },
-  ];
+    };
+    // {
+    //   "address": "The moon",
+    //   "company_id": "4321",
+    //   "contact_details": "1234",
+    //   "contact_name": "neil",
+    //   "hid": "WZVV21",
+    //   "id": 2,
+    //   "name": "Luna",
+    //   "parent_id": null,
+    //   "type": "cafe"
+    // },
+  } catch (error) {
+    toast.error("Failed to fetch zones");
+    console.error(error);
+    return null;
+  }
 }
 
-export function getZonesHub() {}
+export function getZone() {}
 
 export default {
   getZones,
+  getZone,
 };
