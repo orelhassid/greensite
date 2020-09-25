@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Label = () => (
+const HealthLink = () => (
   <p>
     I comply with the{" "}
     <Link to="/health">
@@ -12,14 +12,16 @@ const Label = () => (
 
 export default [
   {
-    label: "Time",
+    label: "Time (in minutes)",
     name: "time",
-    type: "list",
+    type: "range",
     placeholder: "How long your visit will be?",
-    options: ["30 Minutes", "50 Minutes"],
+    min: 0,
+    max: 200,
+    // options: ["10", "20", "30", "40", "50", "60"],
   },
   {
-    label: <Label />,
+    label: <HealthLink />,
     name: "health",
     type: "checkbox",
     id: "health",

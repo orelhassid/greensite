@@ -37,7 +37,10 @@ export async function login(visitor) {
 }
 
 export function getVisitor() {
-  return localStorage.getItem(visitorKey);
+  return {
+    name: "",
+    key: localStorage.getItem(visitorKey),
+  };
 }
 
 export default {

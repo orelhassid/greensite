@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import Button from "../../components/elements/Button";
+import ButtonLink from "../../components/elements/ButtonLink";
 import Layout, { Content, Footer } from "../../components/layout";
 import visitorService from "../../services/visitorService";
 import { ReactComponent as Qrcode } from "../../assets/images/qrcode.svg";
@@ -9,12 +9,23 @@ import { ReactComponent as Background1 } from "../../assets/images/background-1.
 import "../pages.scss";
 
 function RegisterSuccessPage() {
-  const visitorId = visitorService.getVisitor();
+  const [visitor, setVisitor] = useState("");
   const history = useHistory();
 
-  console.log(visitorId);
+  useEffect(() => {
+    async function fetch() {
+      try {
+        const result = await visitorService.getVisitor();
+        console.log(result);
+        setVisitor(result);
+      } catch (error) {
+        history.push("/");
+      }
+    }
+    fetch();
+  }, []);
+
   // Redirect the user if not logged in
-  if (!visitorId) history.push("/");
   return (
     <Layout>
       {/* <Header
@@ -24,13 +35,16 @@ function RegisterSuccessPage() {
       <Content>
         {/* <Grid> */}
         <div className="success-page">
-          <p style={{}}>Your personal CID is</p>
-          <h1>{visitorId}</h1>
+          <p style={{ marginBottom: 0 }}>Your personal CID is</p>
+          <h1>{visitor.key}</h1>
           <div className="image">
             <Qrcode />
           </div>
           <p>Thanks for using GreenSite Pass!</p>
-          <Button label="back to check-in"></Button>
+          <ButtonLink
+            label="back to check-in"
+            link="/visitor/checkin"
+          ></ButtonLink>
           <div className="background">
             <Background1 />
           </div>

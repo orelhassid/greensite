@@ -12,11 +12,9 @@ import { ReactComponent as CheckInIcon } from "../../../assets/icons/checkin.svg
 
 const CheckInForm = () => {
   const [data, setData] = useState({
-    time: "",
-    health: "",
+    time: 30,
+    // health: "",
   });
-
-  console.log(fields);
 
   const history = useHistory();
 
@@ -31,7 +29,10 @@ const CheckInForm = () => {
   };
 
   const schema = Joi.object({
-    time: Joi.string().required().label("Time"),
+    time: Joi.number().required().label("Time"),
+    health: Joi.valid(true)
+      .required()
+      .messages({ message: "Number must be between 1 and 10" }),
   });
 
   return (

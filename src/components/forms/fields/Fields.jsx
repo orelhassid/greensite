@@ -1,6 +1,7 @@
 import React from "react";
 import TextField from "./TextField";
 import ListField from "./ListField";
+import RangeField from "./RangeField";
 import CheckField from "./CheckField";
 import RadioField from "./RadioField";
 import SelectField from "./SelectField";
@@ -78,6 +79,20 @@ const Fields = ({ fields, data, onChange, errors }) => {
               error={errors[name]}
               type={type}
               checked={checked}
+            />
+          );
+        } else if (field.type === "range") {
+          return (
+            <RangeField
+              key={name}
+              min={min}
+              max={max}
+              placeholder={placeholder}
+              name={name}
+              label={label}
+              value={data[name]}
+              onChange={onChange}
+              error={errors[name]}
             />
           );
         } else {
