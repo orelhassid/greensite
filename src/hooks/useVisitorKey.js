@@ -8,10 +8,10 @@ export default function useVisitorKey() {
     const visitorKey = visitorService.getVisitor();
     //   If Visitor Logged in
     console.log("Visitor", visitorKey);
-    if (visitorKey) {
+    if (visitorKey.key) {
       return history.push("/visitor/checkin");
     } else {
-      return null;
+      return;
     }
   }, [history]);
 }

@@ -42,10 +42,14 @@ export function getVisitor() {
     key: localStorage.getItem(visitorKey),
   };
 }
+export function checkin() {
+  return {};
+}
 
 export default {
   register,
   logout,
   login,
   getVisitor,
+  checkin,
 };

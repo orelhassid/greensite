@@ -12,12 +12,12 @@ const HealthLink = () => (
 
 export default [
   {
-    label: "Time (in minutes)",
+    label: "Time (in hours)",
     name: "time",
     type: "range",
     placeholder: "How long your visit will be?",
     min: 0,
-    max: 200,
+    max: 10,
     // options: ["10", "20", "30", "40", "50", "60"],
   },
   {

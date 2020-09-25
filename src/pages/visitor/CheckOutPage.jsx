@@ -1,20 +1,30 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import queryString from "query-string";
-// import CheckInForm from "../../components/forms/visitor/CheckInForm";
-import Layout, { Header, Content } from "../../components/layout";
+// import { useLocation } from "react-router-dom";
+
+import Layout, {
+  HeaderCustom,
+  Content,
+  PageCover,
+} from "../../components/layout";
+import CheckOutForm from "../../components/forms/visitor/CheckOutForm";
 
 function CheckOutPage() {
-  const location = useLocation();
-  const zoneId = queryString.parse(location.search);
+  // const location = useLocation();
   useEffect(() => {
-    async function fetch() {}
+    // async function fetch() {}
   }, []);
 
   return (
     <Layout>
-      <Header title="Check-out" subtitle={`Start your visit in Betta Cafe`} />
-      <Content></Content>
+      <HeaderCustom
+        subtitle="Your are currently checked-in at"
+        title={`Betta cafe`}
+      >
+        <PageCover />
+      </HeaderCustom>
+      <Content>
+        <CheckOutForm />
+      </Content>
     </Layout>
   );
 }

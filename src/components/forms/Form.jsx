@@ -3,7 +3,15 @@ import { toast } from "react-toastify";
 import { Grid } from "../layout";
 import Fields from "./fields";
 
-const Form = ({ fields, onSubmit, data, setData, schema, children }) => {
+const Form = ({
+  fields,
+  onSubmit,
+  data,
+  setData,
+  schema,
+  formId,
+  children,
+}) => {
   const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
@@ -39,7 +47,7 @@ const Form = ({ fields, onSubmit, data, setData, schema, children }) => {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)} autoComplete="on">
+    <form onSubmit={(e) => handleSubmit(e)} autoComplete="on" id={formId}>
       <Fields
         fields={fields}
         data={data}

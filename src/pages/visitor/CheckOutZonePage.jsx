@@ -1,7 +1,7 @@
 import React from "react";
 import ButtonLink from "../../components/elements/ButtonLink";
 import CheckOutZoneForm from "../../components/forms/visitor/CheckOutZoneForm";
-import { ReactComponent as CheckOutIcon } from "../../assets/icons/checkout.svg";
+
 import Layout, {
   HeaderCustom,
   Content,
@@ -17,11 +17,7 @@ function CheckOutZonePage() {
         <PageCover />
       </HeaderCustom>
       <Content>
-        <ButtonLink
-          label="check-out"
-          icon={<CheckOutIcon />}
-          link="/visitor/checkout"
-        />
+        <ButtonLink label="continue" link="/visitor/checkout" />
         <br />
         <CheckOutZoneForm />
       </Content>

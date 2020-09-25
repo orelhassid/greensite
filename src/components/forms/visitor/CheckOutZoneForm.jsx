@@ -5,7 +5,6 @@ import Button from "../../elements/Button";
 import "../forms.scss";
 import { useHistory } from "react-router-dom";
 import CardSimple from "../../cards/CardSimple";
-import { ReactComponent as CheckInIcon } from "../../../assets/icons/checkin.svg";
 
 const CheckOutZoneForm = () => {
   const [data, setData] = useState({
@@ -20,13 +19,6 @@ const CheckOutZoneForm = () => {
       pathname: "/visitor/checkout",
       search: `?zoneId=${data.zoneId}`,
     });
-
-    //   const result = visitorService.login(data);
-    //   if (result) {
-    //   } else {
-    //     toast.error("Password is incorrect");
-    //   }
-    //   console.log("Submitted");
   };
 
   const schema = Joi.object({
@@ -56,12 +48,7 @@ const CheckOutZoneForm = () => {
         onSubmit={() => handleSubmit()}
         schema={schema}
       >
-        <Button
-          label="register zone"
-          style="outlined"
-          type="submit"
-          icon={<CheckInIcon />}
-        />
+        <Button label="register zone" style="outlined" type="submit" />
       </Form>
     </CardSimple>
   );

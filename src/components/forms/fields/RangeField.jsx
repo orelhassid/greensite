@@ -11,7 +11,6 @@ const RangeField = ({
   onChange,
   error,
 }) => {
-  const listId = name + "_list";
   return (
     <div className="form-field">
       <header>
@@ -32,8 +31,8 @@ const RangeField = ({
         onChange={onChange}
       />
       <div className="timer">
-        <h2>{value}</h2>
-        <span>Minutes{value > 60 && <p>(more than an hour)</p>}</span>
+        <h2>{parseInt(value) === 0 ? 30 : value}</h2>
+        <span>{parseInt(value) === 0 ? <p>Minutes</p> : <p>Hours</p>}</span>
       </div>
       {error && <div className="alert alert-danger">{error}</div>}
     </div>
