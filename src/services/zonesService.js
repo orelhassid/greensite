@@ -3,10 +3,11 @@ import http from "./httpService";
 
 const apiEndpoint = http.api.hub;
 
-export async function getZones(hubId) {
+export async function getZones(hubId = "") {
   // http://54.72.200.116:5000/hub/${hubId}/zone`
+  console.log("Hub ID", hubId);
   try {
-    const { data } = http.get(`apiEndpoint${hubId}/zone`);
+    const { data } = http.get(`${apiEndpoint}${hubId}/zone`);
     return {
       zoneId: data.id,
       zoneName: data.name,
@@ -28,7 +29,7 @@ export async function getZones(hubId) {
   } catch (error) {
     toast.error("Failed to fetch zones");
     console.error(error);
-    return null;
+    return [];
   }
 }
 

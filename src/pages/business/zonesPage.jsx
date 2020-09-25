@@ -3,17 +3,22 @@ import Layout, { Header, Content, Grid } from "../../components/layout";
 import Card from "../../components/cards/Card";
 // import HubCard from "../../components/cards/HubCard";
 import { getZones } from "../../services/zonesService";
+import { getHub } from "../../services/hubService";
+import { useHistory } from "react-router-dom";
 
 function ZonesPage() {
   const [zones, setZones] = useState([]);
-  // const [zoneHub, setZoneHub] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     async function fetchData() {
-      const result = await getZones();
-      // const zoneHubObject = await getZoneHub();
-      // setZoneHub(zoneHubObject)
-      setZones(result);
+      try {
+        const hubid = getHub();
+        const result = await getZones(hubid);
+        setZones(result);
+      } catch (error) {
+        history.push("/hub/register");
+      }
     }
     fetchData();
   }, []);

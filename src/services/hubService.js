@@ -43,12 +43,11 @@ export function addZones(zones) {
 }
 
 export function getHub() {
-  try {
-    // const hubId = localStorage.getItem(hubKey);
-    // const key = localStorage.getItem(hubKey);
-    // Get request by id
-  } catch (error) {
-    return null;
+  const hubId = localStorage.getItem(hubKey);
+  if (hubId) {
+    return hubId;
+  } else {
+    throw new Error("Hubid does'nt Exist");
   }
 }
 
