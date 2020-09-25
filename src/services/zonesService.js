@@ -3,29 +3,19 @@ import http from "./httpService";
 
 const apiEndpoint = http.api.hub;
 
-export async function getZones(hubId = "") {
-  // http://54.72.200.116:5000/hub/${hubId}/zone`
-  console.log("Hub ID", hubId);
+export async function getZones(hubId) {
+  const api = `${apiEndpoint}/hub/${hubId}/zone`;
+
   try {
-    const { data } = http.get(`${apiEndpoint}${hubId}/zone`);
-    return {
-      zoneId: data.id,
-      zoneName: data.name,
-      siteid: data.hid,
-      zoneLink: "",
-      zoneType: "table",
-    };
-    // {
-    //   "address": "The moon",
-    //   "company_id": "4321",
-    //   "contact_details": "1234",
-    //   "contact_name": "neil",
-    //   "hid": "WZVV21",
-    //   "id": 2,
-    //   "name": "Luna",
-    //   "parent_id": null,
-    //   "type": "cafe"
-    // },
+    const { data } = await http.get(api);
+    return data;
+    // return {
+    //   zoneId: data.id,
+    //   zoneName: data.name,
+    //   siteid: data.hid,
+    //   zoneLink: "",
+    //   zoneType: "table",
+    // };
   } catch (error) {
     toast.error("Failed to fetch zones");
     console.error(error);

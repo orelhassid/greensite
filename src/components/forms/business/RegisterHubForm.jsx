@@ -6,6 +6,8 @@ import fields from "../../../config/registerHubFormFields.json";
 import "../forms.scss";
 // import httpService from "../../services/httpService";
 import Hub from "../../../services/hubService";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 const RegisterHubForm = () => {
   const [data, setData] = useState({
@@ -16,15 +18,17 @@ const RegisterHubForm = () => {
     hubtype: "",
     multiZone: "",
   });
+  const history = useHistory();
 
-  const handleSubmit = () => {
-    // Axios post
-    // Call the server
+  const handleSubmit = async () => {
     try {
-      Hub.register(data);
+      const result = await Hub.register(data);
+      console.log("Hub", result);
+      toast.success(`Register Success! welcome ${result.contact_name}`);
     } catch (error) {
-      return console.error("Registration Failed", error);
+      return toast.error("Registration Failed");
     }
+    history.push("/hub/zones");
     console.log("Submitted");
   };
 

@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import http from "./httpService";
 
 const apiEndpoint = http.api.hub + "/hub";
@@ -14,6 +13,7 @@ export async function login(email, password) {
 }
 
 export async function register(hub) {
+  console.log("Hub", hub);
   const hubObject = {
     name: hub.name,
     address: hub.address,
@@ -23,12 +23,12 @@ export async function register(hub) {
     company_id: hub.id,
   };
   try {
-    const { data: hub } = await http.post(apiEndpoint, hubObject);
-    console.log("data", hub);
-    localStorage.setItem(hubKey, hub.id);
-    toast.success(`Register Success! welcome ${hub.contact_name}`);
+    const { data } = await http.post(apiEndpoint, hubObject);
+    console.log("data", data);
+    localStorage.setItem(hubKey, data.hid);
+    return data;
   } catch (error) {
-    return toast.error("Register Hub Failed.");
+    throw new Error("Registration Failed", error);
   }
 }
 
