@@ -23,7 +23,7 @@
 
     header {
       display: grid;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: auto 1fr auto;
       border-bottom: 0.5px solid $gray6;
       padding: 10px 20px;
       h3 {
@@ -56,9 +56,12 @@
   }
 
   .close {
-    position: absolute;
-    top: 5px;
-    right: 5px;
+    // position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    // top: 5px;
+    // right: 5px;
   }
 }
 
