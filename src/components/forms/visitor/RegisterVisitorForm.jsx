@@ -3,7 +3,7 @@ import Joi from "joi";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 // Form
-import Visitor from "../../../services/visitorService";
+import VisitorService from "../../../services/visitorService";
 import useFormFields from "../../../hooks/useFormFields";
 import Form from "../Form";
 import Button from "../../elements/Button";
@@ -20,13 +20,11 @@ const RegisterVisitorForm = () => {
   const history = useHistory();
 
   /* ------------------------------- Form Submit (Create New User/Visitor) ------------------------------ */
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // Call the server
     try {
-      Visitor.register(data);
-      toast.success(
-        `Registration Success! ${data.name && `Welcome ${data.name}`}`
-      );
+      const result = await VisitorService.register(data);
+
       if (data.option === "myself") history.push("/visitor/register/success");
     } catch (error) {
       return console.error("Registration Failed", error);

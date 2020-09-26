@@ -13,9 +13,6 @@ export async function register(visitor) {
     phone: visitor.phone,
     personal_id: visitor.id,
   };
-  console.log("Visitor", visitor);
-  // "uid": "V8VRUD1PLK"
-  // "cid": "V8VRUD",
   try {
     const { data } = await http.post(api + "/user", visitorData);
     localStorage.setItem(visitorKey, data.cid);
