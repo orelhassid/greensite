@@ -40,67 +40,57 @@ export function logout() {
 }
 
 export async function addZones(type, count) {
-  // 1. Generate arrays of zones
-  // 2. Get hub id
-  // 3. POST zones
-  // 4. Error handling
-
-  let zones = new Array(count).fill({ name: type });
-  const hub = getHub();
-  // http://54.72.200.116:5000/hub/D8X5VB/zone
-  console.log(`${apiEndpoint}/${hub.id}/zone`);
+  const hubid = getHubKey();
   try {
-    const { data } = await http.post(`${apiEndpoint}/${hub.id}/zone`, zones);
+    const { data } = await http.post(`${apiEndpoint}/${hubid}/zone`, {
+      count,
+      type,
+    });
+
     return data;
   } catch (error) {
     throw new Error("Register Zones Failed.");
   }
+  // http://54.72.200.116:5000/hub/D8X5VB/zone
 }
 
-export function getHub() {
+export function getHubKey() {
+  if (localStorage.getItem(hubKey)) {
+    return localStorage.getItem(hubKey);
+  } else throw new Error("Hub Key not exist");
+}
+
+export async function getHub() {
+  const hubid = getHubKey();
   try {
-    return {
-      id: localStorage.getItem(hubKey),
-    };
+    const { data } = await http.get(`${apiEndpoint}/${hubid}`);
+    return data;
   } catch (error) {
     throw new Error("Hubid does'nt Exist");
   }
 }
 
-export async function getZones(hub) {
-  // http://54.72.200.116:5000/hub/D8X5VB/zone
-  const api = `${apiEndpoint}/${hub.id}/zone`;
+export async function getZones() {
+  const hubid = getHubKey();
+  if (!hubid) throw new Error("Hub not exist.");
+
+  const api = `${apiEndpoint}/${hubid}/zone`;
 
   try {
     const { data } = await http.get(api);
     return data;
-    // return {
-    //   zoneId: data.id,
-    //   zoneName: data.name,
-    //   siteid: data.hid,
-    //   zoneLink: "",
-    //   zoneType: "table",
-    // };
   } catch (error) {
-    toast.error("Failed to fetch zones");
     console.error(error);
     return [];
   }
 }
-export async function getZone(id) {
-  console.log(id);
-  // Get Zone by id
-  const hub = getHub();
-  try {
-    // http.get(apiEndpoint, )
-  } catch (error) {}
-  return {};
-}
+export async function getZone(id) {}
+
 export default {
   login,
   register,
   logout,
-  getHub,
+  getHub: getHubKey,
   addZones,
   getZones,
   getZone,

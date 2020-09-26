@@ -2,10 +2,10 @@ import React from "react";
 import "./cards.scss";
 import QRCodeElement from "../elements/QRCodeElement";
 
-const Card = ({ zone }) => {
+const Card = ({ zone, link }) => {
   // const { zoneId, zoneName, siteid, zoneLink, zoneType } = zone;
-  const { id, name, hid, zoneLink, type } = zone;
-  console.log("Zone", zone);
+  const { id, name, hid, type } = zone;
+  const shareLink = `https://${window.location.hostname}${link}`;
   return (
     <div className="card">
       <div className="text">
@@ -24,7 +24,7 @@ const Card = ({ zone }) => {
             <li>
               <ul className="action">
                 <li>
-                  <a href={`whatsapp://send?text=${zoneLink}`}>Share</a>
+                  <a href={`whatsapp://send?text=${shareLink}`}>Share</a>
                 </li>
               </ul>
             </li>

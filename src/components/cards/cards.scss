@@ -42,13 +42,16 @@
       width: 100%;
       font-size: 0.7rem;
       .info {
-        justify-content: space-between;
+        justify-content: flex-start;
         display: flex;
         width: 100%;
         font-weight: 500;
         opacity: 0.8;
         letter-spacing: 1.5px;
         text-transform: uppercase;
+        & > * {
+          margin-right: 15px;
+        }
       }
     }
   }

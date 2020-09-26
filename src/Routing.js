@@ -56,7 +56,7 @@ const Routing = () => {
       <Route path="/hub/register">
         <RegisterHubPage />
       </Route>
-      <Route path="/hub/zones/:id">
+      <Route path={["/hub/zones/:hid/:zoneid", "/visitor/zones/:hid/:zoneid"]}>
         <ZoneSinglePage />
       </Route>
       <Route path="/hub/zones">

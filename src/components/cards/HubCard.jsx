@@ -2,25 +2,22 @@ import React from "react";
 import "./cards.scss";
 import { ReactComponent as Qrcode } from "../../assets/images/qrcode.svg";
 
-const HubCard = ({ zone }) => {
-  const { zoneId, zoneName, siteid, zoneLink, zoneType } = zone;
+const HubCard = ({ hub }) => {
+  const { name, id, hid } = hub;
+  const message = `Your HubID is *${hid}*`;
   return (
     <div className="card">
       <div className="text">
         <header>
-          <h3 className="title">{zoneName}</h3>
-          <div className="badge">
-            <span>{zoneType}</span>
-          </div>
+          <h3 className="title">{name}</h3>
         </header>
         <footer>
           <ul className="info">
-            <li>ZONE ID: {zoneId}</li>
-            <li>SITE ID:{siteid}</li>
+            <li>SITE ID:{id}</li>
             <li>
               <ul className="action">
                 <li>
-                  <a href={`whatsapp://send?text=${zoneLink}`}>Share</a>
+                  <a href={`whatsapp://send?text=${message}`}>Share</a>
                 </li>
               </ul>
             </li>
