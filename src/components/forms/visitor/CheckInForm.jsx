@@ -33,20 +33,18 @@ const CheckInForm = () => {
     // Checkin
 
     try {
-      const visitor = visitorService.getVisitor();
-      console.log("Visitor", visitor);
-      // const result = visitorService.checkin(data);
-
-      history.push("/visitor/checkout/zone");
+      const result = visitorService.checkin(data);
+      console.log("Result", result);
+      // history.push("/visitor/checkout/zone");
     } catch (error) {
-      return console.error("");
+      return console.error("Check-in Failed");
     }
   };
 
   /* ------------------------------- Validation ------------------------------- */
 
   const schema = Joi.object({
-    time: Joi.number().required().label("Time"),
+    duration: Joi.number().required().label("Time"),
     health: Joi.valid(true)
       .required()
       .messages({ message: "Number must be between 1 and 10" }),

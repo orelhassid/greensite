@@ -5,7 +5,7 @@ export default function useFormFields(fields, setLoading, setData) {
     const newData = {};
     let track = "";
     fields.forEach((item) => {
-      if (item.defaultValue !== false) {
+      if (item.defaultValue !== false && item.defaultValue !== undefined) {
         track = item.name;
         return (newData[item.name] = item.defaultValue);
       } else if (track === item.name) {

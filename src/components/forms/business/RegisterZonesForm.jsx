@@ -14,6 +14,7 @@ const RegisterZonesForm = () => {
 
   useFormFields(fields, setLoading, setData);
 
+  /* ------------------------------- Form Submit (Add zones to Hub) ------------------------------ */
   const handleSubmit = async () => {
     try {
       const result = await HubService.addZones(data.zoneType, data.zoneCount);
@@ -24,8 +25,8 @@ const RegisterZonesForm = () => {
   };
 
   const schema = Joi.object({
-    zoneType: Joi.string().alphanum().min(3).max(30).required(),
-    zoneCount: Joi.number().max(500).required(),
+    zoneType: Joi.string().alphanum().optional(),
+    zoneCount: Joi.number().required(),
   });
 
   return (

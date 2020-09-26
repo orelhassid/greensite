@@ -1,12 +1,16 @@
 import { toast } from "react-toastify";
 import http from "./httpService";
-const api = http.api.visitor;
-const apiVisitor = api + "/user/";
+import hubService from "./hubService";
+
+const apiVisitor = http.api.visitor + "/user";
+const apiCheck = http.api.check + "/user";
 
 // localStorage key name
 const visitorKey = "visitor-key";
 
-// Register
+// Register Visitor
+// http://54.72.200.116:9000/user/
+
 export async function register(visitor) {
   const visitorData = {
     name: visitor.name,
@@ -14,10 +18,11 @@ export async function register(visitor) {
     personal_id: visitor.id,
   };
   try {
-    const { data } = await http.post(api + "/user", visitorData);
-    localStorage.setItem(visitorKey, data.cid);
+    const { data } = await http.post(apiVisitor, visitorData);
+    return localStorage.setItem(visitorKey, data.cid);
   } catch (error) {
     toast.error("Registration Failed");
+    throw new Error("Registration Failed");
     console.log("error");
   }
 }
@@ -36,16 +41,32 @@ export async function login(visitor) {
 export function getVisitor() {
   return {
     name: "",
-    key: localStorage.getItem(visitorKey),
+    cid: localStorage.getItem(visitorKey),
   };
 }
-export function checkin() {
+export async function checkin(data) {
   // http://54.72.200.116:7000/hub/1
+  const visitor = getVisitor();
+  const hub = hubService.getHub();
+
+  const checkinObject = {
+    hub_id: hub.id,
+    zone_id: 1,
+    duration: data.duration,
+    user_cid: visitor.cid,
+  };
+  try {
+    const result = await http.post(`${apiCheck}/checkin`, checkinObject);
+    console.log(result);
+  } catch (error) {}
+
   return {};
 }
-export function checkout() {
+export async function checkout() {
   // http://54.72.200.116:7000/hub/1
-  return {};
+  try {
+    const result = await http.post(`${apiCheck}/checkout`, {});
+  } catch (error) {}
 }
 
 export default {

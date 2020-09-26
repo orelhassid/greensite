@@ -46,9 +46,11 @@ export async function addZones(type, count) {
   // 4. Error handling
 
   let zones = new Array(count).fill({ name: type });
-  const hubid = getHub();
+  const hub = getHub();
+  // http://54.72.200.116:5000/hub/D8X5VB/zone
+  console.log(`${apiEndpoint}/${hub.id}/zone`);
   try {
-    const { data } = await http.post(`${apiEndpoint}/${hubid}`, zones);
+    const { data } = await http.post(`${apiEndpoint}/${hub.id}/zone`, zones);
     return data;
   } catch (error) {
     throw new Error("Register Zones Failed.");
@@ -56,16 +58,18 @@ export async function addZones(type, count) {
 }
 
 export function getHub() {
-  const hubId = localStorage.getItem(hubKey);
-  if (hubId) {
-    return hubId;
-  } else {
+  try {
+    return {
+      id: localStorage.getItem(hubKey),
+    };
+  } catch (error) {
     throw new Error("Hubid does'nt Exist");
   }
 }
 
-export async function getZones(hubId) {
-  const api = `${apiEndpoint}/${hubId}/zone`;
+export async function getZones(hub) {
+  // http://54.72.200.116:5000/hub/D8X5VB/zone
+  const api = `${apiEndpoint}/${hub.id}/zone`;
 
   try {
     const { data } = await http.get(api);
@@ -85,6 +89,11 @@ export async function getZones(hubId) {
 }
 export async function getZone(id) {
   console.log(id);
+  // Get Zone by id
+  const hub = getHub();
+  try {
+    // http.get(apiEndpoint, )
+  } catch (error) {}
   return {};
 }
 export default {

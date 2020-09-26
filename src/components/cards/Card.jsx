@@ -1,23 +1,21 @@
 import React from "react";
 import "./cards.scss";
-import { ReactComponent as Qrcode } from "../../assets/images/qrcode.svg";
+import QRCodeElement from "../elements/QRCodeElement";
+
 const Card = ({ zone }) => {
   // const { zoneId, zoneName, siteid, zoneLink, zoneType } = zone;
-  const {
-    zoneId: id,
-    zoneName: name,
-    siteid: hid,
-    zoneLink,
-    zoneType: type,
-  } = zone;
+  const { id, name, hid, zoneLink, type } = zone;
+  console.log("Zone", zone);
   return (
     <div className="card">
       <div className="text">
         <header>
           <h3 className="title">{name}</h3>
-          <div className="badge">
-            <span>{type}</span>
-          </div>
+          {type && (
+            <div className="badge">
+              <span>{type}</span>
+            </div>
+          )}
         </header>
         <footer>
           <ul className="info">
@@ -34,7 +32,7 @@ const Card = ({ zone }) => {
         </footer>
       </div>
       <div className="image">
-        <Qrcode />
+        <QRCodeElement />
       </div>
     </div>
   );

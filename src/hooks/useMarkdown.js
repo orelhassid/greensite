@@ -30,5 +30,5 @@ export default function useMarkdown(setMarkdown) {
     } catch (error) {
       console.error("Markdown error", error);
     }
-  }, []);
+  }, [location.pathname, setMarkdown]);
 }

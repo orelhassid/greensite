@@ -11,6 +11,8 @@
     "name": "zoneCount",
     "type": "number",
     "label": "Count",
+    "min": 0,
+    "max": 100,
     "placeholder": "How many zones you want?"
   }
 ]

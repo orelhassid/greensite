@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Layout, { Content, Footer } from "../../components/layout";
-import { useHistory } from "react-router-dom";
 
 import visitorService from "../../services/visitorService";
 import ButtonLink from "../../components/elements/ButtonLink";
-import { ReactComponent as QrcodeIcon } from "../../assets/images/qrcode.svg";
 import { ReactComponent as Background1 } from "../../assets/images/background-1.svg";
 
 import "../pages.scss";
@@ -14,13 +12,6 @@ import QRCodeElement from "../../components/elements/QRCodeElement";
 /* -------------------------------- Component ------------------------------- */
 function RegisterSuccessPage() {
   const [visitor, setVisitor] = useState("");
-  const history = useHistory();
-
-  useEffect(() => {
-    const result = visitorService.getVisitor();
-    setVisitor(result);
-    SuccessNotification();
-  }, []);
 
   const SuccessNotification = () => {
     toast.success(
@@ -28,12 +19,19 @@ function RegisterSuccessPage() {
     );
   };
 
+  useEffect(() => {
+    const result = visitorService.getVisitor();
+    console.log("Result", result);
+    setVisitor(result);
+    SuccessNotification();
+  }, []);
+
   return (
     <Layout>
       <Content>
         <div className="success-page">
           <p style={{ marginBottom: 0 }}>Your personal CID is</p>
-          <h1>{visitor.key}</h1>
+          <h1>{visitor.cid}</h1>
           <div className="image">
             {/* <QrcodeIcon /> */}
             <QRCodeElement link={visitor.key} />

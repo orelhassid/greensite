@@ -22,6 +22,7 @@
       .title {
         font-size: 1.8rem;
         margin-right: 10px;
+        text-transform: capitalize;
       }
       .badge {
         text-transform: capitalize;
@@ -38,14 +39,15 @@
       }
     }
     footer {
-      width: 80%;
+      width: 100%;
       font-size: 0.7rem;
       .info {
         justify-content: space-between;
         display: flex;
-        width: 80%;
+        width: 100%;
         font-weight: 500;
-        opacity: 0.5;
+        opacity: 0.8;
+        letter-spacing: 1.5px;
         text-transform: uppercase;
       }
     }

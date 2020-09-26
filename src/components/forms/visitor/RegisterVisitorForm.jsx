@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Joi from "joi";
 import { useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
 // Form
 import VisitorService from "../../../services/visitorService";
 import useFormFields from "../../../hooks/useFormFields";
@@ -24,7 +23,6 @@ const RegisterVisitorForm = () => {
     // Call the server
     try {
       const result = await VisitorService.register(data);
-
       if (data.option === "myself") history.push("/visitor/register/success");
     } catch (error) {
       return console.error("Registration Failed", error);

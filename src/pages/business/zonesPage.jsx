@@ -13,8 +13,8 @@ function ZonesPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const hubid = getHub();
-        const result = await getZones(hubid);
+        const hub = getHub();
+        const result = await getZones(hub);
         console.log("Result", result);
         setZones(result);
       } catch (error) {

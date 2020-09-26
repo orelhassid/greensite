@@ -6,7 +6,6 @@ import useFormFields from "../../../hooks/useFormFields";
 import fields from "../../../config/checkOutFields.js";
 import Form from "../Form";
 import Button from "../../elements/Button";
-import visitorService from "../../../services/visitorService";
 // Style
 import { ReactComponent as CheckOutIcon } from "../../../assets/icons/checkout.svg";
 import "../forms.scss";

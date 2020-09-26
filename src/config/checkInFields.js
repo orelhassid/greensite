@@ -13,7 +13,7 @@ const HealthLink = () => (
 export default [
   {
     label: "Time (in hours)",
-    name: "time",
+    name: "duration",
     type: "range",
     placeholder: "How long your visit will be?",
     defaultValue: 0,

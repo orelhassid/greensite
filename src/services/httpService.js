@@ -29,6 +29,7 @@ export default {
   api: {
     hub: process.env.REACT_APP_HUB_API,
     visitor: process.env.REACT_APP_VISITOR_API,
+    check: process.env.REACT_APP_CHECK_API,
   },
   //   setJwt,
 };
