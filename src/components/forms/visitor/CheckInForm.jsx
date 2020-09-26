@@ -28,6 +28,7 @@ const CheckInForm = () => {
     const search = queryString.parse(location.search);
     search.popup === "health" ? setHealthToggle(true) : setHealthToggle(false);
   }, [location]);
+
   /* ------------------------------- Form Submit ------------------------------ */
   const handleSubmit = () => {
     // Checkin
