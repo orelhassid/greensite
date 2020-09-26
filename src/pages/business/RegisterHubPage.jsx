@@ -5,7 +5,10 @@ import RegisterHubForm from "../../components/forms/business/RegisterHubForm";
 function RegisterHubPage() {
   return (
     <Layout>
-      <Header title="Registration" subtitle="Enter your site information" />
+      <Header
+        title="Business/Site Registration"
+        subtitle="Enter your site information"
+      />
       <Content>
         <RegisterHubForm />
       </Content>
