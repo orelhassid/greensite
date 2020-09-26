@@ -25,7 +25,7 @@ const CheckOutForm = () => {
     // Checkin
 
     try {
-      const visitor = visitorService.getVisitor();
+      // const visitor = visitorService.getVisitor();
       // const result = visitorService.checkin(data);
       history.push("/visitor/checkout/zone");
     } catch (error) {

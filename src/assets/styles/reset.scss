@@ -11,6 +11,11 @@ strong {
   font-weight: 500;
   text-decoration: underline;
 }
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
 ul {
   list-style: none;
 }

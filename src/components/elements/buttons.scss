@@ -52,3 +52,10 @@
 }
 .btn-text:hover {
 }
+
+.btn-icon {
+  @include center;
+  width: 28px;
+  height: 28px;
+  background: none;
+}

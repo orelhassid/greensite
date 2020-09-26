@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const HealthLink = () => (
   <p>
     I comply with the{" "}
-    <Link to="/health">
+    <Link to="/visitor/checkin?popup=health">
       <strong>health Declation</strong>
     </Link>
   </p>
@@ -16,6 +16,7 @@ export default [
     name: "time",
     type: "range",
     placeholder: "How long your visit will be?",
+    defaultValue: 0,
     min: 0,
     max: 10,
     // options: ["10", "20", "30", "40", "50", "60"],

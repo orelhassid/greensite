@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Joi from "joi";
-import { useHistory } from "react-router-dom";
+import queryString from "query-string";
+import { useHistory, useLocation } from "react-router-dom";
 // Form
 
 import visitorService from "../../../services/visitorService";
@@ -8,6 +9,7 @@ import useFormFields from "../../../hooks/useFormFields";
 import fields from "../../../config/checkInFields.js";
 import Form from "../Form";
 import Button from "../../elements/Button";
+import TermsCard from "../../cards/TermsCard";
 // Style
 import { ReactComponent as CheckInIcon } from "../../../assets/icons/checkin.svg";
 import "../forms.scss";
@@ -15,12 +17,17 @@ import "../forms.scss";
 /* -------------------------------- Component ------------------------------- */
 const CheckInForm = () => {
   const [data, setData] = useState({});
+  const [healthToggle, setHealthToggle] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useFormFields(fields, setLoading, setData);
-
+  const location = useLocation();
   const history = useHistory();
 
+  useEffect(() => {
+    const search = queryString.parse(location.search);
+    search.popup === "health" ? setHealthToggle(true) : setHealthToggle(false);
+  }, [location]);
   /* ------------------------------- Form Submit ------------------------------ */
   const handleSubmit = () => {
     // Checkin
@@ -55,6 +62,7 @@ const CheckInForm = () => {
       schema={schema}
       loading={loading}
     >
+      {healthToggle && <TermsCard />}
       <Button label="check-in" type="submit" icon={<CheckInIcon />} />
     </Form>
   );
