@@ -25,6 +25,7 @@ export default [
     label: <HealthLink />,
     name: "health",
     type: "checkbox",
+    defaultValue: false,
     id: "health",
   },
 ];

@@ -59,3 +59,8 @@
   height: 28px;
   background: none;
 }
+
+button:disabled {
+  background: $bg2;
+  color: $text2;
+}

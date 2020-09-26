@@ -63,7 +63,12 @@ const CheckInForm = () => {
       loading={loading}
     >
       {healthToggle && <TermsCard />}
-      <Button label="check-in" type="submit" icon={<CheckInIcon />} />
+      <Button
+        label="check-in"
+        type="submit"
+        icon={<CheckInIcon />}
+        disabled={!data.health}
+      />
     </Form>
   );
 };

@@ -6,12 +6,21 @@ import "./buttons.scss";
  * @param {string} label
  * @param {string} style
  */
-export default function Button({ label, style, type, variant, icon, formId }) {
+export default function Button({
+  label,
+  style,
+  type,
+  variant,
+  icon,
+  formId,
+  disabled,
+}) {
   return (
     <button
       className={`btn btn-${variant} btn-${style}`}
       type={type}
       form={formId}
+      disabled={disabled}
     >
       <span className="label">{label}</span>
       {icon && <span className="icon">{icon}</span>}
@@ -22,4 +31,5 @@ export default function Button({ label, style, type, variant, icon, formId }) {
 Button.defaultProps = {
   variant: "primary",
   style: "contained",
+  disabled: false,
 };
