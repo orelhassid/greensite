@@ -9,7 +9,8 @@ export default [
     ),
     name: "location",
     type: "radio",
-    checked: "on",
+    checked: true,
+    defaultValue: true,
     id: "hub",
   },
   {

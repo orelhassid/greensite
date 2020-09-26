@@ -3,6 +3,11 @@ import { toast } from "react-toastify";
 import { Grid } from "../layout";
 import Fields from "./fields";
 
+/**
+ *
+ * @param {*} param0
+ * Responsible for handling fields data and errors
+ */
 const Form = ({
   fields,
   onSubmit,
@@ -11,9 +16,13 @@ const Form = ({
   schema,
   formId,
   children,
+  loading,
 }) => {
   const [errors, setErrors] = useState({});
 
+  if (!loading) {
+    return <div>Loading...</div>;
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     const errorsMessages = validate();

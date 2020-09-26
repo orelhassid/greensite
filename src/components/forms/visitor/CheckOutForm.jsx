@@ -1,39 +1,44 @@
 import React, { useState } from "react";
 import Joi from "joi";
+import { useHistory } from "react-router-dom";
+// Form
+import useFormFields from "../../../hooks/useFormFields";
+import fields from "../../../config/checkOutFields.js";
 import Form from "../Form";
 import Button from "../../elements/Button";
-import fields from "../../../config/checkOutFields.js";
-import "../forms.scss";
 import visitorService from "../../../services/visitorService";
-import { useHistory } from "react-router-dom";
-
+// Style
 import { ReactComponent as CheckOutIcon } from "../../../assets/icons/checkout.svg";
+import "../forms.scss";
+
+/* -------------------------------- Component ------------------------------- */
 
 const CheckOutForm = () => {
-  const [data, setData] = useState({
-    location: "",
-  });
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(false);
 
+  useFormFields(fields, setLoading, setData);
   const history = useHistory();
 
+  /* ------------------------------- Form Submit ------------------------------ */
   const handleSubmit = () => {
     // Checkin
 
     try {
       const visitor = visitorService.getVisitor();
-      console.log("Visitor", visitor);
       // const result = visitorService.checkin(data);
       history.push("/visitor/checkout/zone");
     } catch (error) {
       return console.error("");
     }
-    console.log("Submitted");
   };
 
+  /* ------------------------------- Validation ------------------------------- */
   const schema = Joi.object({
     location: Joi.valid(true).required(),
   });
 
+  /* -------------------------------- Render ------------------------------- */
   return (
     <>
       <Button
@@ -46,8 +51,9 @@ const CheckOutForm = () => {
         fields={fields}
         data={data}
         setData={setData}
-        onSubmit={() => handleSubmit()}
+        loading={loading}
         schema={schema}
+        onSubmit={() => handleSubmit()}
         formId="checkout"
       ></Form>
     </>

@@ -9,6 +9,7 @@ import NotFound from "./pages/notfound";
 // Hub / Businness
 import RegisterHubPage from "./pages/business/RegisterHubPage";
 import RegisterZonesPage from "./pages/business/RegisterZonesPage";
+import ZoneSinglePage from "./pages/business/ZoneSinglePage";
 import LoginHubPage from "./pages/business/LoginHubPage";
 import ZonesPage from "./pages/business/zonesPage";
 // Visitor
@@ -54,6 +55,9 @@ const Routing = () => {
       </Route>
       <Route path="/hub/register">
         <RegisterHubPage />
+      </Route>
+      <Route path="/hub/zones/:id">
+        <ZoneSinglePage />
       </Route>
       <Route path="/hub/zones">
         <ZonesPage />

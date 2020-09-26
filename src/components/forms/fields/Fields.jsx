@@ -22,6 +22,8 @@ const Fields = ({ fields, data, onChange, errors }) => {
           max,
         } = field;
 
+        // console.log(`Field of ${name}`, field);
+        // console.log(`Field of ${field[name]}`, field);
         if (field.type === "select") {
           return (
             <SelectField

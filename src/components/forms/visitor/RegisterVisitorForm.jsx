@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import Joi from "joi";
+import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
+// Form
+import Visitor from "../../../services/visitorService";
+import useFormFields from "../../../hooks/useFormFields";
 import Form from "../Form";
 import Button from "../../elements/Button";
 import fields from "../../../config/registerVisitorFields.json";
-import Visitor from "../../../services/visitorService";
+// Style
 import "../forms.scss";
-import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
 
+/* -------------------------------- Component ------------------------------- */
 const RegisterVisitorForm = () => {
-  const [data, setData] = useState({
-    phone: "",
-    id: "",
-    name: "",
-    option: "myself",
-  });
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(false);
+  useFormFields(fields, setLoading, setData);
+
   const history = useHistory();
 
+  /* ------------------------------- Form Submit (Create New User/Visitor) ------------------------------ */
   const handleSubmit = () => {
     // Call the server
     try {
@@ -30,6 +33,7 @@ const RegisterVisitorForm = () => {
     }
   };
 
+  /* ------------------------------- Validation ------------------------------- */
   const schema = Joi.object({
     phone: Joi.string().required().label("Phone Number"),
     id: Joi.string()
@@ -41,13 +45,15 @@ const RegisterVisitorForm = () => {
     option: Joi.any().required(),
   });
 
+  /* --------------------------------- Render --------------------------------- */
   return (
     <Form
       fields={fields}
       data={data}
       setData={setData}
-      onSubmit={() => handleSubmit()}
+      loading={loading}
       schema={schema}
+      onSubmit={() => handleSubmit()}
     >
       <Button label="register" type="submit" />
     </Form>

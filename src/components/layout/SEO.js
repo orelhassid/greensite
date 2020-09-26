@@ -12,7 +12,7 @@ export const SEO = ({ title, description }) => {
       <link
         rel="icon"
         type="image/png"
-        href="assets/icons/camera.svg"
+        href="/public/favicon.ico"
         sizes="16x16"
       />
     </Helmet>

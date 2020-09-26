@@ -1,23 +1,27 @@
 import React, { useState } from "react";
 import Joi from "joi";
+import { useHistory } from "react-router-dom";
+// Form
+
+import visitorService from "../../../services/visitorService";
+import useFormFields from "../../../hooks/useFormFields";
+import fields from "../../../config/checkInFields.js";
 import Form from "../Form";
 import Button from "../../elements/Button";
-// import fields from "../../../config/checkInFields.json";
-import fields from "../../../config/checkInFields.js";
-import "../forms.scss";
-import visitorService from "../../../services/visitorService";
-import { useHistory } from "react-router-dom";
-// import { toast } from "react-toastify";
+// Style
 import { ReactComponent as CheckInIcon } from "../../../assets/icons/checkin.svg";
+import "../forms.scss";
 
+/* -------------------------------- Component ------------------------------- */
 const CheckInForm = () => {
-  const [data, setData] = useState({
-    time: 0,
-    // health: "",
-  });
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  useFormFields(fields, setLoading, setData);
 
   const history = useHistory();
 
+  /* ------------------------------- Form Submit ------------------------------ */
   const handleSubmit = () => {
     // Checkin
 
@@ -30,8 +34,9 @@ const CheckInForm = () => {
     } catch (error) {
       return console.error("");
     }
-    console.log("Submitted");
   };
+
+  /* ------------------------------- Validation ------------------------------- */
 
   const schema = Joi.object({
     time: Joi.number().required().label("Time"),
@@ -40,6 +45,7 @@ const CheckInForm = () => {
       .messages({ message: "Number must be between 1 and 10" }),
   });
 
+  /* -------------------------------- Render ------------------------------- */
   return (
     <Form
       fields={fields}
@@ -47,6 +53,7 @@ const CheckInForm = () => {
       setData={setData}
       onSubmit={() => handleSubmit()}
       schema={schema}
+      loading={loading}
     >
       <Button label="check-in" type="submit" icon={<CheckInIcon />} />
     </Form>

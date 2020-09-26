@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout, { Header, Content, Grid } from "../../components/layout";
 import Card from "../../components/cards/Card";
 // import HubCard from "../../components/cards/HubCard";
-import { getZones } from "../../services/zonesService";
+import { getZones } from "../../services/hubService";
 import { getHub } from "../../services/hubService";
 import { useHistory } from "react-router-dom";
 

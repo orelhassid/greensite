@@ -1,4 +1,5 @@
 import http from "./httpService";
+import { toast } from "react-toastify";
 
 const apiEndpoint = http.api.hub + "/hub";
 
@@ -13,7 +14,9 @@ export async function login(email, password) {
 }
 
 export async function register(hub) {
-  console.log("Hub", hub);
+  // 1. Map the hub object into api object
+  // 2. POST request to the server
+  // 3. Store the hub-key in localStorage
   const hubObject = {
     name: hub.name,
     address: hub.address,
@@ -22,9 +25,9 @@ export async function register(hub) {
     contact_details: hub.contactPhone,
     company_id: hub.id,
   };
+
   try {
     const { data } = await http.post(apiEndpoint, hubObject);
-    console.log("data", data);
     localStorage.setItem(hubKey, data.hid);
     return data;
   } catch (error) {
@@ -36,10 +39,20 @@ export function logout() {
   localStorage.removeItem(hubKey);
 }
 
-export function addZones(zones) {
-  // Adding zone to hub
-  // const hub = getHub();
-  http.post(http.api.hub, zones);
+export async function addZones(type, count) {
+  // 1. Generate arrays of zones
+  // 2. Get hub id
+  // 3. POST zones
+  // 4. Error handling
+
+  let zones = new Array(count).fill({ name: type });
+  const hubid = getHub();
+  try {
+    const { data } = await http.post(`${apiEndpoint}/${hubid}`, zones);
+    return data;
+  } catch (error) {
+    throw new Error("Register Zones Failed.");
+  }
 }
 
 export function getHub() {
@@ -51,12 +64,37 @@ export function getHub() {
   }
 }
 
+export async function getZones(hubId) {
+  const api = `${apiEndpoint}/${hubId}/zone`;
+
+  try {
+    const { data } = await http.get(api);
+    return data;
+    // return {
+    //   zoneId: data.id,
+    //   zoneName: data.name,
+    //   siteid: data.hid,
+    //   zoneLink: "",
+    //   zoneType: "table",
+    // };
+  } catch (error) {
+    toast.error("Failed to fetch zones");
+    console.error(error);
+    return [];
+  }
+}
+export async function getZone(id) {
+  console.log(id);
+  return {};
+}
 export default {
   login,
   register,
   logout,
   getHub,
   addZones,
+  getZones,
+  getZone,
 };
 
 /**

@@ -22,7 +22,8 @@
     "type": "radio",
     "label": "Register for myself",
     "id": "myself",
-    "checked": "on"
+    "checked": "on",
+    "defaultValue": "myself"
   },
   {
     "name": "option",

@@ -23,7 +23,7 @@ function RegisterSuccessPage() {
       }
     }
     fetch();
-  }, []);
+  }, [history]);
 
   // Redirect the user if not logged in
   return (

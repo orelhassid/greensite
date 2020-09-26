@@ -1,17 +1,7 @@
 import React from "react";
 import { ReactComponent as HelpIcon } from "../../../assets/icons/help.svg";
 
-const TextField = ({
-  name,
-  label,
-  placeholder,
-  type,
-  value,
-  onChange,
-  error,
-  min,
-  max,
-}) => {
+const TextField = ({ name, label, value, error, ...rest }) => {
   return (
     <div className="form-field">
       <header>
@@ -21,16 +11,7 @@ const TextField = ({
         </div>
       </header>
 
-      <input
-        type={type}
-        id={name}
-        name={name}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        min={min}
-        max={max}
-      />
+      <input id={name} name={name} value={value} {...rest} />
       {error && <div className="alert alert-danger">{error}</div>}
     </div>
   );

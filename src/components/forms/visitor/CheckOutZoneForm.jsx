@@ -1,18 +1,27 @@
 import React, { useState } from "react";
 import Joi from "joi";
+import { useHistory } from "react-router-dom";
+
+// Form
+// import ServiceName from "../../../services/ServiceName";
+import useFormFields from "../../../hooks/useFormFields";
+import fields from "../../../config/checkOutZoneFields.json";
 import Form from "../Form";
 import Button from "../../elements/Button";
-import "../forms.scss";
-import { useHistory } from "react-router-dom";
 import CardSimple from "../../cards/CardSimple";
+// Style
+import "../forms.scss";
 
+/* -------------------------------- Component ------------------------------- */
 const CheckOutZoneForm = () => {
-  const [data, setData] = useState({
-    zoneId: "",
-  });
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  useFormFields(fields, setLoading, setData);
 
   const history = useHistory();
 
+  /* ------------------------------- Form Submit ------------------------------ */
   const handleSubmit = () => {
     console.log(data);
     history.push({
@@ -21,20 +30,12 @@ const CheckOutZoneForm = () => {
     });
   };
 
+  /* ------------------------------- Validation ------------------------------- */
   const schema = Joi.object({
     zoneId: Joi.string().optional().label("Zone ID"),
   });
 
-  const fields = [
-    {
-      label: "Zone ID",
-      name: "zoneId",
-      placeholder: "number",
-      type: "number",
-      min: 0,
-      max: 500,
-    },
-  ];
+  /* -------------------------------- Render ------------------------------- */
   return (
     <CardSimple
       title="Add specific Zone"
@@ -45,8 +46,9 @@ const CheckOutZoneForm = () => {
         fields={fields}
         data={data}
         setData={setData}
-        onSubmit={() => handleSubmit()}
+        loading={loading}
         schema={schema}
+        onSubmit={() => handleSubmit()}
       >
         <Button label="register zone" style="outlined" type="submit" />
       </Form>

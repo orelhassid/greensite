@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import Joi from "joi";
+
+import HubService from "../../../services/hubService";
+import useFormFields from "../../../hooks/useFormFields";
 import Form from "../Form";
-import Button from "../../elements/Button";
 import fields from "../../../config/registerZonesFields.json";
-import Hub from "../../../services/hubService";
+import Button from "../../elements/Button";
 import "../forms.scss";
 
 const RegisterZonesForm = () => {
-  const [data, setData] = useState({
-    zoneType: "",
-    zoneCount: "",
-  });
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = () => {
-    // Call the server
+  useFormFields(fields, setLoading, setData);
+
+  const handleSubmit = async () => {
     try {
-      Hub.addZones(data);
+      const result = await HubService.addZones(data.zoneType, data.zoneCount);
+      console.log("Result hub:", result);
     } catch (error) {
       return console.error("Registration Failed", error);
     }
-    console.log("Submitted");
   };
 
   const schema = Joi.object({
@@ -34,6 +35,7 @@ const RegisterZonesForm = () => {
       setData={setData}
       onSubmit={() => handleSubmit()}
       schema={schema}
+      loading={loading}
     >
       <Button label="Add Zones" type="submit" />
     </Form>

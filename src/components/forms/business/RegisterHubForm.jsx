@@ -1,36 +1,42 @@
 import React, { useState } from "react";
 import Joi from "joi";
+import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
+
+// Form
+import useFormFields from "../../../hooks/useFormFields";
+import HubService from "../../../services/hubService";
+import fields from "../../../config/registerHubFormFields.json";
 import Form from "../Form";
 import Button from "../../elements/Button";
-import fields from "../../../config/registerHubFormFields.json";
+// Style
 import "../forms.scss";
-// import httpService from "../../services/httpService";
-import Hub from "../../../services/hubService";
-import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
 
+/* -------------------------------- Component ------------------------------- */
 const RegisterHubForm = () => {
-  const [data, setData] = useState({
-    name: "",
-    address: "",
-    contactName: "",
-    contactPhone: "",
-    hubtype: "",
-    multiZone: "",
-  });
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(false);
+
+  useFormFields(fields, setLoading, setData);
+
   const history = useHistory();
 
+  /* ------------------------------- Form Submit (Create New Hub) ------------------------------ */
   const handleSubmit = async () => {
     try {
-      const result = await Hub.register(data);
-      console.log("Hub", result);
+      // Create new Hub in DB
+      const result = await HubService.register(data);
       toast.success(`Register Success! welcome ${result.contact_name}`);
+
+      // is Multi-zone on?
+      if (data.multiZone) history.push("/hub/register/zones");
+      if (!data.multiZone) history.push("/hub/zones");
     } catch (error) {
       return toast.error("Registration Failed");
     }
-    history.push("/hub/zones");
-    console.log("Submitted");
   };
+
+  /* ------------------------------- Validation ------------------------------- */
 
   const schema = Joi.object({
     name: Joi.string().alphanum().min(3).max(30).required(),
@@ -41,13 +47,15 @@ const RegisterHubForm = () => {
     multiZone: Joi.boolean().invalid(false),
   });
 
+  /* -------------------------------- Render ------------------------------- */
   return (
     <Form
       fields={fields}
       data={data}
       setData={setData}
-      onSubmit={() => handleSubmit()}
+      loading={loading}
       schema={schema}
+      onSubmit={() => handleSubmit()}
     >
       <Button label="Register" type="submit" />
     </Form>

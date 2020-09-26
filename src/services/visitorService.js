@@ -43,6 +43,11 @@ export function getVisitor() {
   };
 }
 export function checkin() {
+  // http://54.72.200.116:7000/hub/1
+  return {};
+}
+export function checkout() {
+  // http://54.72.200.116:7000/hub/1
   return {};
 }
 
@@ -52,4 +57,5 @@ export default {
   login,
   getVisitor,
   checkin,
+  checkout,
 };
