@@ -41,3 +41,14 @@
   border: 1px solid $primary;
   color: $primary;
 }
+.btn-text {
+  background: none;
+  color: $primary;
+  padding: 0;
+  width: 100px;
+}
+.btn:hover {
+  filter: brightness(90%);
+}
+.btn-text:hover {
+}

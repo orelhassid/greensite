@@ -4,11 +4,12 @@ import { useHistory } from "react-router-dom";
 
 import visitorService from "../../services/visitorService";
 import ButtonLink from "../../components/elements/ButtonLink";
-import { ReactComponent as Qrcode } from "../../assets/images/qrcode.svg";
+import { ReactComponent as QrcodeIcon } from "../../assets/images/qrcode.svg";
 import { ReactComponent as Background1 } from "../../assets/images/background-1.svg";
 
 import "../pages.scss";
 import { toast } from "react-toastify";
+import QRCodeElement from "../../components/elements/QRCodeElement";
 
 /* -------------------------------- Component ------------------------------- */
 function RegisterSuccessPage() {
@@ -19,7 +20,7 @@ function RegisterSuccessPage() {
     const result = visitorService.getVisitor();
     setVisitor(result);
     SuccessNotification();
-  }, [history]);
+  }, []);
 
   const SuccessNotification = () => {
     toast.success(
@@ -34,13 +35,15 @@ function RegisterSuccessPage() {
           <p style={{ marginBottom: 0 }}>Your personal CID is</p>
           <h1>{visitor.key}</h1>
           <div className="image">
-            <Qrcode />
+            {/* <QrcodeIcon /> */}
+            <QRCodeElement link={visitor.key} />
           </div>
           <p>Thanks for using GreenSite Pass!</p>
           <ButtonLink
             label="Go to check-in"
             link="/visitor/checkin"
           ></ButtonLink>
+
           <div className="background">
             <Background1 />
           </div>

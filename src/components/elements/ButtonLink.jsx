@@ -14,9 +14,10 @@ export default function ButtonLink({
   variant,
   icon,
   link,
+  ...rest
 }) {
   return (
-    <Link to={link} className={`btn btn-${variant} btn-${style}`}>
+    <Link to={link} className={`btn btn-${variant} btn-${style}`} {...rest}>
       <span className="label">{label}</span>
       {icon && <span className="icon">{icon}</span>}
     </Link>
