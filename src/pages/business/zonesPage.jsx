@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Layout, { Header, Content, Grid } from "../../components/layout";
+import Layout, { Header, Content, Grid, SEO } from "../../components/layout";
 import Card from "../../components/cards/Card";
 import HubCard from "../../components/cards/HubCard";
 // import HubCard from "../../components/cards/HubCard";
 import { getZones } from "../../services/hubService";
 import { getHub } from "../../services/hubService";
 import { useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
 
 function ZonesPage() {
   const [zones, setZones] = useState([]);
@@ -35,6 +34,7 @@ function ZonesPage() {
   };
   return (
     <Layout>
+      <SEO title="QR Codes" description="Track you zones" />
       <Header title="QR Codes" subtitle="Track you zones" />
       <Content>
         {loading ? (

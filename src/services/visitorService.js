@@ -57,7 +57,6 @@ export async function checkin(data) {
   };
   try {
     const result = await http.post(`${apiCheck}/checkin`, checkinObject);
-    console.log(result);
   } catch (error) {}
 
   return {};

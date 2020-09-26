@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Layout, { Content, Footer } from "../../components/layout";
+import Layout, {
+  Content,
+  Footer,
+  Header,
+  Navigation,
+  SEO,
+} from "../../components/layout";
 
 import visitorService from "../../services/visitorService";
 import ButtonLink from "../../components/elements/ButtonLink";
@@ -28,6 +34,8 @@ function RegisterSuccessPage() {
 
   return (
     <Layout>
+      <SEO title="Visitor Success Page" />
+      <Navigation />
       <Content>
         <div className="success-page">
           <p style={{ marginBottom: 0 }}>Your personal CID is</p>

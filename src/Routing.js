@@ -9,7 +9,7 @@ import NotFound from "./pages/notfound";
 // Hub / Businness
 import RegisterHubPage from "./pages/business/RegisterHubPage";
 import RegisterZonesPage from "./pages/business/RegisterZonesPage";
-import ZoneSinglePage from "./pages/business/ZoneSinglePage";
+// import ZoneSinglePage from "./pages/business/ZoneSinglePage";
 import LoginHubPage from "./pages/business/LoginHubPage";
 import ZonesPage from "./pages/business/zonesPage";
 // Visitor
@@ -20,6 +20,8 @@ import CheckOutPage from "./pages/visitor/CheckOutPage";
 import CheckOutSucessPage from "./pages/visitor/CheckOutSucessPage";
 import CheckOutZonePage from "./pages/visitor/CheckOutZonePage";
 import CheckInPage from "./pages/visitor/CheckInPage";
+// Zones
+import ZonesSinglePage from "./pages/zones/ZonesSinglePage";
 
 const Routing = () => {
   return (
@@ -56,8 +58,9 @@ const Routing = () => {
       <Route path="/hub/register">
         <RegisterHubPage />
       </Route>
-      <Route path={["/hub/zones/:hid/:zoneid", "/visitor/zones/:hid/:zoneid"]}>
-        <ZoneSinglePage />
+      <Route path={["/zones"]}>
+        <ZonesSinglePage />
+        {/* <ZoneSinglePage /> */}
       </Route>
       <Route path="/hub/zones">
         <ZonesPage />

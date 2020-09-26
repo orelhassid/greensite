@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 // import { useLocation } from "react-router-dom";
 
 import Layout, {
-  HeaderCustom,
   Content,
-  PageCover,
+  Navigation,
+  PageTitle,
 } from "../../components/layout";
 import CheckOutForm from "../../components/forms/visitor/CheckOutForm";
 
@@ -16,12 +16,11 @@ function CheckOutPage() {
 
   return (
     <Layout>
-      <HeaderCustom
+      <Navigation />
+      <PageTitle
         subtitle="Your are currently checked-in at"
         title={`Betta cafe`}
-      >
-        <PageCover />
-      </HeaderCustom>
+      />
       <Content>
         <CheckOutForm />
       </Content>

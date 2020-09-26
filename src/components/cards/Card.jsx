@@ -1,6 +1,7 @@
 import React from "react";
 import "./cards.scss";
 import QRCodeElement from "../elements/QRCodeElement";
+import { ReactComponent as WhatsAppIcon } from "../../assets/icons/whatsapp.svg";
 
 const Card = ({ zone, link }) => {
   // const { zoneId, zoneName, siteid, zoneLink, zoneType } = zone;
@@ -24,7 +25,9 @@ const Card = ({ zone, link }) => {
             <li>
               <ul className="action">
                 <li>
-                  <a href={`whatsapp://send?text=${shareLink}`}>Share</a>
+                  <a href={`whatsapp://send?text=${shareLink}`}>
+                    <WhatsAppIcon />
+                  </a>
                 </li>
               </ul>
             </li>

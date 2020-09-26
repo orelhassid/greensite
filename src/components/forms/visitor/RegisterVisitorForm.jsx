@@ -22,7 +22,7 @@ const RegisterVisitorForm = () => {
   const handleSubmit = async () => {
     // Call the server
     try {
-      const result = await VisitorService.register(data);
+      await VisitorService.register(data);
       if (data.option === "myself") history.push("/visitor/register/success");
     } catch (error) {
       return console.error("Registration Failed", error);

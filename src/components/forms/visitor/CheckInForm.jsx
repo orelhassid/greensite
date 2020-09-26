@@ -22,7 +22,6 @@ const CheckInForm = () => {
 
   useFormFields(fields, setLoading, setData);
   const location = useLocation();
-  const history = useHistory();
 
   useEffect(() => {
     const search = queryString.parse(location.search);

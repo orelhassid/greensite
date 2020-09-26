@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout, { Header, Content } from "../components/layout";
+import Layout, { Header, Content, SEO } from "../components/layout";
 import useMarkdown from "../hooks/useMarkdown";
 
 function HelpPage() {
@@ -8,6 +8,7 @@ function HelpPage() {
 
   return (
     <Layout>
+      <SEO title="Help" description="Help and Guides Page" />
       <Header title="Help Page" />
       <Content>
         <section>

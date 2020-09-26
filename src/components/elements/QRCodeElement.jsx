@@ -1,6 +1,6 @@
 import React from "react";
 import QRCode from "qrcode.react";
-import ButtonLink from "./ButtonLink";
+// import ButtonLink from "./ButtonLink";
 
 const QRCodeElement = ({ link }) => {
   /*

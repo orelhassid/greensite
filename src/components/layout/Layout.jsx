@@ -9,7 +9,7 @@ export default function Layout({ children }) {
   return (
     <div className="site">
       <ToastContainer />
-      <Navigation />
+      {/* <Navigation /> */}
       {children}
     </div>
   );

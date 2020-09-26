@@ -43,14 +43,19 @@
       font-size: 0.7rem;
       .info {
         justify-content: flex-start;
+        align-items: center;
         display: flex;
         width: 100%;
         font-weight: 500;
         opacity: 0.8;
         letter-spacing: 1.5px;
         text-transform: uppercase;
+        text-align: left;
         & > * {
           margin-right: 15px;
+        }
+        & > :first-child {
+          min-width: 100px;
         }
       }
     }

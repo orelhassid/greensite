@@ -5,5 +5,6 @@ export * from "./Content";
 export * from "./Footer";
 export * from "./Grid";
 export * from "./PageCover";
+export * from "./PageTitle";
 export * from "./SEO";
 export { default } from "./Layout";

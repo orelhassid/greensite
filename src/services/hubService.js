@@ -1,5 +1,4 @@
 import http from "./httpService";
-import { toast } from "react-toastify";
 
 const apiEndpoint = http.api.hub + "/hub";
 
@@ -84,7 +83,14 @@ export async function getZones() {
     return [];
   }
 }
-export async function getZone(id) {}
+export async function getZone(id) {
+  try {
+    const result = http.get(`${apiEndpoint}/${getHubKey()}/zone/${id}`);
+    return result;
+  } catch (error) {
+    throw new Error("Get Zone Failed", error);
+  }
+}
 
 export default {
   login,
