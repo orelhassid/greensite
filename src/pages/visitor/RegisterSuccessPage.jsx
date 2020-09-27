@@ -36,6 +36,7 @@ function RegisterSuccessPage() {
     <Layout>
       <SEO title="Visitor Success Page" />
       <Navigation />
+
       <Content>
         <div className="success-page">
           <p style={{ marginBottom: 0 }}>Your personal CID is</p>

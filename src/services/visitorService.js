@@ -5,6 +5,9 @@ import hubService from "./hubService";
 const apiVisitor = http.api.visitor + "/user";
 const apiCheck = http.api.check + "/user";
 
+console.log(`${apiCheck}/checkin`);
+console.log(http.api);
+
 // localStorage key name
 const visitorKey = "visitor-key";
 
@@ -45,21 +48,25 @@ export function getVisitor() {
   };
 }
 export async function checkin(data) {
-  // http://54.72.200.116:7000/hub/1
+  const { duration } = data;
   const visitor = getVisitor();
-  const hub = hubService.getHub();
+  // const hub = hubService.getHub();
+
+  const minutes = duration === 0 ? 30 : duration * 60;
 
   const checkinObject = {
-    hub_id: hub.id,
-    zone_id: 1,
-    duration: data.duration,
+    hub_id: "I477CQ",
+    // zone_id: 1,
+    duration: minutes,
     user_cid: visitor.cid,
   };
   try {
-    const result = await http.post(`${apiCheck}/checkin`, checkinObject);
-  } catch (error) {}
-
-  return {};
+    const result = await http.post(`${apiCheck}/1checkin`, checkinObject);
+    console.log("Result", result);
+    return result;
+  } catch (error) {
+    throw new Error("Check-in Failed", error);
+  }
 }
 export async function checkout() {
   // http://54.72.200.116:7000/hub/1

@@ -1,6 +1,12 @@
 {
-  "short_name": "GreenSite Pass",
-  "name": "GreenSite Pass Web Application",
+  "name": "GreenSite Pass",
+  "short_name": "GreenSite",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#008725",
+  "background_color": "#00997D",
+  "orientation": "portrait-primary",
+
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,18 +14,39 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "GreenSite-Logo@72w.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "GreenSite-Logo@96w.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "GreenSite-Logo@128w.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "GreenSite-Logo@144w.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "GreenSite-Logo@152w.png",
+      "type": "image/png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "GreenSite-Logo@192w.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "GreenSite-Logo@512w.png",
       "type": "image/png",
       "sizes": "512x512"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }

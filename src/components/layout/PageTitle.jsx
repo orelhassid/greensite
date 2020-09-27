@@ -1,9 +1,8 @@
 import React from "react";
-import { ReactComponent as CameraIcon } from "../../assets/icons/camera.svg";
 
-export const PageTitle = ({ title, subtitle }) => {
+export const PageTitle = ({ title, subtitle, custom }) => {
   return (
-    <header className="site-header">
+    <header className={`site-header site-header-${custom}`}>
       <div className="site-title">
         <h1 className="title">{title}</h1>
         <h3 className="subtitle">{subtitle}</h3>

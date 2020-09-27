@@ -21,6 +21,7 @@ const CheckInForm = () => {
   const [loading, setLoading] = useState(false);
 
   useFormFields(fields, setLoading, setData);
+  const history = useHistory();
   const location = useLocation();
 
   useEffect(() => {
@@ -29,13 +30,13 @@ const CheckInForm = () => {
   }, [location]);
 
   /* ------------------------------- Form Submit ------------------------------ */
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // Checkin
 
     try {
-      const result = visitorService.checkin(data);
-      console.log("Result", result);
-      // history.push("/visitor/checkout/zone");
+      visitorService.checkin(data);
+      // console.log("Result", result);
+      history.push("/visitor/checkout/zone");
     } catch (error) {
       return console.error("Check-in Failed");
     }
