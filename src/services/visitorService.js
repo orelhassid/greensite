@@ -1,6 +1,5 @@
 import { toast } from "react-toastify";
 import http from "./httpService";
-import hubService from "./hubService";
 
 const apiVisitor = http.api.visitor + "/user";
 const apiCheck = http.api.check + "/user";
