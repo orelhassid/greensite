@@ -21,7 +21,7 @@ function CheckOutSuccessPage() {
       } catch (error) {}
     }
     fetch();
-  }, []);
+  }, [params]);
 
   return (
     <Layout>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 // Common
-import { ReactComponent as HomeIcon } from "../../assets/icons/home.svg";
+// import { ReactComponent as HomeIcon } from "../../assets/icons/home.svg";
 import { ReactComponent as HelpIcon } from "../../assets/icons/help.svg";
 import { ReactComponent as LogoIcon } from "../../assets/icons/logo.svg";
 // Hub / Business
@@ -10,8 +10,8 @@ import { ReactComponent as QrCode } from "../../assets/icons/qrcode.svg";
 import { ReactComponent as ZoneIcon } from "../../assets/icons/zone.svg";
 // Visitor
 import { ReactComponent as CheckInIcon } from "../../assets/icons/checkin.svg";
-import { ReactComponent as CheckOutIcon } from "../../assets/icons/checkout.svg";
-import { ReactComponent as LoginIcon } from "../../assets/icons/login.svg";
+// import { ReactComponent as CheckOutIcon } from "../../assets/icons/checkout.svg";
+// import { ReactComponent as LoginIcon } from "../../assets/icons/login.svg";
 import { ReactComponent as Logout } from "../../assets/icons/logout.svg";
 
 const commonLinks = [

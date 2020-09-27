@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout, {
   Content,
-  Header,
   Navigation,
   PageTitle,
 } from "../../components/layout";

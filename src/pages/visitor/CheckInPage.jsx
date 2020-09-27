@@ -6,7 +6,6 @@ import hubService from "../../services/hubService";
 import visitorService from "../../services/visitorService";
 function CheckInPage() {
   const [paramsObject, setParamsObject] = useState({});
-  const [hub, setHub] = useState({});
 
   const history = useHistory();
   const params = useParams();

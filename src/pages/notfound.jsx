@@ -1,5 +1,5 @@
 import React from "react";
-import Layout, { Header, Content, Navigation, SEO } from "../components/layout";
+import Layout, { Header, Content, SEO } from "../components/layout";
 
 import Image from "../assets/images/page-not-found.svg";
 function Home() {

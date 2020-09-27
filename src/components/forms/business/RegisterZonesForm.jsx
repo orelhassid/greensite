@@ -19,10 +19,7 @@ const RegisterZonesForm = () => {
   /* ------------------------------- Form Submit (Add zones to Hub) ------------------------------ */
   const handleSubmit = async () => {
     try {
-      const result = await HubService.addZones(
-        data.zoneType,
-        parseInt(data.zoneCount)
-      );
+      await HubService.addZones(data.zoneType, parseInt(data.zoneCount));
       history.push("/hub/zones");
     } catch (error) {
       return console.error("Registration Failed", error);

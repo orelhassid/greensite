@@ -1,12 +1,5 @@
 import React from "react";
-import Layout, {
-  Header,
-  Content,
-  Grid,
-  Navigation,
-  PageTitle,
-  SEO,
-} from "../components/layout";
+import Layout, { Header, Content, Grid, SEO } from "../components/layout";
 import VisitorImage from "../assets/images/visitor-image.svg";
 import HubImage from "../assets/images/business-image.svg";
 import { Link } from "react-router-dom";

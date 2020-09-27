@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Joi from "joi";
-import queryString from "query-string";
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 // Form
 
 import visitorService from "../../../services/visitorService";
@@ -17,7 +16,6 @@ import "../forms.scss";
 /* -------------------------------- Component ------------------------------- */
 const CheckInForm = () => {
   const [data, setData] = useState({});
-  const [healthToggle, setHealthToggle] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useFormFields(fields, setLoading, setData);
@@ -55,7 +53,7 @@ const CheckInForm = () => {
       schema={schema}
       loading={loading}
     >
-      {healthToggle && <TermsCard />}
+      {false && <TermsCard />}
       <Button
         label="check-in"
         type="submit"
