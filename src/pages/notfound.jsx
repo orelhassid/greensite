@@ -6,7 +6,6 @@ function Home() {
   return (
     <Layout>
       <SEO title="Not Found" subtitle="error code 404 page not found" />
-      <Navigation />
       <Header title="Page Not Found" subtitle="error code 404" />
       <Content>
         <div className="center center-screen">

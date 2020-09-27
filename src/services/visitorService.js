@@ -4,8 +4,8 @@ import http from "./httpService";
 const apiVisitor = http.api.visitor + "/user";
 const apiCheck = http.api.check + "/user";
 
-console.log(`${apiCheck}/checkin`);
-console.log(http.api);
+// console.log(`${apiCheck}/checkin`);
+// console.log(http.api);
 
 // localStorage key name
 const visitorKey = "visitor-key";
@@ -40,13 +40,16 @@ export async function login(visitor) {
   return data;
 }
 
-export function getVisitor() {
-  return {
-    name: "",
-    cid: localStorage.getItem(visitorKey),
-  };
+export async function getVisitor() {
+  try {
+    const cid = localStorage.getItem(visitorKey);
+
+    return await http.get(`${apiVisitor}/${cid}`, {});
+  } catch (error) {
+    throw new Error("User not found", error);
+  }
 }
-export async function checkin(data) {
+export async function checkin(data, params) {
   const { duration } = data;
   const visitor = getVisitor();
   // const hub = hubService.getHub();
@@ -54,31 +57,50 @@ export async function checkin(data) {
   const minutes = duration === 0 ? 30 : duration * 60;
 
   const checkinObject = {
-    hub_id: "I477CQ",
-    // zone_id: 1,
+    hub_id: params.hid,
+    zone_id: params.zid,
     duration: minutes,
     user_cid: visitor.cid,
   };
   try {
-    const result = await http.post(`${apiCheck}/1checkin`, checkinObject);
+    const result = await http.post(`${apiCheck}/checkin`, checkinObject);
     console.log("Result", result);
     return result;
   } catch (error) {
     throw new Error("Check-in Failed", error);
   }
 }
-export async function checkout() {
-  // http://54.72.200.116:7000/hub/1
+export async function checkout(params) {
+  // http://54.72.200.116:7000/user/checkout
+  const id = getVisitorId();
+  const requestObject = {
+    hub_id: params.hid,
+    zone_id: params.zid || null,
+    user_cid: id,
+  };
+
   try {
-    const result = await http.post(`${apiCheck}/checkout`, {});
+    const result = await http.post(`${apiCheck}/checkout`, requestObject);
+    return result;
   } catch (error) {}
+}
+
+export function isLogin() {
+  const cid = localStorage.getItem(visitorKey);
+  if (cid) return true;
+  else return false;
+}
+export function getVisitorId() {
+  return localStorage.getItem(visitorKey);
 }
 
 export default {
   register,
   logout,
   login,
+  isLogin,
   getVisitor,
   checkin,
   checkout,
+  visitorId: getVisitorId,
 };

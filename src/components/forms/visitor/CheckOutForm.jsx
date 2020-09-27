@@ -1,40 +1,45 @@
 import React, { useState } from "react";
 import Joi from "joi";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 // Form
 import useFormFields from "../../../hooks/useFormFields";
 import fields from "../../../config/checkOutFields.js";
 import Form from "../Form";
 import Button from "../../elements/Button";
+import visitorService from "../../../services/visitorService";
 // Style
 import { ReactComponent as CheckOutIcon } from "../../../assets/icons/checkout.svg";
 import "../forms.scss";
+import { toast } from "react-toastify";
 
 /* -------------------------------- Component ------------------------------- */
 
-const CheckOutForm = () => {
+const CheckOutForm = ({ hub }) => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
 
   useFormFields(fields, setLoading, setData);
   const history = useHistory();
+  const params = useParams();
 
   /* ------------------------------- Form Submit ------------------------------ */
   const handleSubmit = () => {
-    // Checkin
-
-    try {
-      // const visitor = visitorService.getVisitor();
-      // const result = visitorService.checkin(data);
-      history.push("/visitor/checkout/zone");
-    } catch (error) {
-      return console.error("");
+    // Check out
+    async function fetch() {
+      try {
+        await visitorService.checkout(params);
+        toast.success("Check out Success");
+        history.push("/visitor/checkout/success");
+      } catch (error) {
+        return console.error("");
+      }
     }
+    fetch();
   };
 
   /* ------------------------------- Validation ------------------------------- */
   const schema = Joi.object({
-    location: Joi.valid(true).required(),
+    location: Joi.string().required(),
   });
 
   /* -------------------------------- Render ------------------------------- */

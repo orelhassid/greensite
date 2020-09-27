@@ -16,20 +16,20 @@ import { ReactComponent as Logout } from "../../assets/icons/logout.svg";
 
 const commonLinks = [
   { label: <Logout />, url: "/logout" },
-  { label: <HomeIcon />, url: "/" },
+  // { label: <HomeIcon />, url: "/" },
   { label: <HelpIcon />, url: "/help" },
 ];
 
 const visitorLinks = [
-  { label: <LoginIcon />, url: "/visitor/login" },
+  // { label: <LoginIcon />, url: "/visitor/login" },
   { label: <RegisterIcon />, url: "/visitor/register" },
   { label: <CheckInIcon />, url: "/visitor/checkin" },
-  { label: <CheckOutIcon />, url: "/visitor/checkout" },
+  // { label: <CheckOutIcon />, url: "/visitor/checkout" },
 ];
 
 const hubLinks = [
   { label: <RegisterIcon />, url: "/hub/register" },
-  { label: <LoginIcon />, url: "/hub/login" },
+  // { label: <LoginIcon />, url: "/hub/login" },
   { label: <ZoneIcon />, url: "/hub/register/zones" },
   { label: <QrCode />, url: "/hub/zones" },
 ];
@@ -61,10 +61,13 @@ export const Navigation = () => {
   );
 };
 const Logo = () => (
-  <div className="logo">
+  <Link to="/" className="logo">
     <span className="icon">
       <LogoIcon />
     </span>
-    <span className="name">GreenSite Pass</span>
-  </div>
+    <div className="name">
+      <h2 className="name">GreenSite Pass</h2>
+      <small className="name">Your Green Pass for normal life</small>
+    </div>
+  </Link>
 );

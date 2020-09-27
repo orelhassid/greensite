@@ -4,13 +4,14 @@ export default [
   {
     label: (
       <span>
-        Check out <b>Betta Cafe</b>
+        Check out from <b>Business</b>
       </span>
     ),
     name: "location",
     type: "radio",
     checked: true,
-    defaultValue: true,
+    defaultValue: "hub",
+    valeu: "hub",
     id: "hub",
   },
   {
@@ -18,6 +19,7 @@ export default [
     name: "location",
     type: "radio",
     id: "zone",
+    value: "zone",
   },
 ];
 

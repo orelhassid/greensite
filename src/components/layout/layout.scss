@@ -27,18 +27,24 @@ nav.site-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
 
   .logo {
     display: flex;
     align-items: center;
     width: 16px;
     flex-grow: 1;
+    .icon {
+      margin: 0;
+    }
     .name {
       font-size: 14px;
       font-weight: 500;
       color: $white;
-      margin: 0 10px;
+      margin: 0 5px;
+      small {
+        font-size: 0.6rem;
+      }
     }
   }
   ul {
@@ -167,6 +173,17 @@ article {
       margin-top: 0;
     }
   }
+}
+
+/* -------------------------------- Toastify -------------------------------- */
+.Toastify__toast-container {
+  border-radius: 2px;
+}
+.Toastify__toast--success {
+  background-color: $green;
+}
+.Toastify__toast--error {
+  background-color: $red;
 }
 
 @media only screen and (min-width: 600px) {

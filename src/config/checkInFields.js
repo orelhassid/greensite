@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 
 const HealthLink = () => (
   <p>
-    I comply with the{" "}
-    <Link to="/visitor/checkin?popup=health">
-      <strong>health Declation</strong>
-    </Link>
+    I comply with the {/* <Link to="/visitor/checkin?popup=health"> */}
+    <strong>Health Declaration</strong>
+    {/* </Link> */}
   </p>
 );
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Joi from "joi";
 import queryString from "query-string";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 // Form
 
 import visitorService from "../../../services/visitorService";
@@ -22,21 +22,15 @@ const CheckInForm = () => {
 
   useFormFields(fields, setLoading, setData);
   const history = useHistory();
-  const location = useLocation();
-
-  useEffect(() => {
-    const search = queryString.parse(location.search);
-    search.popup === "health" ? setHealthToggle(true) : setHealthToggle(false);
-  }, [location]);
+  const params = useParams();
 
   /* ------------------------------- Form Submit ------------------------------ */
   const handleSubmit = async () => {
-    // Checkin
-
+    if (data.option === "else") return history.push("/visitor/register/else");
     try {
-      visitorService.checkin(data);
-      // console.log("Result", result);
-      history.push("/visitor/checkout/zone");
+      const result = await visitorService.checkin(data, params);
+      console.log("Result", result);
+      history.push(`/visitor/checkout/${params.hid}`);
     } catch (error) {
       return console.error("Check-in Failed");
     }

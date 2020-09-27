@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom";
 function ZonesPage() {
   const [zones, setZones] = useState([]);
   const [hub, setHub] = useState({});
+
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
@@ -17,7 +18,7 @@ function ZonesPage() {
     async function fetchData() {
       try {
         const zonesData = await getZones();
-        const hubData = await getHub();
+        const { data: hubData } = await getHub();
         setHub(hubData);
         setZones(zonesData);
         setLoading(true);
@@ -30,7 +31,7 @@ function ZonesPage() {
   }, [history]);
 
   const generateZoneLink = (zone) => {
-    return `/visitor/zones/?hubid=${zone.hid}&zoneid=${zone.id}`;
+    return `/visitor/checkin/${zone.hid}/${zone.zone_id}`;
   };
   return (
     <Layout>
@@ -43,7 +44,7 @@ function ZonesPage() {
             <hr />
             {zones.map((zone) => {
               const link = generateZoneLink(zone);
-              return <Card key={zone.id} zone={zone} link={link} />;
+              return <Card key={zone.zone_id} zone={zone} link={link} />;
             })}
           </Grid>
         ) : (

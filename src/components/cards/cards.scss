@@ -51,11 +51,14 @@
         letter-spacing: 1.5px;
         text-transform: uppercase;
         text-align: left;
-        & > * {
+        & li {
           margin-right: 15px;
         }
         & > :first-child {
           min-width: 100px;
+        }
+        ul {
+          display: flex;
         }
       }
     }

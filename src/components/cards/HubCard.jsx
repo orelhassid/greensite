@@ -4,6 +4,7 @@ import { ReactComponent as Qrcode } from "../../assets/images/qrcode.svg";
 
 const HubCard = ({ hub }) => {
   const { name, id, hid } = hub;
+  console.log("Hub", hub);
   const message = `Your HubID is *${hid}*`;
   return (
     <div className="card">

@@ -7,12 +7,14 @@ import Form from "../Form";
 import fields from "../../../config/registerZonesFields.json";
 import Button from "../../elements/Button";
 import "../forms.scss";
+import { useHistory } from "react-router-dom";
 
 const RegisterZonesForm = () => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
 
   useFormFields(fields, setLoading, setData);
+  const history = useHistory();
 
   /* ------------------------------- Form Submit (Add zones to Hub) ------------------------------ */
   const handleSubmit = async () => {
@@ -21,7 +23,7 @@ const RegisterZonesForm = () => {
         data.zoneType,
         parseInt(data.zoneCount)
       );
-      console.log("Result hub:", result);
+      history.push("/hub/zones");
     } catch (error) {
       return console.error("Registration Failed", error);
     }

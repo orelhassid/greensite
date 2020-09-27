@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Layout, {
   Content,
   Footer,
-  Header,
   Navigation,
   SEO,
 } from "../../components/layout";
@@ -19,17 +18,22 @@ import QRCodeElement from "../../components/elements/QRCodeElement";
 function RegisterSuccessPage() {
   const [visitor, setVisitor] = useState("");
 
-  const SuccessNotification = () => {
-    toast.success(
-      `Registration Success! ${visitor.name ? `Welcome ${visitor.name}` : ""}`
-    );
-  };
-
   useEffect(() => {
-    const result = visitorService.getVisitor();
-    console.log("Result", result);
-    setVisitor(result);
-    SuccessNotification();
+    async function fetch() {
+      try {
+        const { data } = await visitorService.getVisitor();
+        setVisitor(data);
+        toast.success(
+          `Registration Success! ${data.name ? `Welcome ${data.name}` : ""}`
+        );
+      } catch (error) {
+        console.error(error);
+        setVisitor(false);
+        return toast.error("User not Found");
+        // return history.push("/visitor/register");
+      }
+    }
+    fetch();
   }, []);
 
   return (
@@ -38,23 +42,25 @@ function RegisterSuccessPage() {
       <Navigation />
 
       <Content>
-        <div className="success-page">
-          <p style={{ marginBottom: 0 }}>Your personal CID is</p>
-          <h1>{visitor.cid}</h1>
-          <div className="image">
-            {/* <QrcodeIcon /> */}
-            <QRCodeElement link={visitor.key} />
-          </div>
-          <p>Thanks for using GreenSite Pass!</p>
-          <ButtonLink
-            label="Go to check-in"
-            link="/visitor/checkin"
-          ></ButtonLink>
+        {visitor && (
+          <div className="success-page">
+            <p style={{ marginBottom: 0 }}>Your personal CID is</p>
+            <h1>{visitor.cid}</h1>
+            <div className="image">
+              {/* <QrcodeIcon /> */}
+              <QRCodeElement link={visitor.cid} />
+            </div>
+            <p>Thanks for using GreenSite Pass!</p>
+            <ButtonLink
+              label="Go to check-in"
+              link="/visitor/checkin"
+            ></ButtonLink>
 
-          <div className="background">
-            <Background1 />
+            <div className="background">
+              <Background1 />
+            </div>
           </div>
-        </div>
+        )}
       </Content>
       <Footer></Footer>
     </Layout>

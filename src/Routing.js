@@ -14,10 +14,11 @@ import LoginHubPage from "./pages/business/LoginHubPage";
 import ZonesPage from "./pages/business/zonesPage";
 // Visitor
 import RegisterVisitorPage from "./pages/visitor/RegisterVisitorPage";
+import RegisterElsePage from "./pages/visitor/RegisterElsePage";
 import RegisterSuccessPage from "./pages/visitor/RegisterSuccessPage";
 import LoginVisitorPage from "./pages/visitor/LoginVisitorPage";
 import CheckOutPage from "./pages/visitor/CheckOutPage";
-import CheckOutSucessPage from "./pages/visitor/CheckOutSucessPage";
+import CheckOutSuccessPage from "./pages/visitor/CheckOutSuccessPage";
 import CheckOutZonePage from "./pages/visitor/CheckOutZonePage";
 import CheckInPage from "./pages/visitor/CheckInPage";
 // Zones
@@ -36,17 +37,20 @@ const Routing = () => {
       <Route path="/visitor/checkout/zone">
         <CheckOutZonePage />
       </Route>
-      <Route path="/visitor/checkout/sucess">
-        <CheckOutSucessPage />
+      <Route path="/visitor/checkout/success/:hid?">
+        <CheckOutSuccessPage />
       </Route>
-      <Route path="/visitor/checkout">
+      <Route path="/visitor/checkout/:hid">
         <CheckOutPage />
       </Route>
-      <Route path="/visitor/checkin">
+      <Route path="/visitor/checkin/:hid?/:zid?">
         <CheckInPage />
       </Route>
       <Route path="/visitor/register">
         <RegisterVisitorPage />
+      </Route>
+      <Route path="/visitor/register/else">
+        <RegisterElsePage />
       </Route>
       {/* Hub */}
       <Route path="/hub/register/zones">
@@ -58,7 +62,7 @@ const Routing = () => {
       <Route path="/hub/register">
         <RegisterHubPage />
       </Route>
-      <Route path={["/zones"]}>
+      <Route path={"/hub/zone/:hid?/:zid?"}>
         <ZonesSinglePage />
         {/* <ZoneSinglePage /> */}
       </Route>

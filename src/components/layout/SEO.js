@@ -31,6 +31,7 @@ export const SEO = ({ title, description }) => {
       />
       <link rel="apple-touch-icon" href="/public/GreenSite-Logo@96w.png" />
       <meta name="apple-mobile-web-app-status-bar" content="#008725" />
+
       <meta name="theme-color" content="#008725" />
     </Helmet>
   );

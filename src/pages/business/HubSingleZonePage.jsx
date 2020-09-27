@@ -8,20 +8,18 @@ import Layout, {
 
 import hubService from "../../services/hubService";
 import { useHistory, useParams } from "react-router-dom";
-import Card from "../../components/cards/Card";
 
-function ZonesSinglePage() {
+function HubSingleZonePage() {
   const [zone, setZone] = useState([]);
   const history = useHistory();
-  const params = useParams();
+  const { slug } = useParams();
+  console.log("Single", slug);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const { hid, zid } = params;
-        console.log(params);
-        const { data } = await hubService.getZone(hid, zid);
-        setZone(data);
+        // const { data } = await hubService.getZone(params.id);
+        // setZone(data);
       } catch (error) {
         // history.push("/hub/register");
         console.error("Get Zone Failed", error);
@@ -36,10 +34,15 @@ function ZonesSinglePage() {
       <PageTitle title="Betta Caffe" subtitle="Single Page for QR Code" />
 
       <Content>
-        <Card zone={zone} />
+        <h1>Zone Here</h1>
+        <ul>
+          {Object.entries(zone).map((item) => (
+            <li key={item[0]}>{`${item[0]}: ${item[1]}`}</li>
+          ))}
+        </ul>
       </Content>
     </Layout>
   );
 }
 
-export default ZonesSinglePage;
+export default HubSingleZonePage;

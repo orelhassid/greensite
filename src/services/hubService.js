@@ -59,11 +59,12 @@ export function getHubKey() {
   } else throw new Error("Hub Key not exist");
 }
 
-export async function getHub() {
-  const hubid = getHubKey();
+export async function getHub(hid) {
+  // http://54.72.200.116:5000/hub/GKTIL8
+  let hubid = getHubKey() || hid;
+  // http://54.72.200.116:5000/hub/GKTIL8
   try {
-    const { data } = await http.get(`${apiEndpoint}/${hubid}`);
-    return data;
+    return await http.get(`${apiEndpoint}/${hubid}`);
   } catch (error) {
     throw new Error("Hubid does'nt Exist");
   }
@@ -83,9 +84,10 @@ export async function getZones() {
     return [];
   }
 }
-export async function getZone(id) {
+export async function getZone(hid, zid) {
+  console.log(`${apiEndpoint}/${hid}/zone/${zid}`);
   try {
-    const result = http.get(`${apiEndpoint}/${getHubKey()}/zone/${id}`);
+    const result = http.get(`${apiEndpoint}/${hid}/zone/${zid}`);
     return result;
   } catch (error) {
     throw new Error("Get Zone Failed", error);
@@ -96,7 +98,9 @@ export default {
   login,
   register,
   logout,
-  getHub: getHubKey,
+  getHubKey,
+  // getHub: getHubKey,
+  getHub,
   addZones,
   getZones,
   getZone,
