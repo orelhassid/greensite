@@ -9,11 +9,23 @@ export const SEO = ({ title, description }) => {
       <meta name="description" content={description}></meta>
       <link rel="canonical" href="https://orelhassid-greensite.netlify.app/" />
 
-      <link
+      {/* <link
         rel="icon"
         type="image/png"
         href="/public/favicon.ico"
         sizes="16x16"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        href="/public/favicon.ico"
+        sizes="32x32"
+      /> */}
+      <link
+        rel="icon"
+        type="image/png"
+        href="/public/favicon.ico"
+        sizes="96x96"
       />
     </Helmet>
   );
