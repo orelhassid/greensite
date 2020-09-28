@@ -4,55 +4,54 @@ form {
   display: grid;
   grid-gap: 10px;
   padding: 0 1rem 4rem 1rem;
-
-  .form-field {
-    position: relative;
-    header {
-      display: flex;
-      justify-content: space-between;
-      .help svg {
-        color: $text1;
-        width: 12px;
-      }
-      label {
-        padding: 4px 0 4px 10px;
-      }
-    }
-    input,
-    select {
-      border: none;
-      background-color: $bg2;
-      padding: 10px;
-      border-radius: 2px;
-      width: 100%;
-      height: 40px;
-      color: $text1;
-      margin-bottom: 0.2rem;
-    }
-    select {
-      opacity: 0.5;
-    }
-
-    input::placeholder {
-      color: $text2;
-    }
-
-    .alert {
-      // position: absolute;
-      // bottom: 0;
-      color: $red;
-      font-size: 0.8rem;
-    }
-  }
-  .actions {
+}
+.form-field {
+  position: relative;
+  header {
     display: flex;
-    justify-content: space-around;
-    margin: 1rem 1.5rem;
+    justify-content: space-between;
+    .help svg {
+      color: $text1;
+      width: 12px;
+    }
+    label {
+      padding: 4px 0 4px 10px;
+    }
   }
-  // Buttons Area
-  .grid {
-    margin-top: 20px;
+  input,
+  select {
+    border: none;
+    background-color: $bg2;
+    padding: 10px;
+    border-radius: 2px;
+    width: 100%;
+    height: 40px;
+    color: $text1;
+    margin-bottom: 0.2rem;
   }
+  select {
+    opacity: 0.5;
+  }
+
+  input::placeholder {
+    color: $text2;
+  }
+
+  .alert {
+    // position: absolute;
+    // bottom: 0;
+    color: $red;
+    font-size: 0.8rem;
+  }
+}
+.actions {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 1.5rem;
+}
+// Buttons Area
+.grid {
+  margin-top: 20px;
 }
 
 /* -------------------------------- Checkbox -------------------------------- */

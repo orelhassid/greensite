@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 // Form
 // import ServiceName from "../../../services/ServiceName";
 import useFormFields from "../../../hooks/useFormFields";
-import fields from "../../../config/checkOutZoneFields.json";
+import fields from "../../../config/checkOutZoneFields.js";
 import Form from "../Form";
 import Button from "../../elements/Button";
 import CardSimple from "../../cards/CardSimple";

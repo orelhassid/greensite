@@ -1,0 +1,55 @@
+export default [
+  {
+    name: "name",
+    id: "name",
+    type: "text",
+    label: "Name",
+    placeholder: "business/site name",
+  },
+  {
+    name: "address",
+    id: "address",
+    type: "text",
+    label: "Address",
+    placeholder: "location",
+  },
+  {
+    name: "contactName",
+    id: "contactName",
+    type: "text",
+    label: "Contact Name",
+    placeholder: "John Doe",
+  },
+  {
+    name: "contactPhone",
+    id: "contactPhone",
+    type: "tel",
+    label: "Contact Phone Number",
+    placeholder: "050-123-4567",
+  },
+  {
+    name: "hubtype",
+    id: "hubtype",
+    label: "Business / Site Type",
+    placeholder: "Fill in Your Business Type",
+    type: "list",
+    options: [
+      "Cafe",
+      "Restaurant",
+      "Hospital",
+      "Taxi",
+      "Supermarket",
+      "Local Shop",
+      "Salonn",
+      "Other",
+    ],
+  },
+  {
+    name: "multiZone",
+    id: "multiZone",
+    type: "checkbox",
+    label: "Multi-zone Site",
+    help:
+      "Multi-zone means your site can be divided into more specific sections (e.g. table at a cafe, carrianges in a train etc.)",
+  },
+];

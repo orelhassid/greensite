@@ -60,9 +60,7 @@ export function getHubKey() {
 }
 
 export async function getHub(hid) {
-  // http://54.72.200.116:5000/hub/GKTIL8
   let hubid = getHubKey() || hid;
-  // http://54.72.200.116:5000/hub/GKTIL8
   try {
     return await http.get(`${apiEndpoint}/${hubid}`);
   } catch (error) {
@@ -107,5 +105,5 @@ export default {
 };
 
 /**
-Hub/{id}/zone GET id = db.Column(db.Integer, primary_key=True)   name = db.Column(db.String(100))   type = db.Column(db.String(200))
+Hub/{id}/zone GETid = db.Column(db.Integer, primary_key=True)  name = db.Column(db.String(100))  type = db.Column(db.String(200))
 */

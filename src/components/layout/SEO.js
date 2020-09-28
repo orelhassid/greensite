@@ -26,7 +26,7 @@ export const SEO = ({ title, description }) => {
       <link
         rel="icon"
         type="image/png"
-        href="/public/favicon.ico"
+        href="../../../public/favicon.ico"
         sizes="96x96"
       />
       <link rel="apple-touch-icon" href="/public/GreenSite-Logo@96w.png" />

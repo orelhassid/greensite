@@ -1,20 +1,23 @@
 import React from "react";
-import { ReactComponent as HelpIcon } from "../../../assets/icons/help.svg";
 
-const TextField = ({ name, label, value, error, ...rest }) => {
+export default function TextField({ field, value, onChange, error }) {
+  const { label, id, help, ...rest } = field;
   return (
     <div className="form-field">
       <header>
-        <label htmlFor={name}>{label}</label>
-        <div className="help">
-          <HelpIcon />
-        </div>
+        <label htmlFor={id}>{label}</label>
       </header>
-
-      <input id={name} name={name} value={value} {...rest} />
-      {error && <div className="alert alert-danger">{error}</div>}
+      <input id={id} onChange={onChange} value={value} {...rest} />
+      <footer>
+        <small>{help}</small>
+        <div className="info">
+          {error && <div className="alert alert-danger">{error}</div>}
+        </div>
+      </footer>
     </div>
   );
-};
+}
 
-export default TextField;
+TextField.defaultValue = {
+  label: "Label",
+};

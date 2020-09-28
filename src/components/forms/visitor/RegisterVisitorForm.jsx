@@ -6,9 +6,10 @@ import VisitorService from "../../../services/visitorService";
 import useFormFields from "../../../hooks/useFormFields";
 import Form from "../Form";
 import Button from "../../elements/Button";
-import fields from "../../../config/registerVisitorFields.json";
+import fields from "../../../config/registerVisitorFields.js";
 // Style
 import "../forms.scss";
+import { toast } from "react-toastify";
 
 /* -------------------------------- Component ------------------------------- */
 const RegisterVisitorForm = () => {
@@ -19,7 +20,7 @@ const RegisterVisitorForm = () => {
   const history = useHistory();
 
   /* ------------------------------- Form Submit (Create New User/Visitor) ------------------------------ */
-  const handleSubmit = async () => {
+  const onSubmit = async () => {
     // Call the server
     try {
       await VisitorService.register(data);
@@ -27,6 +28,9 @@ const RegisterVisitorForm = () => {
     } catch (error) {
       return console.error("Registration Failed", error);
     }
+  };
+  const onError = () => {
+    toast.error("Registration Failed");
   };
 
   /* ------------------------------- Validation ------------------------------- */
@@ -43,17 +47,20 @@ const RegisterVisitorForm = () => {
 
   /* --------------------------------- Render --------------------------------- */
   return (
-    <Form
-      fields={fields}
-      data={data}
-      setData={setData}
-      loading={loading}
-      schema={schema}
-      onSubmit={() => handleSubmit()}
-    >
-      <Button label="register" type="submit" />
-    </Form>
+    <>
+      {loading && (
+        <Form
+          fields={fields}
+          setData={setData}
+          data={data}
+          onSubmit={onSubmit}
+          onError={onError}
+          schema={schema}
+        >
+          <Button label="Register" />
+        </Form>
+      )}
+    </>
   );
 };
-
 export default RegisterVisitorForm;

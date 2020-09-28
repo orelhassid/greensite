@@ -4,10 +4,11 @@ import Joi from "joi";
 import HubService from "../../../services/hubService";
 import useFormFields from "../../../hooks/useFormFields";
 import Form from "../Form";
-import fields from "../../../config/registerZonesFields.json";
+import fields from "../../../config/registerZonesFields.js";
 import Button from "../../elements/Button";
 import "../forms.scss";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const RegisterZonesForm = () => {
   const [data, setData] = useState();
@@ -17,13 +18,16 @@ const RegisterZonesForm = () => {
   const history = useHistory();
 
   /* ------------------------------- Form Submit (Add zones to Hub) ------------------------------ */
-  const handleSubmit = async () => {
+  const onSubmit = async () => {
     try {
       await HubService.addZones(data.zoneType, parseInt(data.zoneCount));
       history.push("/hub/zones");
     } catch (error) {
       return console.error("Registration Failed", error);
     }
+  };
+  const onError = () => {
+    toast.error("Register Zones Failed");
   };
 
   const schema = Joi.object({
@@ -32,16 +36,20 @@ const RegisterZonesForm = () => {
   });
 
   return (
-    <Form
-      fields={fields}
-      data={data}
-      setData={setData}
-      onSubmit={() => handleSubmit()}
-      schema={schema}
-      loading={loading}
-    >
-      <Button label="Add Zones" type="submit" />
-    </Form>
+    <>
+      {loading && (
+        <Form
+          fields={fields}
+          setData={setData}
+          data={data}
+          onSubmit={onSubmit}
+          onError={onError}
+          schema={schema}
+        >
+          <Button label="Add Zones" />
+        </Form>
+      )}
+    </>
   );
 };
 

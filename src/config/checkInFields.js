@@ -1,13 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HealthLink = () => (
   <p>
-    I comply with the {/* <Link to="/visitor/checkin?popup=health"> */}
-    <strong>Health Declaration</strong>
-    {/* </Link> */}
+    I comply with the <Link to="/health">Health Declaration</Link>
   </p>
 );
-
 export default [
   {
     label: "Time (in hours)",
@@ -27,5 +25,3 @@ export default [
     id: "health",
   },
 ];
-
-// export default Fields;

@@ -1,15 +1,23 @@
 import React from "react";
 import "./cards.scss";
 import QRCodeElement from "../elements/QRCodeElement";
-import { ReactComponent as WhatsAppIcon } from "../../assets/icons/whatsapp.svg";
+import { ReactComponent as CopyIcon } from "../../assets/icons/copy.svg";
 import { ReactComponent as LinkIcon } from "../../assets/icons/link.svg";
 import { Link as div, Link } from "react-router-dom";
+import Button from "../elements/Button";
+import ButtonIcon from "../elements/ButtonIcon";
+import { toast } from "react-toastify";
 
 const Card = ({ zone, link }) => {
   // const { zoneId, zoneName, siteid, zoneLink, zoneType } = zone;
   const { zone_id: zid, name, hid, type } = zone;
   const shareLink = `https://${window.location.hostname}${link}`;
   const colors = ["red", "green", "orange"];
+
+  const copyToClipboard = (e) => {
+    navigator.clipboard.writeText(shareLink);
+    toast.success("Copy to clipboard");
+  };
   return (
     <div to={`/zones/${hid}/${zid}`} className="card">
       <div className="text">
@@ -28,9 +36,10 @@ const Card = ({ zone, link }) => {
             <li>
               <ul className="action">
                 <li>
-                  <a href={`whatsapp://send?text=${shareLink}`}>
-                    <WhatsAppIcon />
-                  </a>
+                  <ButtonIcon
+                    icon={<CopyIcon />}
+                    onClick={(e) => copyToClipboard(e)}
+                  />
                 </li>
                 <li>
                   <Link to={`/hub/zone/${hid}/${zid}`}>

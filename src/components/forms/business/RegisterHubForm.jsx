@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 // Form
 import useFormFields from "../../../hooks/useFormFields";
 import HubService from "../../../services/hubService";
-import fields from "../../../config/registerHubFormFields.json";
+import fields from "../../../config/registerHubFormFields.js";
 import Form from "../Form";
 import Button from "../../elements/Button";
 // Style
@@ -22,7 +22,7 @@ const RegisterHubForm = () => {
   const history = useHistory();
 
   /* ------------------------------- Form Submit (Create New Hub) ------------------------------ */
-  const handleSubmit = async () => {
+  const onSubmit = async () => {
     try {
       // Create new Hub in DB
       const result = await HubService.register(data);
@@ -34,6 +34,10 @@ const RegisterHubForm = () => {
     } catch (error) {
       return toast.error("Registration Failed");
     }
+  };
+
+  const onError = () => {
+    toast.error("Registration Failed");
   };
 
   /* ------------------------------- Validation ------------------------------- */
@@ -49,16 +53,20 @@ const RegisterHubForm = () => {
 
   /* -------------------------------- Render ------------------------------- */
   return (
-    <Form
-      fields={fields}
-      data={data}
-      setData={setData}
-      loading={loading}
-      schema={schema}
-      onSubmit={() => handleSubmit()}
-    >
-      <Button label="Register" type="submit" />
-    </Form>
+    <>
+      {loading && (
+        <Form
+          fields={fields}
+          setData={setData}
+          data={data}
+          onSubmit={onSubmit}
+          onError={onError}
+          schema={schema}
+        >
+          <Button label="Register" />
+        </Form>
+      )}
+    </>
   );
 };
 

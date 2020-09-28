@@ -14,6 +14,7 @@ export default function Button({
   icon,
   formId,
   disabled,
+  ...rest
 }) {
   return (
     <button
@@ -21,6 +22,7 @@ export default function Button({
       type={type}
       form={formId}
       disabled={disabled}
+      {...rest}
     >
       <span className="label">{label}</span>
       {icon && <span className="icon">{icon}</span>}

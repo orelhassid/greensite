@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Layout, { Header, Content, Grid, SEO } from "../../components/layout";
+import Layout, {
+  Header,
+  Content,
+  Grid,
+  SEO,
+  ActionBar,
+} from "../../components/layout";
 import Card from "../../components/cards/Card";
 import HubCard from "../../components/cards/HubCard";
 // import HubCard from "../../components/cards/HubCard";
@@ -38,6 +44,7 @@ function ZonesPage() {
       <SEO title="QR Codes" description="Track you zones" />
       <Header title="QR Codes" subtitle="Track you zones" />
       <Content>
+        <ActionBar />
         {loading ? (
           <Grid spacing="30">
             <HubCard hub={hub} />

@@ -1,25 +1,23 @@
 import React from "react";
-
+// import hubService from "../services/hubService";
+// async function getCurrentHub() {
+//   const hub = await hubService.getHub();
+//   return hub;
+// }
 export default [
   {
-    label: (
-      <span>
-        Check out from <b>Business</b>
-      </span>
-    ),
-    name: "location",
+    label: "",
     type: "radio",
-    checked: true,
-    defaultValue: "hub",
-    valeu: "hub",
+    name: "location",
     id: "hub",
+    defaultValue: "hub",
+    defaultChecked: "on",
   },
   {
     label: "Check out only from sub-zone",
-    name: "location",
     type: "radio",
+    name: "location",
     id: "zone",
-    value: "zone",
   },
 ];
 

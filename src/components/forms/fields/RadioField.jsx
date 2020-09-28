@@ -1,45 +1,29 @@
 import React from "react";
-import { ReactComponent as HelpIcon } from "../../../assets/icons/help.svg";
 
-const RadioField = ({
-  name,
-  label,
-  placeholder,
-  type,
-  value,
-  onChange,
-  error,
-  id,
-  checked,
-}) => {
+export default function RadioField({ field, value, onChange, error }) {
+  const { label, id, help, ...rest } = field;
   return (
     <div className="form-field form-field-checkbox">
       <div className="input">
         <input
-          type={type}
           id={id}
-          name={name}
-          value={value}
-          onClick={onChange}
+          defaultValue={value}
           onChange={onChange}
-          // checked={value}
-          defaultChecked={checked}
+          onClick={onChange}
+          {...rest}
         />
       </div>
       <div className="label">
         <header>
           <label htmlFor={id}>{label}</label>
-          <div className="help">
-            <HelpIcon />
-          </div>
         </header>
-        <small>{placeholder}</small>
       </div>
-      <div className="info">
-        {error && <div className="alert alert-danger">{error}</div>}
-      </div>
+      <footer>
+        <small>{help}</small>
+        <div className="info">
+          {error && <div className="alert alert-danger">{error}</div>}
+        </div>
+      </footer>
     </div>
   );
-};
-
-export default RadioField;
+}

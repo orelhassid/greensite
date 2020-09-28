@@ -8,7 +8,7 @@ import Form from "../Form";
 import Button from "../../elements/Button";
 import visitorService from "../../../services/visitorService";
 // Style
-import { ReactComponent as CheckOutIcon } from "../../../assets/icons/checkout.svg";
+// import { ReactComponent as CheckOutIcon } from "../../../assets/icons/checkout.svg";
 import "../forms.scss";
 import { toast } from "react-toastify";
 
@@ -22,8 +22,13 @@ const CheckOutForm = ({ hub }) => {
   const history = useHistory();
   const params = useParams();
 
+  fields[0].label = (
+    <span>
+      Check out from <b>{hub.name}</b>
+    </span>
+  );
   /* ------------------------------- Form Submit ------------------------------ */
-  const handleSubmit = () => {
+  const onSubmit = async () => {
     // Check out
     async function fetch() {
       try {
@@ -37,6 +42,10 @@ const CheckOutForm = ({ hub }) => {
     fetch();
   };
 
+  const onError = () => {
+    toast.error("Checkout Failed");
+  };
+
   /* ------------------------------- Validation ------------------------------- */
   const schema = Joi.object({
     location: Joi.string().required(),
@@ -45,21 +54,18 @@ const CheckOutForm = ({ hub }) => {
   /* -------------------------------- Render ------------------------------- */
   return (
     <>
-      <Button
-        label="check-out"
-        type="submit"
-        icon={<CheckOutIcon />}
-        formId="checkout"
-      />
-      <Form
-        fields={fields}
-        data={data}
-        setData={setData}
-        loading={loading}
-        schema={schema}
-        onSubmit={() => handleSubmit()}
-        formId="checkout"
-      ></Form>
+      {loading && (
+        <Form
+          fields={fields}
+          setData={setData}
+          data={data}
+          onSubmit={onSubmit}
+          onError={onError}
+          schema={schema}
+        >
+          <Button label="Check-out" />
+        </Form>
+      )}
     </>
   );
 };

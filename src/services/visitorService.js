@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
 import http from "./httpService";
+import hubService from "./hubService";
 
 const apiVisitor = http.api.visitor + "/user";
 const apiCheck = http.api.check + "/user";
@@ -25,7 +26,6 @@ export async function register(visitor) {
   } catch (error) {
     toast.error("Registration Failed");
     throw new Error("Registration Failed");
-    console.log("error");
   }
 }
 
@@ -52,8 +52,8 @@ export async function getVisitor() {
 export async function checkin(data, params) {
   const { duration } = data;
   const visitor = getVisitor();
-  // const hub = hubService.getHub();
-
+  const hub = hubService.getHub(params.hid);
+  localStorage.setItem("hub", hub);
   const minutes = duration === 0 ? 30 : duration * 60;
 
   const checkinObject = {

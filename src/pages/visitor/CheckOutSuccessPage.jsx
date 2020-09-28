@@ -8,11 +8,12 @@ import Layout, {
 } from "../../components/layout";
 import Button from "../../components/elements/Button";
 import hubService from "../../services/hubService";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 function CheckOutSuccessPage() {
   const [hub, setHub] = useState({});
   const params = useParams();
+  const history = useHistory();
   useEffect(() => {
     async function fetch() {
       try {
@@ -23,6 +24,9 @@ function CheckOutSuccessPage() {
     fetch();
   }, [params]);
 
+  const handleClick = () => {
+    history.push("/visitor/checkin");
+  };
   return (
     <Layout>
       <SEO title="Check-out Success" />
@@ -32,7 +36,7 @@ function CheckOutSuccessPage() {
           <p>You checked-out from</p>
           <h3>{hub.name}</h3>
           <p>Thanks for using GreenSite Pass!</p>
-          <Button label="check-in again" />
+          <Button label="check-in again" onClick={() => handleClick()} />
         </Grid>
       </Content>
     </Layout>

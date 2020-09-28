@@ -1,35 +1,27 @@
 import React from "react";
-import { ReactComponent as HelpIcon } from "../../../assets/icons/help.svg";
 
-const ListField = ({
-  name,
-  label,
-  placeholder,
-  value,
-  options,
-  onChange,
-  error,
-}) => {
-  const listId = name + "_list";
+export default function ListField({ field, value, onChange, error }) {
+  const { label, id, help, options, ...rest } = field;
+  const listId = id + "_list";
+
   return (
     <div className="form-field">
       <header>
-        <label htmlFor={name}>{label}</label>
-        <div className="help">
-          <HelpIcon />
-        </div>
+        <label htmlFor={id}>{label}</label>
       </header>
-
       <input
+        id={id}
         list={listId}
-        id={name}
-        name={name}
-        placeholder={placeholder}
-        value={value}
         onChange={onChange}
+        value={value}
+        {...rest}
       />
-      {error && <div className="alert alert-danger">{error}</div>}
-
+      <footer>
+        <small>{help}</small>
+        <div className="info">
+          {error && <div className="alert alert-danger">{error}</div>}
+        </div>
+      </footer>
       <datalist id={listId}>
         {options.map((item) => (
           <option key={item} value={item}></option>
@@ -37,6 +29,4 @@ const ListField = ({
       </datalist>
     </div>
   );
-};
-
-export default ListField;
+}
