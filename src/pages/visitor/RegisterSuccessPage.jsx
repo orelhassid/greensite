@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Layout, {
   Content,
   Footer,
@@ -13,28 +13,31 @@ import { ReactComponent as Background1 } from "../../assets/images/background-1.
 import "../pages.scss";
 import { toast } from "react-toastify";
 import QRCodeElement from "../../components/elements/QRCodeElement";
+import { VisitorContext } from "../../contexts/VisitorContext";
 
 /* -------------------------------- Component ------------------------------- */
 function RegisterSuccessPage() {
-  const [visitor, setVisitor] = useState("");
+  // const [visitor, setVisitor] = useState("");
 
-  useEffect(() => {
-    async function fetch() {
-      try {
-        const { data } = await visitorService.getVisitor();
-        setVisitor(data);
-        toast.success(
-          `Registration Success! ${data.name ? `Welcome ${data.name}` : ""}`
-        );
-      } catch (error) {
-        console.error(error);
-        setVisitor(false);
-        return toast.error("User not Found");
-        // return history.push("/visitor/register");
-      }
-    }
-    fetch();
-  }, []);
+  const { visitor } = useContext(VisitorContext);
+
+  // useEffect(() => {
+  // async function fetch() {
+  //   try {
+  //     const { data } = await visitorService.getVisitor();
+  //     setVisitor(data);
+  //     toast.success(
+  //       `Registration Success! ${data.name ? `Welcome ${data.name}` : ""}`
+  //     );
+  //   } catch (error) {
+  //     console.error(error);
+  //     setVisitor(false);
+  //     return toast.error("User not Found");
+  // return history.push("/visitor/register");
+  //   }
+  // }
+  // fetch();
+  // }, []);
 
   const copyToClipboard = (e) => {
     navigator.clipboard.writeText(visitor.cid);

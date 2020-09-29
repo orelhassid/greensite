@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Joi from "joi";
 import { useHistory } from "react-router-dom";
 // Form
@@ -10,6 +10,7 @@ import fields from "../../../config/registerVisitorFields.js";
 // Style
 import "../forms.scss";
 import { toast } from "react-toastify";
+import { VisitorContext } from "../../../contexts/VisitorContext";
 
 /* -------------------------------- Component ------------------------------- */
 const RegisterVisitorForm = () => {
@@ -17,13 +18,16 @@ const RegisterVisitorForm = () => {
   const [loading, setLoading] = useState(false);
   useFormFields(fields, setLoading, setData);
 
+  const { register } = useContext(VisitorContext);
+
   const history = useHistory();
 
   /* ------------------------------- Form Submit (Create New User/Visitor) ------------------------------ */
   const onSubmit = async () => {
     // Call the server
     try {
-      await VisitorService.register(data);
+      // await VisitorService.register(data);
+      register(data);
       if (data.option === "myself") history.push("/visitor/register/success");
     } catch (error) {
       return console.error("Registration Failed", error);

@@ -22,7 +22,8 @@ export async function register(visitor) {
   };
   try {
     const { data } = await http.post(apiVisitor, visitorData);
-    return localStorage.setItem(visitorKey, data.cid);
+    localStorage.setItem(visitorKey, data.cid);
+    return data;
   } catch (error) {
     toast.error("Registration Failed");
     throw new Error("Registration Failed");

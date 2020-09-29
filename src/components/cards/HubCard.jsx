@@ -10,8 +10,8 @@ import { toast } from "react-toastify";
 const HubCard = ({ hub }) => {
   const { name, id, hid, address } = hub;
 
-  const shareLink = `https://${window.location.hostname}/checkout/${hid}`;
-  const message = `Your HubID is *${hid}*`;
+  const shareLink = `https://${window.location.hostname}/visitor/checkin/${hid}`;
+  console.log(shareLink);
 
   const copyToClipboard = (e) => {
     navigator.clipboard.writeText(shareLink);
@@ -26,7 +26,7 @@ const HubCard = ({ hub }) => {
         <footer>
           <ul className="info">
             <li>SITE ID: {hid}</li>
-            <li>SITE address: {address}</li>
+            {/* <li>SITE address: {address}</li> */}
             <li>
               <ul className="action">
                 <li>

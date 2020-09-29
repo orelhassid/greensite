@@ -1,20 +1,26 @@
-import React, { createContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { createContext, useState } from "react";
+import visitorService from "../services/visitorService";
 
-export const VisitorContext = createContext();
+export const VisitorContext = createContext(null);
 
 const VisitorContextProvider = ({ children }) => {
-  const [location, setLocation] = useState({});
+  const [visitor, setVisitor] = useState({});
 
-  // useEffect(() => {
-  //   setLocation(JSON.parse(localStorage.getItem("hub")));
-  // }, []);
-
-  const addLocation = (data) => {
-    setLocation(data);
+  const register = async (account) => {
+    const data = await visitorService.register(account);
+    console.log("Data", data);
+    setVisitor(data);
+    console.log(visitor);
   };
+
+  const login = async (account) => {
+    const data = await visitorService.register(account);
+    console.log(data);
+    setVisitor(data);
+  };
+
   return (
-    <VisitorContext.Provider value={{ location, setLocation }}>
+    <VisitorContext.Provider value={{ visitor, register }}>
       {children}
     </VisitorContext.Provider>
   );
