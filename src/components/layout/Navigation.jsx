@@ -22,7 +22,7 @@ const commonLinks = [
 
 const visitorLinks = [
   // { label: <LoginIcon />, url: "/visitor/login" },
-  { label: <RegisterIcon />, url: "/visitor/register" },
+  // { label: <RegisterIcon />, url: "/visitor/register" },
   { label: <CheckInIcon />, url: "/visitor/checkin" },
   // { label: <CheckOutIcon />, url: "/visitor/checkout" },
 ];

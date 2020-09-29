@@ -92,6 +92,7 @@ export async function checkout(params) {
 
   try {
     const result = await http.post(`${apiCheck}/checkout`, requestObject);
+    localStorage.removeItem("hub");
     return result;
   } catch (error) {}
 }

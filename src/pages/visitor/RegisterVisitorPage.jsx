@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import RegisterVisitorForm from "../../components/forms/visitor/RegisterVisitorForm";
 import Layout, { Header, Content, SEO } from "../../components/layout";
 function RegisterVisitorPage() {
+  const history = useHistory();
+
+  useEffect(() => {
+    if (localStorage.getItem("visitor-key")) {
+      history.push("/visitor/checkin");
+    }
+  }, []);
   return (
     <Layout>
       <SEO
