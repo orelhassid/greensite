@@ -37,7 +37,7 @@ function RegisterSuccessPage() {
   }, []);
 
   const copyToClipboard = (e) => {
-    navigator.clipboard.writeText(shareLink);
+    navigator.clipboard.writeText(visitor.cid);
     toast.success("Copy to clipboard");
   };
 
