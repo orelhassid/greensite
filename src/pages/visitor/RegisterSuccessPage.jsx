@@ -36,6 +36,11 @@ function RegisterSuccessPage() {
     fetch();
   }, []);
 
+  const copyToClipboard = (e) => {
+    navigator.clipboard.writeText(shareLink);
+    toast.success("Copy to clipboard");
+  };
+
   return (
     <Layout>
       <SEO title="Visitor Success Page" />
@@ -44,9 +49,11 @@ function RegisterSuccessPage() {
       <Content>
         {visitor && (
           <div className="success-page">
-            <p style={{ marginBottom: 0 }}>Your personal CID is</p>
+            <p style={{ marginBottom: 0 }} onClick={(e) => copyToClipboard(e)}>
+              Your personal CID is
+            </p>
             <h1>{visitor.cid}</h1>
-            <div className="image">
+            <div className="image" onClick={(e) => copyToClipboard(e)}>
               {/* <QrcodeIcon /> */}
               <QRCodeElement link={visitor.cid} />
             </div>
