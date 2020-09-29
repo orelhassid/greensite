@@ -17,6 +17,7 @@ const CheckinManually = () => {
 
   const handleClick = () => {
     console.log("Clicked!");
+
     history.push(`/visitor/checkin/${data.hubid}`);
   };
 

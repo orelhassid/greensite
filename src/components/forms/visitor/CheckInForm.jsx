@@ -12,6 +12,7 @@ import TermsCard from "../../cards/TermsCard";
 // Style
 import { ReactComponent as CheckInIcon } from "../../../assets/icons/checkin.svg";
 import "../forms.scss";
+import { toast } from "react-toastify";
 
 /* -------------------------------- Component ------------------------------- */
 const CheckInForm = () => {
@@ -23,17 +24,19 @@ const CheckInForm = () => {
   const params = useParams();
 
   /* ------------------------------- Form Submit ------------------------------ */
-  const handleSubmit = async () => {
+  const onSubmit = async () => {
     if (data.option === "else") return history.push("/visitor/register/else");
     try {
       const result = await visitorService.checkin(data, params);
-      console.log("Result", result);
-      history.push(`/visitor/checkout/${params.hid}`);
+      history.push(`/visitor/checkout/zone/${params.hid}`);
     } catch (error) {
       return console.error("Check-in Failed");
     }
   };
 
+  const onError = () => {
+    toast.error("Registration Failed");
+  };
   /* ------------------------------- Validation ------------------------------- */
 
   const schema = Joi.object({
@@ -47,11 +50,11 @@ const CheckInForm = () => {
   return (
     <Form
       fields={fields}
-      data={data}
       setData={setData}
-      onSubmit={() => handleSubmit()}
+      data={data}
+      onSubmit={onSubmit}
+      onError={onError}
       schema={schema}
-      loading={loading}
     >
       {false && <TermsCard />}
       <Button

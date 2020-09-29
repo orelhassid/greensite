@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Joi from "joi";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 // Form
 // import ServiceName from "../../../services/ServiceName";
@@ -11,6 +11,7 @@ import Button from "../../elements/Button";
 import CardSimple from "../../cards/CardSimple";
 // Style
 import "../forms.scss";
+import { toast } from "react-toastify";
 
 /* -------------------------------- Component ------------------------------- */
 const CheckOutZoneForm = () => {
@@ -20,19 +21,19 @@ const CheckOutZoneForm = () => {
   useFormFields(fields, setLoading, setData);
 
   const history = useHistory();
+  const params = useParams();
 
   /* ------------------------------- Form Submit ------------------------------ */
-  const handleSubmit = () => {
-    console.log(data);
-    history.push({
-      pathname: "/visitor/checkout",
-      search: `?zoneId=${data.zoneId}`,
-    });
+  const onSubmit = async () => {
+    history.push(`/visitor/checkout/${params.hid}/${data.zoneId}`);
+  };
+  const onError = () => {
+    toast.error("Registration Failed");
   };
 
   /* ------------------------------- Validation ------------------------------- */
   const schema = Joi.object({
-    zoneId: Joi.string().optional().label("Zone ID"),
+    zoneId: Joi.string().optional(),
   });
 
   /* -------------------------------- Render ------------------------------- */
@@ -42,16 +43,18 @@ const CheckOutZoneForm = () => {
       optional="(optional)"
       subtitle="Registering for a sub-zone greatly improves our accuracy and reduces your risk of getting alerted"
     >
-      <Form
-        fields={fields}
-        data={data}
-        setData={setData}
-        loading={loading}
-        schema={schema}
-        onSubmit={() => handleSubmit()}
-      >
-        <Button label="register zone" style="outlined" type="submit" />
-      </Form>
+      {loading && (
+        <Form
+          fields={fields}
+          setData={setData}
+          data={data}
+          onSubmit={onSubmit}
+          onError={onError}
+          schema={schema}
+        >
+          <Button label="Register Zone" style="outlined" />
+        </Form>
+      )}
     </CardSimple>
   );
 };

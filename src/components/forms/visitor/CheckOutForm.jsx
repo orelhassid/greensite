@@ -21,7 +21,7 @@ const CheckOutForm = ({ hub }) => {
   useFormFields(fields, setLoading, setData);
   const history = useHistory();
   const params = useParams();
-
+  console.log(hub);
   fields[0].label = (
     <span>
       Check out from <b>{hub.name}</b>
@@ -34,7 +34,7 @@ const CheckOutForm = ({ hub }) => {
       try {
         await visitorService.checkout(params);
         toast.success("Check out Success");
-        history.push("/visitor/checkout/success");
+        history.push(`/visitor/checkout/success/${params.hid}`);
       } catch (error) {
         return console.error("");
       }

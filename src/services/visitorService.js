@@ -52,8 +52,19 @@ export async function getVisitor() {
 export async function checkin(data, params) {
   const { duration } = data;
   const visitor = getVisitor();
-  const hub = hubService.getHub(params.hid);
-  localStorage.setItem("hub", hub);
+  try {
+    const hub = await hubService.getHub(params.hid);
+    localStorage.setItem(
+      "hub",
+      JSON.stringify({
+        name: hub.name,
+        hid: hub.hid,
+      })
+    );
+  } catch (error) {
+    console.error(error);
+  }
+
   const minutes = duration === 0 ? 30 : duration * 60;
 
   const checkinObject = {
@@ -93,6 +104,8 @@ export function isLogin() {
 export function getVisitorId() {
   return localStorage.getItem(visitorKey);
 }
+
+export function storeHub() {}
 
 export default {
   register,

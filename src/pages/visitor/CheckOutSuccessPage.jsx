@@ -14,18 +14,21 @@ function CheckOutSuccessPage() {
   const [hub, setHub] = useState({});
   const params = useParams();
   const history = useHistory();
+
   useEffect(() => {
+    console.log(params);
     async function fetch() {
       try {
-        const { data } = await hubService.getHub(params.hid);
-        setHub(data);
+        const hubObject = JSON.parse(localStorage.getItem("hub"));
+
+        setHub(hubObject);
       } catch (error) {}
     }
     fetch();
   }, [params]);
 
   const handleClick = () => {
-    history.push("/visitor/checkin");
+    history.push(`/visitor/checkin/${hub.hid}`);
   };
   return (
     <Layout>

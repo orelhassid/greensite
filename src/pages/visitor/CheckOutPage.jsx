@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // import { useLocation } from "react-router-dom";
 
 import Layout, {
@@ -10,17 +10,20 @@ import Layout, {
 import CheckOutForm from "../../components/forms/visitor/CheckOutForm";
 import hubService from "../../services/hubService";
 import { useParams } from "react-router-dom";
+import { VisitorContext } from "../../contexts/VisitorContext";
 
 function CheckOutPage() {
   // const location = useLocation();
   const [hub, setHub] = useState({});
   const params = useParams();
+  const { location } = useContext(VisitorContext);
 
   useEffect(() => {
     async function fetch() {
       try {
-        const { data } = await hubService.getHub(params.hid);
-        setHub(data);
+        const hubObject = JSON.parse(localStorage.getItem("hub"));
+
+        setHub(hubObject);
       } catch (error) {}
     }
     fetch();

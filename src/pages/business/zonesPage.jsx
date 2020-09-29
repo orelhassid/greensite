@@ -9,8 +9,7 @@ import Layout, {
 import Card from "../../components/cards/Card";
 import HubCard from "../../components/cards/HubCard";
 // import HubCard from "../../components/cards/HubCard";
-import { getZones } from "../../services/hubService";
-import { getHub } from "../../services/hubService";
+import hubService from "../../services/hubService";
 import { useHistory } from "react-router-dom";
 
 function ZonesPage() {
@@ -23,8 +22,10 @@ function ZonesPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const zonesData = await getZones();
-        const { data: hubData } = await getHub();
+        const zonesData = await hubService.getZones();
+        const hid = hubService.getHubKey();
+        const hubData = await hubService.getHub(hid);
+        console.log("Hub", hubData);
         setHub(hubData);
         setZones(zonesData);
         setLoading(true);

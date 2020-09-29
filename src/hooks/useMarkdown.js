@@ -17,6 +17,9 @@ export default function useMarkdown(setMarkdown) {
         case "/visitor/checkin":
           readmePath = require("../assets/content/healthContent.md");
           break;
+        case "/health":
+          readmePath = require("../assets/content/healthContent.md");
+          break;
         default:
           readmePath = require("../assets/content/defaultContent.md");
       }

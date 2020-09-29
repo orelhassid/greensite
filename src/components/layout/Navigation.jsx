@@ -15,7 +15,7 @@ import { ReactComponent as CheckInIcon } from "../../assets/icons/checkin.svg";
 import { ReactComponent as Logout } from "../../assets/icons/logout.svg";
 
 const commonLinks = [
-  { label: <Logout />, url: "/logout" },
+  // { label: <Logout />, url: "/logout" },
   // { label: <HomeIcon />, url: "/" },
   { label: <HelpIcon />, url: "/help" },
 ];

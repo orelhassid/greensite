@@ -1,12 +1,14 @@
 import React from "react";
 import { HelmetProvider } from "react-helmet-async";
-
+import VisitorContextProvider from "./contexts/VisitorContext";
 import Routing from "./Routing";
 
 function App() {
   return (
     <HelmetProvider>
-      <Routing />
+      <VisitorContextProvider>
+        <Routing />
+      </VisitorContextProvider>
     </HelmetProvider>
   );
 }

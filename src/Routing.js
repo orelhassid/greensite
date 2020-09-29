@@ -34,7 +34,7 @@ const Routing = () => {
       <Route path="/visitor/login">
         <LoginVisitorPage />
       </Route>
-      <Route path="/visitor/checkout/zone">
+      <Route path="/visitor/checkout/zone/:hid">
         <CheckOutZonePage />
       </Route>
       <Route path="/visitor/checkout/success/:hid?">

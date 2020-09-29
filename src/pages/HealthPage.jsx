@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout, { Header, Content, Navigation, SEO } from "../components/layout";
+import Layout, { Header, Content, SEO } from "../components/layout";
 import useMarkdown from "../hooks/useMarkdown";
 
 function HealthPage() {
@@ -8,7 +8,7 @@ function HealthPage() {
   return (
     <Layout>
       <SEO title="Health" description="Health Declation Page" />
-      <Navigation />
+
       <Header title="Health Page" />
       <Content>
         <section>
