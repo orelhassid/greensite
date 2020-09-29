@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Joi from "joi";
 import { useHistory, useParams } from "react-router-dom";
 // Form
@@ -13,6 +13,7 @@ import TermsCard from "../../cards/TermsCard";
 import { ReactComponent as CheckInIcon } from "../../../assets/icons/checkin.svg";
 import "../forms.scss";
 import { toast } from "react-toastify";
+import { VisitorContext } from "../../../contexts/VisitorContext";
 
 /* -------------------------------- Component ------------------------------- */
 const CheckInForm = () => {
@@ -22,12 +23,13 @@ const CheckInForm = () => {
   useFormFields(fields, setLoading, setData);
   const history = useHistory();
   const params = useParams();
-
+  const { location, setLocation } = useContext(VisitorContext);
   /* ------------------------------- Form Submit ------------------------------ */
   const onSubmit = async () => {
     if (data.option === "else") return history.push("/visitor/register/else");
     try {
       const result = await visitorService.checkin(data, params);
+      setLocation({ name: "Hello" });
       history.push(`/visitor/checkout/zone/${params.hid}`);
     } catch (error) {
       return console.error("Check-in Failed");

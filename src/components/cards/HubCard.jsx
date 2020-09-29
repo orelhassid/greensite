@@ -1,11 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./cards.scss";
-import { ReactComponent as Qrcode } from "../../assets/images/qrcode.svg";
+import QRCodeElement from "../elements/QRCodeElement";
+import { ReactComponent as CopyIcon } from "../../assets/icons/copy.svg";
+import { ReactComponent as LinkIcon } from "../../assets/icons/link.svg";
+import ButtonIcon from "../elements/ButtonIcon";
+import { toast } from "react-toastify";
 
 const HubCard = ({ hub }) => {
-  const { name, id, hid } = hub;
-  console.log("Hub", hub);
+  const { name, id, hid, address } = hub;
+
+  const shareLink = `https://${window.location.hostname}/checkout/${hid}`;
   const message = `Your HubID is *${hid}*`;
+
+  const copyToClipboard = (e) => {
+    navigator.clipboard.writeText(shareLink);
+    toast.success("Copy to clipboard");
+  };
   return (
     <div className="card">
       <div className="text">
@@ -14,11 +25,20 @@ const HubCard = ({ hub }) => {
         </header>
         <footer>
           <ul className="info">
-            <li>SITE ID:{id}</li>
+            <li>SITE ID: {hid}</li>
+            <li>SITE address: {address}</li>
             <li>
               <ul className="action">
                 <li>
-                  <a href={`whatsapp://send?text=${message}`}>Share</a>
+                  <ButtonIcon
+                    icon={<CopyIcon />}
+                    onClick={(e) => copyToClipboard(e)}
+                  />
+                </li>
+                <li>
+                  <Link to={`/hub/zone/${hid}}`}>
+                    <LinkIcon />
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -26,7 +46,7 @@ const HubCard = ({ hub }) => {
         </footer>
       </div>
       <div className="image">
-        <Qrcode />
+        <QRCodeElement link={shareLink} />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Joi from "joi";
 import { useHistory, useParams } from "react-router-dom";
 // Form
@@ -21,12 +21,19 @@ const CheckOutForm = ({ hub }) => {
   useFormFields(fields, setLoading, setData);
   const history = useHistory();
   const params = useParams();
-  console.log(hub);
+
   fields[0].label = (
     <span>
       Check out from <b>{hub.name}</b>
     </span>
   );
+  useEffect(() => {
+    fields[1].label = (
+      <span>
+        Check out only from <b>{hub.name}</b>
+      </span>
+    );
+  }, []);
   /* ------------------------------- Form Submit ------------------------------ */
   const onSubmit = async () => {
     // Check out

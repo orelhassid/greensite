@@ -49,13 +49,13 @@ function RegisterSuccessPage() {
       <Content>
         {visitor && (
           <div className="success-page">
-            <p style={{ marginBottom: 0 }} onClick={(e) => copyToClipboard(e)}>
-              Your personal CID is
-            </p>
-            <h1>{visitor.cid}</h1>
-            <div className="image" onClick={(e) => copyToClipboard(e)}>
-              {/* <QrcodeIcon /> */}
-              <QRCodeElement link={visitor.cid} />
+            <div onClick={(e) => copyToClipboard(e)}>
+              <p style={{ marginBottom: 0 }}>Your personal CID is</p>
+              <h1>{visitor.cid}</h1>
+              <div className="image">
+                {/* <QrcodeIcon /> */}
+                <QRCodeElement link={visitor.cid} />
+              </div>
             </div>
             <p>Thanks for using GreenSite Pass!</p>
             <ButtonLink

@@ -6,15 +6,15 @@ export const VisitorContext = createContext();
 const VisitorContextProvider = ({ children }) => {
   const [location, setLocation] = useState({});
 
-  useEffect(() => {
-    setLocation(JSON.parse(localStorage.getItem("hub")));
-  }, []);
+  // useEffect(() => {
+  //   setLocation(JSON.parse(localStorage.getItem("hub")));
+  // }, []);
 
   const addLocation = (data) => {
     setLocation(data);
   };
   return (
-    <VisitorContext.Provider value={{ location, addLocation }}>
+    <VisitorContext.Provider value={{ location, setLocation }}>
       {children}
     </VisitorContext.Provider>
   );

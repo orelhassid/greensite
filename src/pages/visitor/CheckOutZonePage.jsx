@@ -13,12 +13,14 @@ import { useParams } from "react-router-dom";
 
 function CheckOutZonePage() {
   const [hub, setHub] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const params = useParams();
   useEffect(() => {
     async function fetch() {
       try {
         const hubObject = JSON.parse(localStorage.getItem("hub"));
+        setLoading(true);
         setHub(hubObject);
       } catch (error) {
         console.error(error);
@@ -28,15 +30,25 @@ function CheckOutZonePage() {
   }, [params]);
   return (
     <Layout>
-      <SEO description="Your are currently checked-in at" title={hub.name} />
       <Navigation />
-      <PageTitle subtitle="Your are currently checked-in at" title={hub.name} />
+      <SEO description="Your are currently checked-in at" title={hub.name} />
+      {loading && (
+        <>
+          <PageTitle
+            subtitle="Your are currently checked-in at"
+            title={hub.name}
+          />
 
-      <Content>
-        <ButtonLink label="continue" link="/visitor/checkout" />
-        <br />
-        <CheckOutZoneForm />
-      </Content>
+          <Content>
+            <ButtonLink
+              label="continue"
+              link={`/visitor/checkout/${params.hid}`}
+            />
+            <br />
+            <CheckOutZoneForm />
+          </Content>
+        </>
+      )}
     </Layout>
   );
 }

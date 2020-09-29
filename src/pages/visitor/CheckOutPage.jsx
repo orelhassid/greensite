@@ -15,6 +15,7 @@ import { VisitorContext } from "../../contexts/VisitorContext";
 function CheckOutPage() {
   // const location = useLocation();
   const [hub, setHub] = useState({});
+  const [zone, setZone] = useState({});
   const params = useParams();
   const { location } = useContext(VisitorContext);
 
@@ -35,7 +36,7 @@ function CheckOutPage() {
       <SEO title={hub.name} />
       <PageTitle subtitle="Your are currently checked-in at" title={hub.name} />
       <Content>
-        <CheckOutForm hub={hub} />
+        <CheckOutForm hub={hub} zone={zone} />
       </Content>
     </Layout>
   );

@@ -87,7 +87,6 @@ export async function getZones() {
   }
 }
 export async function getZone(hid, zid) {
-  console.log(`${apiEndpoint}/${hid}/zone/${zid}`);
   try {
     const result = http.get(`${apiEndpoint}/${hid}/zone/${zid}`);
     return result;
