@@ -15,10 +15,11 @@ import "../pages.scss";
 import { toast } from "react-toastify";
 import QRCodeElement from "../../components/elements/QRCodeElement";
 import { VisitorContext } from "../../contexts/VisitorContext";
+import Loader from "../../components/elements/Loader";
 
 /* -------------------------------- Component ------------------------------- */
 function RegisterSuccessPage() {
-  const { visitor } = useContext(VisitorContext);
+  const { visitor, isLogin } = useContext(VisitorContext);
 
   console.log("Checkin", visitor);
   const copyToClipboard = (e) => {
@@ -31,8 +32,8 @@ function RegisterSuccessPage() {
       <SEO title="Visitor Success Page" />
       <Navigation />
 
-      <Content>
-        {visitor && (
+      {isLogin ? (
+        <Content>
           <div className="success-page">
             <FlexBox column center spacing="15">
               <p style={{ marginBottom: 0 }}>Your personal CID is</p>
@@ -51,8 +52,10 @@ function RegisterSuccessPage() {
               </div>
             </FlexBox>
           </div>
-        )}
-      </Content>
+        </Content>
+      ) : (
+        <Loader />
+      )}
       <Footer></Footer>
     </Layout>
   );

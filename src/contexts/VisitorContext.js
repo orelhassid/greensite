@@ -53,9 +53,21 @@ const VisitorContextProvider = ({ children }) => {
     } catch (error) {}
   };
 
+  const isLogin = () => {
+    return Object.keys(visitor).length === 0 && visitor.constructor === Object;
+  };
+
   return (
     <VisitorContext.Provider
-      value={{ visitor, location, storeLocation, checkin, checkout, register }}
+      value={{
+        visitor,
+        location,
+        storeLocation,
+        checkin,
+        checkout,
+        register,
+        isLogin,
+      }}
     >
       {children}
     </VisitorContext.Provider>
