@@ -21,7 +21,6 @@ import Loader from "../../components/elements/Loader";
 function RegisterSuccessPage() {
   const { visitor, isLogin } = useContext(VisitorContext);
 
-  console.log("Checkin", visitor);
   const copyToClipboard = (e) => {
     navigator.clipboard.writeText(visitor.cid);
     toast.success("Copy to clipboard");

@@ -51,35 +51,33 @@ export async function getVisitor() {
     throw new Error("User not found", error);
   }
 }
-export async function checkin(data, params) {
-  const { duration } = data;
-  const visitor = getVisitor();
+export async function checkin(data, params, visitor) {
+  // const visitor = getVisitor();
   try {
-    const hub = await hubService.getHub(params.hid);
-
-    localStorage.setItem(
-      "hub",
-      JSON.stringify({
-        name: hub.name,
-        hid: hub.hid,
-      })
-    );
+    // const hub = await hubService.getHub(params.hid);
+    // localStorage.setItem(
+    //   "hub",
+    //   JSON.stringify({
+    //     name: hub.name,
+    //     hid: hub.hid,
+    //   })
+    // );
   } catch (error) {
     console.error(error);
   }
-
+  let duration = parseInt(data.duration);
   const minutes = duration === 0 ? 30 : duration * 60;
 
   const checkinObject = {
     hub_id: params.hid,
-    zone_id: params.zid,
+    zone_id: params.zid || 0,
     duration: minutes,
     user_cid: visitor.cid,
   };
+
   try {
-    const result = await http.post(`${apiCheck}/checkin`, checkinObject);
-    console.log("Result", result);
-    return result;
+    const { data } = await http.post(`${apiCheck}/checkin`, checkinObject);
+    return data;
   } catch (error) {
     throw new Error("Check-in Failed", error);
   }

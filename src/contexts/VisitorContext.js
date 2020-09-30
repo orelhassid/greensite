@@ -26,9 +26,9 @@ const VisitorContextProvider = ({ children }) => {
     setVisitor(data);
   };
 
-  const checkin = async (data) => {
+  const checkin = async (data, location) => {
     try {
-      const result = await visitorService.checkin(data, location);
+      return await visitorService.checkin(data, location, visitor);
     } catch (error) {
       console.error("Checkin Failed", error);
     }
@@ -37,6 +37,7 @@ const VisitorContextProvider = ({ children }) => {
   const checkout = async (params) => {
     try {
       const result = await visitorService.checkout(params, visitor.cid);
+      console.log("Checkout Rresult", result);
     } catch (error) {
       console.error("Checkout Error", error);
     }

@@ -7,23 +7,18 @@ import Layout, {
   PageTitle,
   SEO,
 } from "../../components/layout";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { VisitorContext } from "../../contexts/VisitorContext";
 import Button from "../../components/elements/Button";
 
 function CheckOutZonePage() {
   const { location, checkout } = useContext(VisitorContext);
 
+  const history = useHistory();
   const params = useParams();
-
-  const handleCheckout = async () => {
-    console.log("Params", params);
-    try {
-      await checkout(params);
-      console.log("Checkout");
-    } catch (error) {
-      console.error("Checkout", error);
-    }
+  const handleCheckout = () => {
+    console.log("Checkout Zone Params", params);
+    history.push(`/visitor/checkout/${location.hid}`);
   };
 
   return (
@@ -43,7 +38,7 @@ function CheckOutZonePage() {
       <Content>
         <Button
           label="check-out"
-          // link={`/visitor/checkout/${location.hid}`}
+          // link={``}
           onClick={handleCheckout}
         />
         <br />

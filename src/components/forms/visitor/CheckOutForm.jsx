@@ -25,6 +25,7 @@ const CheckOutForm = () => {
   const history = useHistory();
   const params = useParams();
 
+  console.log("Location", location);
   fields[0].label = (
     <span>
       Check out from <b>{location.name}</b>

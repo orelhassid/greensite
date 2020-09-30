@@ -41,7 +41,7 @@ const RegisterVisitorForm = () => {
 
   /* ------------------------------- Validation ------------------------------- */
   const schema = Joi.object({
-    phone: Joi.string().required(),
+    phone: Joi.string().max(11).required(),
     id: Joi.string()
       .length(3)
       .pattern(/^[0-9]+$/)

@@ -26,12 +26,11 @@ const CheckInForm = () => {
 
   /* ------------------------------- Form Submit ------------------------------ */
   const onSubmit = async () => {
-    if (data.option === "else") return history.push("/visitor/register/else");
-    console.log("Checkin Success");
+    // if (data.option === "else") return history.push("/visitor/register/else");
+    // console.log("Checkin Success");
 
     try {
-      await checkin(location);
-
+      await checkin(data, location);
       history.push(`/visitor/checkout/zone/${params.hid}`);
     } catch (error) {
       return console.error("Check-in Failed");
