@@ -5,7 +5,6 @@ export default [
     type: "tel",
     name: "phone",
     id: "phone",
-    help: "type this format",
   },
   {
     label: "ID (last 3)",
