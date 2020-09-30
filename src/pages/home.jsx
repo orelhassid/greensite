@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import CardImage from "../components/cards/CardImage";
 
 function Home() {
-  console.log("Home Page");
   return (
     <Layout>
       <SEO title="Home" description="Green Site Pass HomePage" />

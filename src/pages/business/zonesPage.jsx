@@ -24,8 +24,8 @@ function ZonesPage() {
   };
   return (
     <Layout>
-      <SEO title="QR Codes" description="Track you zones" />
-      <Header title="QR Codes" subtitle="Track you zones" />
+      <SEO title="QR Codes" description="Manage your site" />
+      <Header title="QR Codes" subtitle="Manage your site" />
       {loading ? (
         <Content>
           <ActionBar />

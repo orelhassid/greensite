@@ -25,7 +25,8 @@ export default [
     id: "contactPhone",
     type: "tel",
     label: "Contact Phone Number",
-    placeholder: "050-123-4567",
+    placeholder: "050-1234567",
+    max: "11",
   },
   {
     name: "hubtype",

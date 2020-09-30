@@ -47,7 +47,7 @@ const RegisterHubForm = () => {
     name: Joi.string().min(3).max(30).required(),
     address: Joi.string().required(),
     contactName: Joi.string().required(),
-    contactPhone: Joi.string().required(),
+    contactPhone: Joi.string().max(11).required(),
     hubtype: Joi.string().required(),
     multiZone: Joi.any().optional(),
   });
