@@ -27,7 +27,7 @@ const RegisterHubForm = () => {
   const onSubmit = async () => {
     try {
       // toast.success(`Register Success! welcome ${result.contact_name}`);
-      register(data);
+      await register(data);
       // is Multi-zone on?
       // https://app.greenpass.site/hub/zone/N4NMIQ%7D
       if (data.multiZone) history.push("/hub/register/zones");

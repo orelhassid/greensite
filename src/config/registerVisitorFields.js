@@ -1,11 +1,11 @@
 export default [
   {
     label: "Phone Number",
-    placeholder: "050-123-4567",
+    placeholder: "050-8856661",
     type: "tel",
     name: "phone",
     id: "phone",
-    help: "+972",
+    help: "type this format",
   },
   {
     label: "ID (last 3)",
