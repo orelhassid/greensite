@@ -42,7 +42,7 @@ const Card = ({ zone, link }) => {
                   />
                 </li>
                 <li>
-                  <Link to={`/hub/zone/${hid}/${zid}`}>
+                  <Link to={`/visitor/checkin/${hid}/${zid}`}>
                     <LinkIcon />
                   </Link>
                 </li>

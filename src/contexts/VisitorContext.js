@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import visitorService from "../services/visitorService";
 import hubSevice from "../services/hubService";
+import hubService from "../services/hubService";
 
 export const VisitorContext = createContext(null);
 
@@ -58,6 +59,19 @@ const VisitorContextProvider = ({ children }) => {
     return Object.keys(visitor).length === 0 && visitor.constructor === Object;
   };
 
+  const registerZone = async (hid, zid) => {
+    try {
+      const { data } = await hubService.getZone(hid, zid);
+
+      setLocation((prevLocation) => {
+        return {
+          ...prevLocation,
+          zone: data,
+        };
+      });
+    } catch (error) {}
+  };
+
   return (
     <VisitorContext.Provider
       value={{
@@ -68,6 +82,7 @@ const VisitorContextProvider = ({ children }) => {
         checkout,
         register,
         isLogin,
+        registerZone,
       }}
     >
       {children}

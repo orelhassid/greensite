@@ -31,10 +31,10 @@ const CheckOutForm = () => {
       Check out from <b>{location.name}</b>
     </span>
   );
-  if (location.zid) {
+  if (location.zone) {
     fields[1].label = (
       <span>
-        Check out only from <b>{location.zid}</b>
+        Check out only from <b>{location.zone.name}</b>
       </span>
     );
   }

@@ -33,7 +33,7 @@ const HubCard = ({ hub }) => {
                   />
                 </li>
                 <li>
-                  <Link to={`/hub/zone/${hid}}`}>
+                  <Link to={`/visitor/checkin/${hid}`}>
                     <LinkIcon />
                   </Link>
                 </li>

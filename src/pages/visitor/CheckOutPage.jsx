@@ -24,7 +24,7 @@ function CheckOutPage() {
       />
       <Content>
         {/* <CheckOutForm hub={location} zone={zone} /> */}
-        <CheckOutForm hub={location} />
+        <CheckOutForm />
       </Content>
     </Layout>
   );

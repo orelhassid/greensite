@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Joi from "joi";
 import { useHistory, useParams } from "react-router-dom";
 
@@ -12,6 +12,8 @@ import CardSimple from "../../cards/CardSimple";
 // Style
 import "../forms.scss";
 import { toast } from "react-toastify";
+import { VisitorContext } from "../../../contexts/VisitorContext";
+import visitorService from "../../../services/visitorService";
 
 /* -------------------------------- Component ------------------------------- */
 const CheckOutZoneForm = () => {
@@ -22,10 +24,14 @@ const CheckOutZoneForm = () => {
 
   const history = useHistory();
   const params = useParams();
+  const { registerZone } = useContext(VisitorContext);
 
   /* ------------------------------- Form Submit ------------------------------ */
   const onSubmit = async () => {
-    history.push(`/visitor/checkout/${params.hid}/${data.zoneId}`);
+    try {
+      await registerZone(params.hid, data.zoneId);
+      history.push(`/visitor/checkout/${params.hid}/${data.zoneId}`);
+    } catch (error) {}
   };
   const onError = () => {
     toast.error("Registration Failed");
