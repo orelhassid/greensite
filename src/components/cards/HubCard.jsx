@@ -11,7 +11,6 @@ const HubCard = ({ hub }) => {
   const { name, hid } = hub;
 
   const shareLink = `https://${window.location.hostname}/visitor/checkin/${hid}`;
-
   const copyToClipboard = (e) => {
     navigator.clipboard.writeText(shareLink);
     toast.success("Copy to clipboard");

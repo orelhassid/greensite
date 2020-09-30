@@ -20,6 +20,7 @@ import { VisitorContext } from "../../contexts/VisitorContext";
 function RegisterSuccessPage() {
   const { visitor } = useContext(VisitorContext);
 
+  console.log("Checkin", visitor);
   const copyToClipboard = (e) => {
     navigator.clipboard.writeText(visitor.cid);
     toast.success("Copy to clipboard");

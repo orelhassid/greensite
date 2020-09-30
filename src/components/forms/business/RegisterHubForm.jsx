@@ -29,6 +29,7 @@ const RegisterHubForm = () => {
       // toast.success(`Register Success! welcome ${result.contact_name}`);
       register(data);
       // is Multi-zone on?
+      // https://app.greenpass.site/hub/zone/N4NMIQ%7D
       if (data.multiZone) history.push("/hub/register/zones");
       if (!data.multiZone) history.push("/hub/zones");
     } catch (error) {

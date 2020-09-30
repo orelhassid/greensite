@@ -31,8 +31,8 @@ function ZonesSinglePage() {
           setZone(data);
         } else if (hub) {
           console.log("Hub", hub);
-          setLoading(true);
           setZone(hub);
+          setLoading(true);
         }
       } catch (error) {}
     }
