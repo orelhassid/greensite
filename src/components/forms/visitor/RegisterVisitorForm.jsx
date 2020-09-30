@@ -26,7 +26,7 @@ const RegisterVisitorForm = () => {
   const onSubmit = async () => {
     // Call the server
     try {
-      register(data);
+      await register(data);
       const { state } = locationRouter;
       const url = state ? state.from.pathname : "/visitor/register/success";
       history.push(url);
