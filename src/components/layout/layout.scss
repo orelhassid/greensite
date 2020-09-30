@@ -142,11 +142,31 @@ section.grid {
     // grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
 }
+.gridColumn {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+/* ---------------------------------- FlexBox ---------------------------------- */
+.flexbox {
+  display: flex;
+}
+.flexbox-row {
+  flex-direction: row;
+}
+.flexboxColumn {
+  flex-direction: column;
+}
+.flexboxCenter {
+  justify-content: center;
+  align-items: center;
+}
 
 /* ------------------------------ Header Custom ----------------------------- */
-header.header-custom {
+header.headerCustom {
   .site-title {
     margin-top: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 20px 0;
     .title {
       font-size: 1.7rem;
       margin: 0;

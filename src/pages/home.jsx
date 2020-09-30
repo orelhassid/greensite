@@ -1,10 +1,13 @@
 import React from "react";
 import Layout, { Header, Content, Grid, SEO } from "../components/layout";
-import VisitorImage from "../assets/images/visitor-image.svg";
-import HubImage from "../assets/images/business-image.svg";
+// import VisitorImage from "../assets/images/visitor-image.svg";
+import visitorImage from "../assets/images/visitor-image.svg";
+import hubImage from "../assets/images/business-image.svg";
 import { Link } from "react-router-dom";
+import CardImage from "../components/cards/CardImage";
 
 function Home() {
+  console.log("Home Page");
   return (
     <Layout>
       <SEO title="Home" description="Green Site Pass HomePage" />
@@ -14,12 +17,12 @@ function Home() {
       />
 
       <Content>
-        <Grid>
+        <Grid column spacing="20">
           <Link to="/visitor/register">
-            <img src={VisitorImage} alt="" />
+            <CardImage image={visitorImage} caption="Visitor" />
           </Link>
           <Link to="/hub/register">
-            <img src={HubImage} alt="" />
+            <CardImage image={hubImage} caption="Business" />
           </Link>
         </Grid>
       </Content>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Joi from "joi";
 import { useHistory, useParams } from "react-router-dom";
 // Form
@@ -11,29 +11,33 @@ import visitorService from "../../../services/visitorService";
 // import { ReactComponent as CheckOutIcon } from "../../../assets/icons/checkout.svg";
 import "../forms.scss";
 import { toast } from "react-toastify";
+import { VisitorContext } from "../../../contexts/VisitorContext";
 
 /* -------------------------------- Component ------------------------------- */
 
-const CheckOutForm = ({ hub }) => {
+const CheckOutForm = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
 
   useFormFields(fields, setLoading, setData);
+
+  const { location } = useContext(VisitorContext);
   const history = useHistory();
   const params = useParams();
 
   fields[0].label = (
     <span>
-      Check out from <b>{hub.name}</b>
+      Check out from <b>{location.name}</b>
     </span>
   );
-  useEffect(() => {
+  if (location.zid) {
     fields[1].label = (
       <span>
-        Check out only from <b>{hub.name}</b>
+        Check out only from <b>{location.zid}</b>
       </span>
     );
-  }, []);
+  }
+
   /* ------------------------------- Form Submit ------------------------------ */
   const onSubmit = async () => {
     // Check out

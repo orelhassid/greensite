@@ -45,7 +45,8 @@ export async function getVisitor() {
   try {
     const cid = localStorage.getItem(visitorKey);
 
-    return await http.get(`${apiVisitor}/${cid}`, {});
+    const { data } = await http.get(`${apiVisitor}/${cid}`, {});
+    return data;
   } catch (error) {
     throw new Error("User not found", error);
   }
@@ -55,6 +56,7 @@ export async function checkin(data, params) {
   const visitor = getVisitor();
   try {
     const hub = await hubService.getHub(params.hid);
+
     localStorage.setItem(
       "hub",
       JSON.stringify({
@@ -107,7 +109,15 @@ export function getVisitorId() {
   return localStorage.getItem(visitorKey);
 }
 
-export function storeHub() {}
+export async function storeHub(hub) {
+  return await localStorage.setItem(
+    "hub",
+    JSON.stringify({
+      name: hub.name,
+      hid: hub.hid,
+    })
+  );
+}
 
 export default {
   register,
@@ -118,4 +128,5 @@ export default {
   checkin,
   checkout,
   visitorId: getVisitorId,
+  storeHub,
 };

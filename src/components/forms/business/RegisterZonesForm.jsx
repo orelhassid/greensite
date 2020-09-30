@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Joi from "joi";
 
-import HubService from "../../../services/hubService";
 import useFormFields from "../../../hooks/useFormFields";
 import Form from "../Form";
 import fields from "../../../config/registerZonesFields.js";
@@ -9,6 +8,7 @@ import Button from "../../elements/Button";
 import "../forms.scss";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+import { HubContext } from "../../../contexts/HubContext";
 
 const RegisterZonesForm = () => {
   const [data, setData] = useState();
@@ -16,11 +16,12 @@ const RegisterZonesForm = () => {
 
   useFormFields(fields, setLoading, setData);
   const history = useHistory();
+  const { addZones } = useContext(HubContext);
 
   /* ------------------------------- Form Submit (Add zones to Hub) ------------------------------ */
   const onSubmit = async () => {
     try {
-      await HubService.addZones(data.zoneType, parseInt(data.zoneCount));
+      await addZones(data.zoneType, parseInt(data.zoneCount));
       history.push("/hub/zones");
     } catch (error) {
       return console.error("Registration Failed", error);

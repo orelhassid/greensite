@@ -23,13 +23,14 @@ const CheckInForm = () => {
   useFormFields(fields, setLoading, setData);
   const history = useHistory();
   const params = useParams();
-  const { location, setLocation } = useContext(VisitorContext);
+  const { location, checkin } = useContext(VisitorContext);
+
   /* ------------------------------- Form Submit ------------------------------ */
   const onSubmit = async () => {
     if (data.option === "else") return history.push("/visitor/register/else");
     try {
-      const result = await visitorService.checkin(data, params);
-      setLocation({ name: "Hello" });
+      await checkin(location);
+
       history.push(`/visitor/checkout/zone/${params.hid}`);
     } catch (error) {
       return console.error("Check-in Failed");

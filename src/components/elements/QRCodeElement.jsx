@@ -17,7 +17,7 @@ const QRCodeElement = ({ link }) => {
     document.body.removeChild(downloadLink);
   };*/
   return (
-    <div className="qr-container">
+    <div className="qr-container" style={{ margin: "0 auto" }}>
       <QRCode renderAs="svg" id="123456" value={link} />
       {/* <ButtonLink style="text" label="Download" download /> */}
     </div>

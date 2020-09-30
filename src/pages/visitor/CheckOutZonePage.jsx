@@ -10,45 +10,37 @@ import Layout, {
   SEO,
 } from "../../components/layout";
 import { useParams } from "react-router-dom";
+import { VisitorContext } from "../../contexts/VisitorContext";
 
 function CheckOutZonePage() {
-  const [hub, setHub] = useState({});
-  const [loading, setLoading] = useState(false);
+  // const [hub, setHub] = useState({});
+  // const [loading, setLoading] = useState(false);
 
-  const params = useParams();
-  useEffect(() => {
-    async function fetch() {
-      try {
-        const hubObject = JSON.parse(localStorage.getItem("hub"));
-        setLoading(true);
-        setHub(hubObject);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    fetch();
-  }, [params]);
+  const { location } = useContext(VisitorContext);
+  console.log("location", location);
+  // const params = useParams();
+
   return (
     <Layout>
       <Navigation />
-      <SEO description="Your are currently checked-in at" title={hub.name} />
-      {loading && (
-        <>
-          <PageTitle
-            subtitle="Your are currently checked-in at"
-            title={hub.name}
-          />
+      <SEO
+        description="Your are currently checked-in at"
+        title={location.name}
+      />
 
-          <Content>
-            <ButtonLink
-              label="continue"
-              link={`/visitor/checkout/${params.hid}`}
-            />
-            <br />
-            <CheckOutZoneForm />
-          </Content>
-        </>
-      )}
+      <PageTitle
+        subtitle="Your are currently checked-in at"
+        title={location.name}
+      />
+
+      <Content>
+        <ButtonLink
+          label="continue"
+          link={`/visitor/checkout/${location.hid}`}
+        />
+        <br />
+        <CheckOutZoneForm />
+      </Content>
     </Layout>
   );
 }

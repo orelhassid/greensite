@@ -13,9 +13,6 @@ export async function login(email, password) {
 }
 
 export async function register(hub) {
-  // 1. Map the hub object into api object
-  // 2. POST request to the server
-  // 3. Store the hub-key in localStorage
   const hubObject = {
     name: hub.name,
     address: hub.address,
@@ -72,11 +69,11 @@ export async function getHub(hid) {
   }
 }
 
-export async function getZones() {
-  const hubid = getHubKey();
-  if (!hubid) throw new Error("Hub not exist.");
+export async function getZones(hid) {
+  // const hubid = getHubKey();
+  if (!hid) throw new Error("Hub not exist.");
 
-  const api = `${apiEndpoint}/${hubid}/zone`;
+  const api = `${apiEndpoint}/${hid}/zone`;
 
   try {
     const { data } = await http.get(api);
@@ -87,6 +84,7 @@ export async function getZones() {
   }
 }
 export async function getZone(hid, zid) {
+  // https://hub.pasescovid.com/hub/GKTIL8/zone/2
   try {
     const result = http.get(`${apiEndpoint}/${hid}/zone/${zid}`);
     return result;

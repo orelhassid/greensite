@@ -95,3 +95,19 @@
   .optional {
   }
 }
+
+/* --------------------------------- Figure --------------------------------- */
+figure {
+  display: flex;
+  background: $bg1;
+  box-shadow: $shadow1;
+  flex-flow: column wrap;
+  padding: 10px;
+  border-radius: 4px;
+  figcaption {
+    font-size: 1.5rem;
+  }
+  &:hover {
+    box-shadow: $shadow2;
+  }
+}

@@ -1,8 +1,13 @@
 import React from "react";
+import classNames from "classnames";
 
 export const PageTitle = ({ title, subtitle, custom }) => {
   return (
-    <header className={`site-header site-header-${custom}`}>
+    <header
+      className={classNames("site-header", {
+        headerCustom: custom,
+      })}
+    >
       <div className="site-title">
         <h1 className="title">{title}</h1>
         <h3 className="subtitle">{subtitle}</h3>
@@ -11,4 +16,18 @@ export const PageTitle = ({ title, subtitle, custom }) => {
   );
 };
 
+export const PageTitleCustom = ({ title, subtitle, custom }) => {
+  return (
+    <header
+      className={classNames("site-header", {
+        headerCustom: custom,
+      })}
+    >
+      <div className="site-title">
+        <h1 className="title">{title}</h1>
+        <h3 className="subtitle">{subtitle}</h3>
+      </div>
+    </header>
+  );
+};
 // export default PageCover;

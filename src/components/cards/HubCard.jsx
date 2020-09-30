@@ -8,10 +8,9 @@ import ButtonIcon from "../elements/ButtonIcon";
 import { toast } from "react-toastify";
 
 const HubCard = ({ hub }) => {
-  const { name, id, hid, address } = hub;
+  const { name, hid } = hub;
 
   const shareLink = `https://${window.location.hostname}/visitor/checkin/${hid}`;
-  console.log(shareLink);
 
   const copyToClipboard = (e) => {
     navigator.clipboard.writeText(shareLink);
@@ -26,7 +25,6 @@ const HubCard = ({ hub }) => {
         <footer>
           <ul className="info">
             <li>SITE ID: {hid}</li>
-            {/* <li>SITE address: {address}</li> */}
             <li>
               <ul className="action">
                 <li>

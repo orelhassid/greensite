@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import Layout, {
   Content,
+  FlexBox,
   Footer,
+  Grid,
   Navigation,
   SEO,
 } from "../../components/layout";
@@ -17,27 +19,7 @@ import { VisitorContext } from "../../contexts/VisitorContext";
 
 /* -------------------------------- Component ------------------------------- */
 function RegisterSuccessPage() {
-  // const [visitor, setVisitor] = useState("");
-
   const { visitor } = useContext(VisitorContext);
-
-  // useEffect(() => {
-  // async function fetch() {
-  //   try {
-  //     const { data } = await visitorService.getVisitor();
-  //     setVisitor(data);
-  //     toast.success(
-  //       `Registration Success! ${data.name ? `Welcome ${data.name}` : ""}`
-  //     );
-  //   } catch (error) {
-  //     console.error(error);
-  //     setVisitor(false);
-  //     return toast.error("User not Found");
-  // return history.push("/visitor/register");
-  //   }
-  // }
-  // fetch();
-  // }, []);
 
   const copyToClipboard = (e) => {
     navigator.clipboard.writeText(visitor.cid);
@@ -52,23 +34,22 @@ function RegisterSuccessPage() {
       <Content>
         {visitor && (
           <div className="success-page">
-            <div onClick={(e) => copyToClipboard(e)}>
+            <FlexBox column center spacing="15">
               <p style={{ marginBottom: 0 }}>Your personal CID is</p>
-              <h1>{visitor.cid}</h1>
-              <div className="image">
-                {/* <QrcodeIcon /> */}
+              <h1 onClick={(e) => copyToClipboard(e)}>{visitor.cid}</h1>
+              <div className="image" onClick={(e) => copyToClipboard(e)}>
                 <QRCodeElement link={visitor.cid} />
               </div>
-            </div>
-            <p>Thanks for using GreenSite Pass!</p>
-            <ButtonLink
-              label="Go to check-in"
-              link="/visitor/checkin"
-            ></ButtonLink>
+              <p>Thanks for using GreenSite Pass!</p>
+              <ButtonLink
+                label="Go to check-in"
+                link="/visitor/checkin"
+              ></ButtonLink>
 
-            <div className="background">
-              <Background1 />
-            </div>
+              <div className="background">
+                <Background1 />
+              </div>
+            </FlexBox>
           </div>
         )}
       </Content>

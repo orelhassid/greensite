@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Joi from "joi";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -11,6 +11,7 @@ import Form from "../Form";
 import Button from "../../elements/Button";
 // Style
 import "../forms.scss";
+import { HubContext } from "../../../contexts/HubContext";
 
 /* -------------------------------- Component ------------------------------- */
 const RegisterHubForm = () => {
@@ -21,13 +22,12 @@ const RegisterHubForm = () => {
 
   const history = useHistory();
 
+  const { register } = useContext(HubContext);
   /* ------------------------------- Form Submit (Create New Hub) ------------------------------ */
   const onSubmit = async () => {
     try {
-      // Create new Hub in DB
-      const result = await HubService.register(data);
-      toast.success(`Register Success! welcome ${result.contact_name}`);
-
+      // toast.success(`Register Success! welcome ${result.contact_name}`);
+      register(data);
       // is Multi-zone on?
       if (data.multiZone) history.push("/hub/register/zones");
       if (!data.multiZone) history.push("/hub/zones");
