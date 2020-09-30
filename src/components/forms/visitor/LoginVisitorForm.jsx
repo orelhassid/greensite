@@ -3,7 +3,7 @@ import Joi from "joi";
 import { toast } from "react-toastify";
 // Form
 import visitorService from "../../../services/visitorService";
-import fields from "../../../config/loginVisitorFields.json";
+import fields from "../../../config/loginVisitorFields.js";
 import Form from "../Form";
 import Button from "../../elements/Button";
 // Hooks

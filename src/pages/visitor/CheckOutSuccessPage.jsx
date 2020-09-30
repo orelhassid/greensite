@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 
 import Layout, {
   Content,
@@ -7,7 +7,6 @@ import Layout, {
   SEO,
 } from "../../components/layout";
 import Button from "../../components/elements/Button";
-import hubService from "../../services/hubService";
 import { useParams, useHistory } from "react-router-dom";
 import { VisitorContext } from "../../contexts/VisitorContext";
 

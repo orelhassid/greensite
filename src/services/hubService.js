@@ -57,16 +57,11 @@ export function getHubKey() {
 }
 
 export async function getHub(hid) {
-  console.log("Get Hub", hid);
   try {
     const { data } = await http.get(`${apiEndpoint}/${hid}`);
     return data;
-    // return {
-    //   name: data.name,
-    //   hid: data.hid,
-    // };
   } catch (error) {
-    throw new Error("Hubid does'nt Exist");
+    throw new Error("Hubid does'nt Exist", error);
   }
 }
 

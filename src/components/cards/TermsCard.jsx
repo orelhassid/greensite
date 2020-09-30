@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Popup from "./Popup";
-import useMarkdown from "../../hooks/useMarkdown";
-// import marked from "marked";
+import marked from "marked";
 
-const TermsCard = () => {
+const TermsCard = ({ onClick }) => {
   const [markdown, setMarkdown] = useState();
-  useMarkdown(setMarkdown);
+  useEffect(() => {
+    try {
+      const readmePath = require("../../assets/content/healthContent.md");
+      fetch(readmePath)
+        .then((response) => {
+          return response.text();
+        })
+        .then((text) => {
+          setMarkdown(marked(text));
+        });
+    } catch (error) {
+      console.error("Markdown error", error);
+    }
+  });
 
   return (
-    <Popup>
+    <Popup onClick={onClick}>
       <section dangerouslySetInnerHTML={{ __html: markdown }}></section>
     </Popup>
   );

@@ -26,12 +26,9 @@ const RegisterVisitorForm = () => {
   const onSubmit = async () => {
     // Call the server
     try {
-      console.log("locationRouter", locationRouter);
       register(data);
       const { state } = locationRouter;
       const url = state ? state.from.pathname : "/visitor/register/success";
-      console.log("state", state);
-      console.log("state.from.pathname", state.from.pathname);
       history.push(url);
       // if (data.option === "myself") history.push("/visitor/register/success");
     } catch (error) {

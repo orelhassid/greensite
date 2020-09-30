@@ -2,8 +2,6 @@ import React, { useContext, useState } from "react";
 import Joi from "joi";
 import { useHistory, useParams } from "react-router-dom";
 // Form
-
-import visitorService from "../../../services/visitorService";
 import useFormFields from "../../../hooks/useFormFields";
 import fields from "../../../config/checkInFields.js";
 import Form from "../Form";
@@ -18,6 +16,7 @@ import { VisitorContext } from "../../../contexts/VisitorContext";
 /* -------------------------------- Component ------------------------------- */
 const CheckInForm = () => {
   const [data, setData] = useState({});
+  const [popup, setPopup] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useFormFields(fields, setLoading, setData);
@@ -28,6 +27,8 @@ const CheckInForm = () => {
   /* ------------------------------- Form Submit ------------------------------ */
   const onSubmit = async () => {
     if (data.option === "else") return history.push("/visitor/register/else");
+    console.log("Checkin Success");
+
     try {
       await checkin(location);
 
@@ -50,6 +51,15 @@ const CheckInForm = () => {
   });
 
   /* -------------------------------- Render ------------------------------- */
+
+  fields[1].label = (
+    <p>
+      I comply with the{" "}
+      <strong style={{ cursor: "pointer" }} onClick={() => setPopup(!popup)}>
+        Health Declaration
+      </strong>
+    </p>
+  );
   return (
     <Form
       fields={fields}
@@ -59,7 +69,7 @@ const CheckInForm = () => {
       onError={onError}
       schema={schema}
     >
-      {false && <TermsCard />}
+      {popup && <TermsCard onClick={() => setPopup(!popup)} />}
       <Button
         label="check-in"
         type="submit"

@@ -13,7 +13,7 @@ import { ReactComponent as ZoneIcon } from "../../assets/icons/zone.svg";
 import { ReactComponent as CheckInIcon } from "../../assets/icons/checkin.svg";
 // import { ReactComponent as CheckOutIcon } from "../../assets/icons/checkout.svg";
 // import { ReactComponent as LoginIcon } from "../../assets/icons/login.svg";
-import { ReactComponent as Logout } from "../../assets/icons/logout.svg";
+// import { ReactComponent as Logout } from "../../assets/icons/logout.svg";
 
 const commonLinks = [
   // { label: <Logout />, url: "/logout" },

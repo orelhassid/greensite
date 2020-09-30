@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import visitorService from "../services/visitorService";
 import hubSevice from "../services/hubService";
 
@@ -8,13 +7,15 @@ export const VisitorContext = createContext(null);
 const VisitorContextProvider = ({ children }) => {
   const [visitor, setVisitor] = useState({});
   const [location, setLocation] = useState({});
-  const [params, setParams] = useState({});
 
   useEffect(() => {
     async function fetch() {
-      const hub = localStorage.getItem("hub");
-      setLocation(JSON.parse(hub));
+      if (localStorage.getItem("hub")) {
+        const hub = localStorage.getItem("hub");
+        setLocation(JSON.parse(hub));
+      }
       const data = await visitorService.getVisitor();
+
       setVisitor(data);
     }
     fetch();
@@ -26,24 +27,35 @@ const VisitorContextProvider = ({ children }) => {
   };
 
   const checkin = async (data) => {
-    const result = await visitorService.checkin(data, location);
-    console.log("checkin", result);
+    try {
+      const result = await visitorService.checkin(data, location);
+    } catch (error) {
+      console.error("Checkin Failed", error);
+    }
+  };
+
+  const checkout = async (params) => {
+    try {
+      const result = await visitorService.checkout(params, visitor.cid);
+    } catch (error) {
+      console.error("Checkout Error", error);
+    }
   };
 
   const storeLocation = async (paramsData) => {
     try {
       const result = await hubSevice.getHub(paramsData.hid);
-      if (paramsData.zid) {
-        const result2 = await hubSevice.getZone(paramsData.hid, paramsData.zid);
-      }
-      console.log("Result Store Locaiton", result);
+      // if (paramsData.zid) {
+      //   const result2 = await hubSevice.getZone(paramsData.hid, paramsData.zid);
+      // }
+
       await visitorService.storeHub(result);
     } catch (error) {}
   };
 
   return (
     <VisitorContext.Provider
-      value={{ visitor, location, storeLocation, checkin, register }}
+      value={{ visitor, location, storeLocation, checkin, checkout, register }}
     >
       {children}
     </VisitorContext.Provider>

@@ -9,26 +9,15 @@ import Layout, {
 import Card from "../../components/cards/Card";
 import HubCard from "../../components/cards/HubCard";
 import { HubContext } from "../../contexts/HubContext";
-import hubService from "../../services/hubService";
 import Loader from "../../components/elements/Loader";
 
 function ZonesPage() {
-  const { hub } = useContext(HubContext);
-  const [zones, setZones] = useState([]);
+  const { hub, zones } = useContext(HubContext);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    async function fetch() {
-      try {
-        if (hub) {
-          const zonesData = await hubService.getZones(hub.hid);
-          setZones(zonesData);
-          setLoading(true);
-        }
-      } catch (error) {}
-    }
-    fetch();
-  }, [hub]);
+    if (zones) setLoading(true);
+  }, [zones]);
 
   const generateZoneLink = (zone) => {
     return `/visitor/checkin/${zone.hid}/${zone.zone_id}`;

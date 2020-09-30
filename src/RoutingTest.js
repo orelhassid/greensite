@@ -11,24 +11,24 @@ import HubContextProvider from "./contexts/HubContext";
 const RoutingTest = () => {
   return (
     <Switch>
-      {UserRoutes.map(({ path, component: Component, ...rest }) => (
-        <Route key={path} {...rest}>
-          <UserContextProvider>
-            <Component />
-          </UserContextProvider>
+      {VisitorRoutes.map(({ path, component: Component, ...rest }) => (
+        <Route key={path} path={path} {...rest}>
+          <VisitorContextProvider>{<Component />}</VisitorContextProvider>
         </Route>
       ))}
 
-      {ManagerRoutes.map(({ path, component: Component, ...rest }) => (
-        <Route key={path} {...rest}>
-          <ManagerContextProvider>
+      {HubRoutes.map(({ path, component: Component, ...rest }) => (
+        <Route key={path} path={path} {...rest}>
+          <HubContextProvider>
             <Component />
-          </ManagerContextProvider>
+          </HubContextProvider>
         </Route>
       ))}
 
-      {CommonsRoutes.map((props) => (
-        <Route key={props.path} {...props} />
+      {CommonsRoutes.map(({ path, component: Component, ...rest }) => (
+        <Route key={path} path={path}>
+          <Component />
+        </Route>
       ))}
       <Redirect to="/not-found" />
     </Switch>

@@ -45,7 +45,7 @@ export async function getVisitor() {
   try {
     const cid = localStorage.getItem(visitorKey);
 
-    const { data } = await http.get(`${apiVisitor}/${cid}`, {});
+    const { data } = await http.get(`${apiVisitor}/${cid}`);
     return data;
   } catch (error) {
     throw new Error("User not found", error);
@@ -84,8 +84,9 @@ export async function checkin(data, params) {
     throw new Error("Check-in Failed", error);
   }
 }
-export async function checkout(params) {
+export async function checkout(params, visitorId) {
   // http://54.72.200.116:7000/user/checkout
+
   const id = getVisitorId();
   const requestObject = {
     hub_id: params.hid,
@@ -94,9 +95,10 @@ export async function checkout(params) {
   };
 
   try {
-    const result = await http.post(`${apiCheck}/checkout`, requestObject);
-    localStorage.removeItem("hub");
-    return result;
+    const { data } = await http.post(`${apiCheck}/checkout`, requestObject);
+    // localStorage.removeItem("hub");
+    console.log("Checkout Services", data);
+    return data;
   } catch (error) {}
 }
 

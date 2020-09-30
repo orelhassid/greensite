@@ -9,7 +9,7 @@ function RegisterVisitorPage() {
     if (localStorage.getItem("visitor-key")) {
       history.push("/visitor/checkin");
     }
-  }, []);
+  }, [history]);
   return (
     <Layout>
       <SEO

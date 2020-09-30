@@ -1,6 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-
-import ButtonLink from "../../components/elements/ButtonLink";
+import React, { useContext } from "react";
 import CheckOutZoneForm from "../../components/forms/visitor/CheckOutZoneForm";
 
 import Layout, {
@@ -11,14 +9,22 @@ import Layout, {
 } from "../../components/layout";
 import { useParams } from "react-router-dom";
 import { VisitorContext } from "../../contexts/VisitorContext";
+import Button from "../../components/elements/Button";
 
 function CheckOutZonePage() {
-  // const [hub, setHub] = useState({});
-  // const [loading, setLoading] = useState(false);
+  const { location, checkout } = useContext(VisitorContext);
 
-  const { location } = useContext(VisitorContext);
-  console.log("location", location);
-  // const params = useParams();
+  const params = useParams();
+
+  const handleCheckout = async () => {
+    console.log("Params", params);
+    try {
+      await checkout(params);
+      console.log("Checkout");
+    } catch (error) {
+      console.error("Checkout", error);
+    }
+  };
 
   return (
     <Layout>
@@ -31,12 +37,14 @@ function CheckOutZonePage() {
       <PageTitle
         subtitle="Your are currently checked-in at"
         title={location.name}
+        custom
       />
 
       <Content>
-        <ButtonLink
-          label="continue"
-          link={`/visitor/checkout/${location.hid}`}
+        <Button
+          label="check-out"
+          // link={`/visitor/checkout/${location.hid}`}
+          onClick={handleCheckout}
         />
         <br />
         <CheckOutZoneForm />

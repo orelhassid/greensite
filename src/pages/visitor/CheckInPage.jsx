@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Redirect, useHistory, useLocation, useParams } from "react-router-dom";
 import CheckInForm from "../../components/forms/visitor/CheckInForm";
 import CheckinManually from "../../components/forms/visitor/CheckinManually";

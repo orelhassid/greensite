@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import Layout, {
   Content,
   FlexBox,
@@ -8,7 +8,6 @@ import Layout, {
   SEO,
 } from "../../components/layout";
 
-import visitorService from "../../services/visitorService";
 import ButtonLink from "../../components/elements/ButtonLink";
 import { ReactComponent as Background1 } from "../../assets/images/background-1.svg";
 

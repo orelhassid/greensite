@@ -5,13 +5,21 @@ export const HubContext = createContext(null);
 
 const HubContextProvider = ({ children }) => {
   const [hub, setHub] = useState({});
+  const [zones, setZones] = useState([]);
 
   useEffect(() => {
     async function fetch() {
-      const hid = localStorage.getItem("hub-key");
-      const data = await hubService.getHub(hid);
-      console.log("zonesData", data);
-      setHub(data);
+      try {
+        if (localStorage.getItem("hub-key")) {
+          const hid = localStorage.getItem("hub-key");
+          const data = await hubService.getHub(hid);
+          const zonesData = await hubService.getZones(hid);
+          setZones(zonesData);
+          setHub(data);
+        }
+      } catch (error) {
+        console.error("Hub Context:", error);
+      }
     }
     fetch();
   }, []);
@@ -22,12 +30,16 @@ const HubContextProvider = ({ children }) => {
   };
 
   const addZones = async (type, count) => {
-    const result = await hubService.addZones(type, count);
-    console.log("Add Zones", result);
+    try {
+      const result = await hubService.addZones(type, count);
+      setZones(zones, ...result);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
-    <HubContext.Provider value={{ hub, register, addZones }}>
+    <HubContext.Provider value={{ hub, register, addZones, zones }}>
       {children}
     </HubContext.Provider>
   );

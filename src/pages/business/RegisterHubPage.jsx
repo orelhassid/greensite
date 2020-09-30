@@ -10,7 +10,7 @@ function RegisterHubPage() {
     if (localStorage.getItem("hub-key")) {
       history.push("/hub/zones");
     }
-  }, []);
+  }, [history]);
   return (
     <Layout>
       <SEO

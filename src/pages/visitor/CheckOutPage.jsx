@@ -16,6 +16,7 @@ function CheckOutPage() {
     <Layout>
       <Navigation />
       <SEO title={location.name} />
+
       <PageTitle
         subtitle="Your are currently checked-in at"
         title={location.name}

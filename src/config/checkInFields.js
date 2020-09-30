@@ -1,11 +1,3 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
-const HealthLink = () => (
-  <p>
-    I comply with the <Link to="/health">Health Declaration</Link>
-  </p>
-);
 export default [
   {
     label: "Time (in hours)",
@@ -18,7 +10,7 @@ export default [
     // options: ["10", "20", "30", "40", "50", "60"],
   },
   {
-    label: <HealthLink />,
+    label: "I comply with the Health Declaration",
     name: "health",
     type: "checkbox",
     defaultValue: false,
