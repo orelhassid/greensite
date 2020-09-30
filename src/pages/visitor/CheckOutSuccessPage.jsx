@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import Layout, {
   Content,
@@ -9,26 +9,26 @@ import Layout, {
 import Button from "../../components/elements/Button";
 import hubService from "../../services/hubService";
 import { useParams, useHistory } from "react-router-dom";
+import { VisitorContext } from "../../contexts/VisitorContext";
 
 function CheckOutSuccessPage() {
-  const [hub, setHub] = useState({});
   const params = useParams();
   const history = useHistory();
 
+  const { location } = useContext(VisitorContext);
+  console.log("Location", location);
   useEffect(() => {
     console.log(params);
     async function fetch() {
       try {
-        const hubObject = JSON.parse(localStorage.getItem("hub"));
-
-        setHub(hubObject);
+        // const hubObject = JSON.parse(localStorage.getItem("hub"));
       } catch (error) {}
     }
     fetch();
   }, [params]);
 
   const handleClick = () => {
-    history.push(`/visitor/checkin/${hub.hid}`);
+    history.push(`/visitor/checkin/${location.hid}`);
   };
   return (
     <Layout>
@@ -37,7 +37,7 @@ function CheckOutSuccessPage() {
       <Content>
         <Grid>
           <p>You checked-out from</p>
-          <h3>{hub.name}</h3>
+          <h3>{location.name}</h3>
           <p>Thanks for using GreenSite Pass!</p>
           <Button label="check-in again" onClick={() => handleClick()} />
         </Grid>

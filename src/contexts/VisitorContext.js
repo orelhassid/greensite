@@ -33,9 +33,10 @@ const VisitorContextProvider = ({ children }) => {
   const storeLocation = async (paramsData) => {
     try {
       const result = await hubSevice.getHub(paramsData.hid);
-      const result2 = await hubSevice.getZone(paramsData.hid, paramsData.zid);
-
-      setParams(paramsData);
+      if (paramsData.zid) {
+        const result2 = await hubSevice.getZone(paramsData.hid, paramsData.zid);
+      }
+      console.log("Result Store Locaiton", result);
       await visitorService.storeHub(result);
     } catch (error) {}
   };

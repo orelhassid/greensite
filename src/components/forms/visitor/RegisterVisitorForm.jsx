@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Joi from "joi";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 // Form
 import VisitorService from "../../../services/visitorService";
 import useFormFields from "../../../hooks/useFormFields";
@@ -21,14 +21,19 @@ const RegisterVisitorForm = () => {
   const { register } = useContext(VisitorContext);
 
   const history = useHistory();
-
+  const locationRouter = useLocation();
   /* ------------------------------- Form Submit (Create New User/Visitor) ------------------------------ */
   const onSubmit = async () => {
     // Call the server
     try {
-      // await VisitorService.register(data);
+      console.log("locationRouter", locationRouter);
       register(data);
-      if (data.option === "myself") history.push("/visitor/register/success");
+      const { state } = locationRouter;
+      const url = state ? state.from.pathname : "/visitor/register/success";
+      console.log("state", state);
+      console.log("state.from.pathname", state.from.pathname);
+      history.push(url);
+      // if (data.option === "myself") history.push("/visitor/register/success");
     } catch (error) {
       return console.error("Registration Failed", error);
     }

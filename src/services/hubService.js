@@ -57,6 +57,7 @@ export function getHubKey() {
 }
 
 export async function getHub(hid) {
+  console.log("Get Hub", hid);
   try {
     const { data } = await http.get(`${apiEndpoint}/${hid}`);
     return data;
@@ -85,8 +86,13 @@ export async function getZones(hid) {
 }
 export async function getZone(hid, zid) {
   // https://hub.pasescovid.com/hub/GKTIL8/zone/2
+  let result;
   try {
-    const result = http.get(`${apiEndpoint}/${hid}/zone/${zid}`);
+    if (!zid) {
+      result = http.get(`${apiEndpoint}/${hid}/zone`);
+    } else {
+      result = http.get(`${apiEndpoint}/${hid}/zone/${zid}`);
+    }
     return result;
   } catch (error) {
     throw new Error("Get Zone Failed", error);

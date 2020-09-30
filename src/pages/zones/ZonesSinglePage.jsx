@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Layout, {
   Content,
   Navigation,
@@ -8,29 +8,19 @@ import Layout, {
 import hubService from "../../services/hubService";
 import { useHistory, useParams } from "react-router-dom";
 import Card from "../../components/cards/Card";
+import { HubContext } from "../../contexts/HubContext";
 
 function ZonesSinglePage() {
-  const [zone, setZone] = useState([]);
-  const [hub, setHub] = useState({});
   const [loading, setLoading] = useState(false);
+  const [zone, setZone] = useState({});
   const history = useHistory();
   const params = useParams();
+  const { hub, zones } = useContext(HubContext);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const { hid, zid } = params;
-        const { data } = await hubService.getZone(hid, zid);
-        const hubData = await hubService.getHub(hid);
-        setHub(hubData);
-        setZone(data);
-        setLoading(true);
-      } catch (error) {
-        // history.push("/hub/register");
-        console.error("Get Zone Failed", error);
-      }
-    }
-    fetchData();
+    console.log(zones);
+    const data = zones.find((zone) => zone.zone_id === params.zid);
+    setZone(data);
   }, []);
 
   return (

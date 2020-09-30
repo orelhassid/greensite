@@ -5,18 +5,13 @@ export const HubContext = createContext(null);
 
 const HubContextProvider = ({ children }) => {
   const [hub, setHub] = useState({});
-  const [zones, setZones] = useState([], async () => {
-    const data = await hubService.getZones();
-    return data;
-  });
 
   useEffect(() => {
     async function fetch() {
       const hid = localStorage.getItem("hub-key");
       const data = await hubService.getHub(hid);
-      const zonesData = await hubService.getZones(hid);
+      console.log("zonesData", data);
       setHub(data);
-      setZones(zonesData);
     }
     fetch();
   }, []);
@@ -32,7 +27,7 @@ const HubContextProvider = ({ children }) => {
   };
 
   return (
-    <HubContext.Provider value={{ hub, register, addZones, zones }}>
+    <HubContext.Provider value={{ hub, register, addZones }}>
       {children}
     </HubContext.Provider>
   );

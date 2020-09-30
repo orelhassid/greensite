@@ -115,6 +115,7 @@ export async function storeHub(hub) {
     JSON.stringify({
       name: hub.name,
       hid: hub.hid,
+      zid: hub.zid,
     })
   );
 }

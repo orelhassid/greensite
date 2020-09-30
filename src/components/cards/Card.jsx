@@ -14,6 +14,7 @@ const Card = ({ zone, link }) => {
   const shareLink = `https://${window.location.hostname}${link}`;
   const colors = ["red", "green", "orange"];
 
+  console.log(shareLink);
   const copyToClipboard = (e) => {
     navigator.clipboard.writeText(shareLink);
     toast.success("Copy to clipboard");

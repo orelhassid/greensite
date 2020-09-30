@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { Redirect, useHistory, useLocation, useParams } from "react-router-dom";
 import CheckInForm from "../../components/forms/visitor/CheckInForm";
 import CheckinManually from "../../components/forms/visitor/CheckinManually";
 import Layout, { Header, Content, SEO } from "../../components/layout";
@@ -9,12 +9,12 @@ function CheckInPage() {
   const history = useHistory();
 
   const params = useParams();
-
-  if (!visitorService.isLogin()) history.push("/visitor/register");
+  const locationRouter = useLocation();
   const { visitor, location, storeLocation } = useContext(VisitorContext);
 
   // Verify Hubid
   useEffect(() => {
+    // if (!visitorService.isLogin()) history.push("/visitor/register");
     async function fetch() {
       try {
         await storeLocation(params);
@@ -25,6 +25,16 @@ function CheckInPage() {
     fetch();
   }, [history, params]);
 
+  if (!visitorService.isLogin()) {
+    return (
+      <Redirect
+        to={{
+          pathname: "/visitor/register",
+          state: { from: locationRouter },
+        }}
+      />
+    );
+  }
   return (
     <Layout>
       <SEO

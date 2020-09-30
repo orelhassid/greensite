@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
+import HubContext from "../../contexts/HubContext";
 // Common
 // import { ReactComponent as HomeIcon } from "../../assets/icons/home.svg";
 import { ReactComponent as HelpIcon } from "../../assets/icons/help.svg";
@@ -36,6 +37,9 @@ const hubLinks = [
 
 export const Navigation = () => {
   const [links, setLinks] = useState([]);
+  const hub = useContext(HubContext);
+
+  // console.log(hub);
   let location = useLocation();
   const path = location.pathname.replace(/^\/([^\/]*).*$/, "$1"); // eslint-disable-line
 
